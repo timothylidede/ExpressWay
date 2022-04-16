@@ -17,20 +17,20 @@
             android:id="@+id/express_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:textColor="#88d8bd"
             android:text="Express" />
 
         <TextView
             android:id="@+id/way_title"
-            android:layout_toRightOf="@+id/express_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="#474747"
-            android:text="Way" />
+            android:layout_toRightOf="@+id/express_title"
+            android:text="Way"
+            android:textColor="#243665"
+            android:textSize="40sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </RelativeLayout>

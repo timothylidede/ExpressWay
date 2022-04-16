@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class StartActivity extends AppCompatActivity {
 
     //widgets
-    private TextView mExpress, mWay;
+    private TextView mExpress, mWay, mSlogan1, mSlogan2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,13 @@ public class StartActivity extends AppCompatActivity {
         //init widgets
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
+        mSlogan1 = findViewById(R.id.slogan1);
+        mSlogan2 = findViewById(R.id.slogan2);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+        mSlogan1.setTypeface(tf);
+        mSlogan2.setTypeface(tf);
     }
 }

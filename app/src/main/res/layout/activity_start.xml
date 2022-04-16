@@ -18,10 +18,10 @@
             android:id="@+id/express_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            android:text="Express"
             android:textColor="#88d8bd"
-            android:text="Express" />
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/way_title"
@@ -29,10 +29,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="#474747"
+            android:textSize="40sp"
+            android:textColor="#243665"
             android:text="Way" />
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/bus_logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/bus"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/slogan1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Travel on the Nairobi ExpressWay"
+        android:textSize="25dp"
+        android:layout_below="@id/bus_logo"
+        android:layout_centerHorizontal="true"
+        android:textColor="#88d8bd"/>
+
+    <TextView
+        android:id="@+id/slogan2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#243665"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/slogan1"
+        android:text="Fast. Safe. Efficient"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#243665"
+        app:cardCornerRadius="50dp"
 
 </RelativeLayout>
