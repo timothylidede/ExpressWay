@@ -16,6 +16,7 @@
             android:id="@+id/express_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily=""
             android:text="Express" />
 
         <TextView
