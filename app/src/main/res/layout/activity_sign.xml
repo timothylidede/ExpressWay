@@ -79,8 +79,8 @@
 
                     <ImageView
                         android:id="@+id/register_photo"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/register" />
@@ -94,7 +94,7 @@
                         android:layout_toRightOf="@+id/register_photo"
                         android:text="Register"
                         android:textColor="@color/black"
-                        android:textSize="25dp" />
+                        android:textSize="23dp" />
 
                 </RelativeLayout>
 
@@ -118,8 +118,8 @@
 
                     <ImageView
                         android:id="@+id/login_photo"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/login" />
@@ -133,7 +133,7 @@
                         android:layout_toRightOf="@+id/login_photo"
                         android:text="Login"
                         android:textColor="@color/black"
-                        android:textSize="25dp" />
+                        android:textSize="23dp" />
 
                 </RelativeLayout>
 
