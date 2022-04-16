@@ -24,6 +24,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/back_layout"
@@ -50,13 +51,14 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/register_title"
+        android:id="@+id/info_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/signin"
         android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/register_photo"
-        android:text="Sign Up"
+        android:text="Login to your account"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:textSize="23dp" />
 
