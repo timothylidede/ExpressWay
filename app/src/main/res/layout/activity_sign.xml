@@ -82,7 +82,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:src="@drawable/register" />
 
                     <TextView
@@ -92,7 +92,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/register_photo"
-                        android:text="Register"
+                        android:text="Sign Up"
                         android:textColor="@color/black"
                         android:textSize="23dp" />
 
@@ -121,7 +121,7 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:src="@drawable/login" />
 
                     <TextView
@@ -131,7 +131,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/login_photo"
-                        android:text="Login"
+                        android:text="Sign In"
                         android:textColor="@color/black"
                         android:textSize="23dp" />
 
