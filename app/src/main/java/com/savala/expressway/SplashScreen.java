@@ -25,7 +25,8 @@ public class SplashScreen extends AppCompatActivity {
         mWay = findViewById(R.id.way_title);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
-
+        mExpress.setTypeface(tf);
+        mWay.setTypeface(tf);
 
     }
 }
