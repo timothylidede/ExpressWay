@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +16,9 @@ public class Login extends AppCompatActivity {
     //widgets
     private ImageView mBack;
 
-    private TextView mSign, mIn, mInfo, mEmail;
+    private TextView mSign, mIn, mInfo, mEmail, mPass;
+
+    private EditText mEmailText, mPassText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class Login extends AppCompatActivity {
         mIn = findViewById(R.id.in_title);
         mInfo = findViewById(R.id.info_title);
         mEmail = findViewById(R.id.email_title);
+        mPass = findViewById(R.id.pass_title);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
@@ -46,5 +50,9 @@ public class Login extends AppCompatActivity {
         mIn.setTypeface(tf);
         mInfo.setTypeface(tf2);
         mEmail.setTypeface(tf);
+        mPass.setTypeface(tf);
+
+        mEmailText = findViewById(R.id.email_text);
+        mPassText = findViewById(R.id.pass_text);
     }
 }
