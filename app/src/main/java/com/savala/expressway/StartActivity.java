@@ -3,8 +3,10 @@ package com.savala.expressway;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -30,8 +32,6 @@ public class StartActivity extends AppCompatActivity {
         mSlogan2 = findViewById(R.id.slogan2);
         mStartTitle = findViewById(R.id.start_title);
 
-        mStartButton = findViewById(R.id.start_button);
-
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
         mExpress.setTypeface(tf);
@@ -39,5 +39,14 @@ public class StartActivity extends AppCompatActivity {
         mSlogan1.setTypeface(tf);
         mSlogan2.setTypeface(tf);
         mStartTitle.setTypeface(tf2);
+
+        mStartButton = findViewById(R.id.start_button);
+        mStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartActivity.this, SignActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
