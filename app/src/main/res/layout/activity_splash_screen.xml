@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="30sp"
-            android:textColor="#2C2C2C"
+            android:textColor="#474747"
             android:text="Way" />
     </RelativeLayout>
 

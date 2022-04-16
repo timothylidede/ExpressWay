@@ -2,8 +2,10 @@ package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -11,6 +13,9 @@ public class SplashScreen extends AppCompatActivity {
 
     //widgets
     private TextView mExpress, mWay;
+
+    //const
+    private static int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,15 @@ public class SplashScreen extends AppCompatActivity {
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run(){
+                Intent homeIntent = new Intent(SplashScreen.this, StartActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
 
     }
 }
