@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -19,6 +20,8 @@ public class Login extends AppCompatActivity {
     private TextView mSign, mIn, mInfo, mEmail, mPass;
 
     private EditText mEmailText, mPassText;
+
+    private ImageView mSeePass, mUnseePass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,5 +57,26 @@ public class Login extends AppCompatActivity {
 
         mEmailText = findViewById(R.id.email_text);
         mPassText = findViewById(R.id.pass_text);
+
+        mSeePass = findViewById(R.id.see_pass);
+        mUnseePass = findViewById(R.id.unsee_pass);
+
+        mSeePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSeePass.setVisibility(View.INVISIBLE);
+                mUnseePass.setVisibility(View.VISIBLE);
+                mPassText.setTransformationMethod(null);
+            }
+        });
+
+        mUnseePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUnseePass.setVisibility(View.INVISIBLE);
+                mSeePass.setVisibility(View.VISIBLE);
+                mPassText.setTransformationMethod(new PasswordTransformationMethod());
+            }
+        });
     }
 }
