@@ -15,7 +15,7 @@ public class Login extends AppCompatActivity {
     //widgets
     private ImageView mBack;
 
-    private TextView mSign, mIn, mInfo;
+    private TextView mSign, mIn, mInfo, mEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
         mSign = findViewById(R.id.sign_title);
         mIn = findViewById(R.id.in_title);
         mInfo = findViewById(R.id.info_title);
+        mEmail = findViewById(R.id.email_title);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
@@ -44,5 +45,6 @@ public class Login extends AppCompatActivity {
         mSign.setTypeface(tf);
         mIn.setTypeface(tf);
         mInfo.setTypeface(tf2);
+        mEmail.setTypeface(tf);
     }
 }

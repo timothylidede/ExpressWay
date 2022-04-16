@@ -41,13 +41,13 @@
 
         <TextView
             android:id="@+id/in_title"
-            android:layout_toRightOf="@+id/sign_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="40sp"
+            android:layout_toRightOf="@+id/sign_title"
+            android:text="In"
             android:textColor="#243665"
-            android:text="In" />
+            android:textSize="40sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <TextView
@@ -61,5 +61,25 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:textSize="23dp" />
+
+    <TextView
+        android:id="@+id/email_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_title"
+        android:text="Email"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#243665"
+        android:textSize="23dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/background_edittext"
+        android:layout_below="@+id/email_title"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 </RelativeLayout>
