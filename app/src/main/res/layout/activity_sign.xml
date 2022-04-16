@@ -68,7 +68,6 @@
                 android:layout_width="250dp"
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                android:layout_weight="1"
                 app:backgroundTint="@color/white"
                 app:cardCornerRadius="50dp">
 
@@ -107,7 +106,6 @@
                 android:layout_width="250dp"
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                android:layout_weight="1"
                 app:backgroundTint="@color/white"
                 app:cardCornerRadius="50dp">
 
