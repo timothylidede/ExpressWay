@@ -1,6 +1,7 @@
 package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ public class StartActivity extends AppCompatActivity {
 
     //widgets
     private TextView mExpress, mWay, mSlogan1, mSlogan2, mStartTitle;
+
+    private CardView mStartButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class StartActivity extends AppCompatActivity {
         mWay = findViewById(R.id.way_title);
         mSlogan1 = findViewById(R.id.slogan1);
         mSlogan2 = findViewById(R.id.slogan2);
+        mStartTitle = findViewById(R.id.start_title);
+
+        mStartButton = findViewById(R.id.start_button);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
