@@ -166,6 +166,18 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/forgot_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:text="Forgot Password?"
+        android:layout_marginTop="10dp"
+        android:textColor="#243665"
+        android:textSize="18dp" />
+
     <ImageView
         android:id="@+id/traveler"
         android:layout_width="200dp"

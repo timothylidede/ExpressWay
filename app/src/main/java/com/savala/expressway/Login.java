@@ -17,7 +17,7 @@ public class Login extends AppCompatActivity {
     //widgets
     private ImageView mBack;
 
-    private TextView mSign, mIn, mInfo, mEmail, mPass;
+    private TextView mSign, mIn, mInfo, mEmail, mPass, mForgotPass;
 
     private EditText mEmailText, mPassText;
 
@@ -45,6 +45,7 @@ public class Login extends AppCompatActivity {
         mInfo = findViewById(R.id.info_title);
         mEmail = findViewById(R.id.email_title);
         mPass = findViewById(R.id.pass_title);
+        mForgotPass = findViewById(R.id.forgot_pass);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
@@ -54,6 +55,14 @@ public class Login extends AppCompatActivity {
         mInfo.setTypeface(tf2);
         mEmail.setTypeface(tf);
         mPass.setTypeface(tf);
+        mForgotPass.setTypeface(tf);
+
+        mForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         mEmailText = findViewById(R.id.email_text);
         mPassText = findViewById(R.id.pass_text);
