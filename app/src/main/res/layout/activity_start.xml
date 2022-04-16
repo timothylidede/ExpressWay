@@ -38,9 +38,9 @@
         android:id="@+id/bus_logo"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/bus"
-        android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:src="@drawable/bus" />
 
     <TextView
         android:id="@+id/slogan1"
@@ -62,11 +62,15 @@
         android:layout_below="@id/slogan1"
         android:text="Fast. Safe. Efficient"/>
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="110dp"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="#243665"
-        app:cardCornerRadius="50dp"
+        android:background="@drawable/top_right_cornered_rect">
 
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+    </RelativeLayout>
 </RelativeLayout>
