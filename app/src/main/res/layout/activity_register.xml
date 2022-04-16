@@ -192,8 +192,16 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"/>
 
+    <ImageView
+        android:id="@+id/welcome"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/welcome" />
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/login_button"
+        android:id="@+id/register_button"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:layout_below="@+id/pass_text"
@@ -209,12 +217,12 @@
             android:background="#88d8bd">
 
             <ImageView
-                android:id="@+id/login_photo"
+                android:id="@+id/register_photo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/white_logo" />
+                android:src="@drawable/whitesignup" />
 
         </RelativeLayout>
 
@@ -224,20 +232,12 @@
         android:id="@+id/forgot_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_button"
+        android:layout_below="@+id/register_button"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
-        android:text="Forgot Password?"
         android:layout_marginTop="10dp"
+        android:text="We'll send you a verification link to your email"
         android:textColor="#243665"
-        android:textSize="18dp" />
-
-    <ImageView
-        android:id="@+id/welcome"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/welcome" />
+        android:textSize="15dp" />
 
 </RelativeLayout>
