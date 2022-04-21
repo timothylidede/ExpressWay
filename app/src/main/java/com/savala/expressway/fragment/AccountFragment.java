@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.savala.expressway.EditProfile;
 import com.savala.expressway.Logout;
 import com.savala.expressway.R;
 import com.savala.expressway.SignActivity;
@@ -84,7 +85,8 @@ public class AccountFragment extends BaseFragment {
         mEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent intent = new Intent(getContext(), EditProfile.class);
+                startActivity(intent);
             }
         });
 
