@@ -23,7 +23,14 @@
                 android:id="@+id/upper"
                 android:layout_width="match_parent"
                 android:layout_height="295dp">
-                
+
+                <RelativeLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_list">
+
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
