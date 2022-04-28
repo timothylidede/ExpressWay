@@ -28,7 +28,7 @@ public class AccountFragment extends BaseFragment {
     //widgets
     private TextView mExpress, mWay, mWhenTitle;
 
-    private CardView mLogout, mEditProfile;
+    private CardView mLogout, mEditProfile, mVerifyNumber;
 
     public static AccountFragment create(){
         return new AccountFragment();
