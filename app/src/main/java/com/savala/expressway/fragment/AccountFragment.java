@@ -66,6 +66,7 @@ public class AccountFragment extends BaseFragment {
 
         mLogout = (CardView) root.findViewById(R.id.logout);
         mEditProfile = (CardView) root.findViewById(R.id.edit_button);
+        mVerifyNumber = (CardView) root.findViewById(R.id.verify_number);
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
