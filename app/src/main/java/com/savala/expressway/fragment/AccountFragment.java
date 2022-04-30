@@ -91,6 +91,13 @@ public class AccountFragment extends BaseFragment {
             }
         });
 
+        mVerifyNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
     }
 
 }
