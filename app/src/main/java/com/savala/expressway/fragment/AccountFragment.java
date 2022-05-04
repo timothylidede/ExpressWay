@@ -22,6 +22,7 @@ import com.savala.expressway.EditProfile;
 import com.savala.expressway.Logout;
 import com.savala.expressway.R;
 import com.savala.expressway.SignActivity;
+import com.savala.expressway.VerifyNumber;
 
 public class AccountFragment extends BaseFragment {
 
@@ -94,7 +95,8 @@ public class AccountFragment extends BaseFragment {
         mVerifyNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), VerifyNumber.class);
+                startActivity(intent);
             }
         });
 
