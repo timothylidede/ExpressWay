@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.savala.expressway.AboutUs;
 import com.savala.expressway.EditProfile;
 import com.savala.expressway.Logout;
 import com.savala.expressway.R;
@@ -29,7 +30,7 @@ public class AccountFragment extends BaseFragment {
     //widgets
     private TextView mExpress, mWay, mWhenTitle;
 
-    private CardView mLogout, mEditProfile, mVerifyNumber;
+    private CardView mLogout, mEditProfile, mVerifyNumber, mAboutUs;
 
     public static AccountFragment create(){
         return new AccountFragment();
@@ -68,6 +69,7 @@ public class AccountFragment extends BaseFragment {
         mLogout = (CardView) root.findViewById(R.id.logout);
         mEditProfile = (CardView) root.findViewById(R.id.edit_button);
         mVerifyNumber = (CardView) root.findViewById(R.id.verify_number);
+        mAboutUs = (CardView) root.findViewById(R.id.about_us);
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
@@ -96,6 +98,14 @@ public class AccountFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), VerifyNumber.class);
+                startActivity(intent);
+            }
+        });
+
+        mAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AboutUs.class);
                 startActivity(intent);
             }
         });
