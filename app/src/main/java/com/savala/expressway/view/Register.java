@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
@@ -186,6 +187,11 @@ public class Register extends AppCompatActivity {
                                                                 , Toast.LENGTH_LONG).show();
                                                         mProgressBar.setVisibility(View.INVISIBLE);
                                                         mSignUp.setVisibility(View.VISIBLE);
+
+                                                        Intent intent = new Intent(
+                                                                Register.this,
+                                                                HomeActivity.class);
+                                                        startActivity(intent);
                                                     }else{
                                                         Toast.makeText(Register.this
                                                                 , "Sign Up Failed"
