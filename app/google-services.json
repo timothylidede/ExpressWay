@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "439707463144",
+    "project_id": "expressway-57e32",
+    "storage_bucket": "expressway-57e32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439707463144:android:96b3823aa0279aaf9a485d",
+        "android_client_info": {
+          "package_name": "com.savala.expressway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439707463144-ko05jki2f05tcs8v5tfs36sqph7e1924.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.savala.expressway",
+            "certificate_hash": "970621c95421a909f75bd83d4070b9b4470914b7"
+          }
+        },
+        {
+          "client_id": "439707463144-tscrv3o6cr4d06h45e0fpqt6p3lgob70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0wSl-q03Z4o-ck_w1UXWzzhxJ9R_NHyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439707463144-tscrv3o6cr4d06h45e0fpqt6p3lgob70.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
