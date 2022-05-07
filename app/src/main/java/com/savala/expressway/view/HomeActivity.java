@@ -1,14 +1,19 @@
 package com.savala.expressway.view;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.savala.expressway.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -64,5 +69,29 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    /* Firebase */
+    private void checkCurrentUser(){
+        Log.d(TAG, "checkCurrentUser: checking if user is logged in");
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null){
+            Intent intent = new Intent(HomeActivity.this, SignActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkCurrentUser();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
