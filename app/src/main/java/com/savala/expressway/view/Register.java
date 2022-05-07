@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savala.expressway.R;
+import com.savala.expressway.model.User;
 
 public class Register extends AppCompatActivity {
 
@@ -179,13 +180,13 @@ public class Register extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
-                                                        Toast.makeText(SignUp.this
+                                                        Toast.makeText(Register.this
                                                                 , "Sign Up Success"
                                                                 , Toast.LENGTH_LONG).show();
                                                         mProgressBar.setVisibility(View.INVISIBLE);
                                                         mSignUp.setVisibility(View.VISIBLE);
                                                     }else{
-                                                        Toast.makeText(SignUp.this
+                                                        Toast.makeText(Register.this
                                                                 , "Sign Up Failed"
                                                                 , Toast.LENGTH_LONG).show();
                                                         mProgressBar.setVisibility(View.INVISIBLE);
