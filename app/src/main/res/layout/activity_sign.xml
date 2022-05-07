@@ -8,134 +8,147 @@
     android:background="@color/white"
     tools:context=".StartActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:id="@+id/express_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Express"
-            android:textColor="#88d8bd"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/way_title"
-            android:layout_toRightOf="@+id/express_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            android:textColor="#243665"
-            android:text="Way" />
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/bus_logo"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
-        android:src="@drawable/bus" />
-
-    <TextView
-        android:id="@+id/slogan2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bus_logo"
-        android:layout_marginLeft="30dp"
-        android:text="Fast. Safe. Efficient"
-        android:textColor="#243665"
-        android:textSize="30dp" />
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/both_cornered_rect">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/register_button"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/express_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Express"
+                    android:textColor="#88d8bd"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/way_title"
+                    android:layout_toRightOf="@+id/express_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="40sp"
+                    android:textColor="#243665"
+                    android:text="Way" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/bus_logo"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_centerHorizontal="true"
-                app:backgroundTint="@color/white"
-                app:cardCornerRadius="50dp">
+                android:layout_marginTop="170dp"
+                android:src="@drawable/bus" />
+
+            <TextView
+                android:id="@+id/slogan2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bus_logo"
+                android:layout_marginLeft="30dp"
+                android:text="Fast. Safe. Efficient"
+                android:textColor="#243665"
+                android:textSize="30dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/slogan2"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/both_cornered_rect">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
 
-                    <ImageView
-                        android:id="@+id/register_photo"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/register" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/register_button"
+                        android:layout_width="250dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        app:backgroundTint="@color/white"
+                        app:cardCornerRadius="50dp">
 
-                    <TextView
-                        android:id="@+id/register_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@+id/register_photo"
-                        android:text="Sign Up"
-                        android:textColor="@color/black"
-                        android:textSize="23dp" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
 
+                            <ImageView
+                                android:id="@+id/register_photo"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:src="@drawable/register" />
+
+                            <TextView
+                                android:id="@+id/register_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_toRightOf="@+id/register_photo"
+                                android:text="Sign Up"
+                                android:textColor="@color/black"
+                                android:textSize="23dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/login_button"
+                        android:layout_below="@+id/register_button"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="250dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        app:backgroundTint="@color/white"
+                        app:cardCornerRadius="50dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/login_photo"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:src="@drawable/login" />
+
+                            <TextView
+                                android:id="@+id/login_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_toRightOf="@+id/login_photo"
+                                android:text="Sign In"
+                                android:textColor="@color/black"
+                                android:textSize="23dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
                 </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/login_button"
-                android:layout_below="@+id/register_button"
-                android:layout_marginTop="15dp"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                app:backgroundTint="@color/white"
-                app:cardCornerRadius="50dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white">
-
-                    <ImageView
-                        android:id="@+id/login_photo"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/login" />
-
-                    <TextView
-                        android:id="@+id/login_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@+id/login_photo"
-                        android:text="Sign In"
-                        android:textColor="@color/black"
-                        android:textSize="23dp" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.method.PasswordTransformationMethod;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -56,6 +58,10 @@ public class Login extends AppCompatActivity {
         mEmail.setTypeface(tf);
         mPass.setTypeface(tf);
         mForgotPass.setTypeface(tf);
+
+        SpannableString content = new SpannableString("Forgot Password?");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        mForgotPass.setText(content);
 
         mForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
