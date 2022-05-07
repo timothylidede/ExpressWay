@@ -1,16 +1,13 @@
-package com.savala.expressway;
+package com.savala.expressway.view;
 
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.SpannableString;
 import android.text.method.PasswordTransformationMethod;
-import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -28,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.savala.expressway.R;
 
 public class Register extends AppCompatActivity {
 

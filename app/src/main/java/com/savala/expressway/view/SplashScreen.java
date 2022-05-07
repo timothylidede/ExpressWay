@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.savala.expressway.R;
 
 public class SplashScreen extends AppCompatActivity {
 
