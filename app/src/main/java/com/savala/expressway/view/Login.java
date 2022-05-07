@@ -158,7 +158,7 @@ public class Login extends AppCompatActivity {
 
                             if (!task.isSuccessful()){
                                 Toast.makeText(Login.this
-                                        , "Enter valid email address"
+                                        , "Invalid user"
                                         , Toast.LENGTH_SHORT).show();
                                 mProgressBar.setVisibility(View.GONE);
                                 mLoginButton.setVisibility(View.VISIBLE);

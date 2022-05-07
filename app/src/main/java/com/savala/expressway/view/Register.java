@@ -188,10 +188,26 @@ public class Register extends AppCompatActivity {
                                                         mProgressBar.setVisibility(View.INVISIBLE);
                                                         mSignUp.setVisibility(View.VISIBLE);
 
-                                                        Intent intent = new Intent(
-                                                                Register.this,
-                                                                HomeActivity.class);
-                                                        startActivity(intent);
+                                                        mAuth.getCurrentUser().sendEmailVerification()
+                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        if(task.isSuccessful()){
+                                                                            Toast.makeText(Register.this
+                                                                                    , "Almost done! Click the link we have sent in your email inbox"
+                                                                                    , Toast.LENGTH_LONG).show();
+                                                                            Intent intent = new Intent(
+                                                                                    Register.this,
+                                                                                    Login.class
+                                                                            );
+                                                                            finish();
+                                                                        }else{
+                                                                            Toast.makeText(Register.this
+                                                                                    , "Please try again"
+                                                                                    , Toast.LENGTH_LONG).show();
+                                                                        }
+                                                                    }
+                                                                });
                                                     }else{
                                                         Toast.makeText(Register.this
                                                                 , "Sign Up Failed"
