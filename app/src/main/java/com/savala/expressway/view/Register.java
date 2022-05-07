@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class Register extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
 
-    private Button mSignUp;
+    private CardView mSignUp;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -74,7 +75,7 @@ public class Register extends AppCompatActivity {
         mEmailAddress = findViewById(R.id.email_title);
         mPassword = findViewById(R.id.pass_title);
         mForgotPass = findViewById(R.id.forgot_pass);
-        mSignUp = (Button) findViewById(R.id.register_button);
+        mSignUp = (CardView) findViewById(R.id.register_button);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // Initialize Firebase Auth

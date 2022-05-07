@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -37,7 +38,7 @@ public class Login extends AppCompatActivity {
 
     private EditText mLoginEmail, mLoginPassword;
 
-    private Button mLoginButton;
+    private CardView mLoginButton;
 
     private ProgressBar mProgressBar;
 
