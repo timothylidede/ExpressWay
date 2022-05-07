@@ -119,6 +119,13 @@ public class Login extends AppCompatActivity {
                 mLoginPassword.setTransformationMethod(new PasswordTransformationMethod());
             }
         });
+
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
+        });
     }
 
     private void loginUser(){
