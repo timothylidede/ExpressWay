@@ -1,4 +1,4 @@
-package com.savala.expressway.view;
+package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
 

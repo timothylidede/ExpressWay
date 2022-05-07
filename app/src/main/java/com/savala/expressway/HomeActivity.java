@@ -1,4 +1,4 @@
-package com.savala.expressway.view;
+package com.savala.expressway;
 
 import static android.content.ContentValues.TAG;
 
@@ -14,7 +14,7 @@ import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.savala.expressway.R;
+import com.savala.expressway.view.HomeBottomTabsView;
 
 public class HomeActivity extends AppCompatActivity {
 

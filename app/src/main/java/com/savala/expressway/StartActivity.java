@@ -1,4 +1,4 @@
-package com.savala.expressway.view;
+package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,14 +10,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.savala.expressway.R;
-
-public class SignActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     //widgets
-    private TextView mExpress, mWay, mSlogan2, mLoginTitle, mRegisterTitle;
+    private TextView mExpress, mWay, mSlogan1, mSlogan2, mStartTitle;
 
-    private CardView mLoginButton, mRegisterButton;
+    private CardView mStartButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,37 +23,28 @@ public class SignActivity extends AppCompatActivity {
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_sign);
+        setContentView(R.layout.activity_start);
 
         //init widgets
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
+        mSlogan1 = findViewById(R.id.slogan1);
         mSlogan2 = findViewById(R.id.slogan2);
-        mLoginTitle = findViewById(R.id.login_title);
-        mRegisterTitle = findViewById(R.id.register_title);
+        mStartTitle = findViewById(R.id.start_title);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+        mSlogan1.setTypeface(tf);
         mSlogan2.setTypeface(tf);
-        mLoginTitle.setTypeface(tf2);
-        mRegisterTitle.setTypeface(tf2);
+        mStartTitle.setTypeface(tf2);
 
-        mRegisterButton = findViewById(R.id.register_button);
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        mStartButton = findViewById(R.id.start_button);
+        mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignActivity.this, Register.class);
-                startActivity(intent);
-            }
-        });
-
-        mLoginButton = findViewById(R.id.login_button);
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignActivity.this, Login.class);
+                Intent intent = new Intent(StartActivity.this, SignActivity.class);
                 startActivity(intent);
             }
         });

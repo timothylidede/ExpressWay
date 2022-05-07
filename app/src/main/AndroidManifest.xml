@@ -10,28 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
-            android:name=".view.HomeActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ForgotPassword"
+            android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".view.Register"
+            android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".view.Login"
+            android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".view.SignActivity"
+            android:name=".SignActivity"
             android:exported="false" />
         <activity
-            android:name=".view.StartActivity"
+            android:name=".StartActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SplashScreen"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

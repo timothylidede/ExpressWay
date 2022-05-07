@@ -1,4 +1,4 @@
-package com.savala.expressway.view;
+package com.savala.expressway;
 
 import static android.content.ContentValues.TAG;
 
@@ -15,7 +15,6 @@ import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -27,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.savala.expressway.R;
 
 public class Login extends AppCompatActivity {
 
