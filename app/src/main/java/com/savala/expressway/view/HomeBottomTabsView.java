@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.savala.expressway.R;
+
 public class HomeBottomTabsView extends FrameLayout implements ViewPager.OnPageChangeListener {
     private ImageView mCenterImage;
     private ImageView mStartImage;
