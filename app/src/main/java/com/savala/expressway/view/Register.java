@@ -129,30 +129,30 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerUser(){
-        String firstName = mFirstName.getText().toString().trim();
-        String lastName = mLastName.getText().toString().trim();
-        String emailAddress = mEmailAddress.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
+        String firstName = mFirstText.getText().toString().trim();
+        String lastName = mSecondText.getText().toString().trim();
+        String emailAddress = mEmailText.getText().toString().trim();
+        String password = mPassText.getText().toString().trim();
 
         if(firstName.isEmpty()){
-            mFirstName.setError("Your first name is required");
-            mFirstName.requestFocus();
+            mFirstText.setError("First name is required");
+            mFirstText.requestFocus();
             return;
         }else if(lastName.isEmpty()){
-            mLastName.setError("Your last name is required");
-            mLastName.requestFocus();
+            mSecondText.setError("Last name is required");
+            mSecondText.requestFocus();
             return;
         }else if(emailAddress.isEmpty()){
-            mEmailAddress.setError("Your email is required");
-            mEmailAddress.requestFocus();
+            mEmailText.setError("Email is required");
+            mEmailText.requestFocus();
             return;
         }else if(!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
-            mEmailAddress.setError("Provide a valid email address");
-            mEmailAddress.requestFocus();
+            mEmailText.setError("Provide a valid email address");
+            mEmailText.requestFocus();
             return;
         }else if(password.isEmpty()){
-            mPassword.setError("You need to set a password");
-            mPassword.requestFocus();
+            mPassText.setError("You need to set a password");
+            mPassText.requestFocus();
             return;
         }else{
             if(passIsValid(password)){
@@ -206,15 +206,15 @@ public class Register extends AppCompatActivity {
         // for checking if password length is between 6 and 15
         if (!((password.length() >= 6))
                 && (password.length() <= 15)){
-            mPassword.setError("Password must be between 6 and 15 characters");
-            mPassword.requestFocus();
+            mPassText.setError("Password must be between 6 and 15 characters");
+            mPassText.requestFocus();
             return false;
         }
 
         // to check space
         if (password.contains(" ")) {
-            mPassword.setError("Password must not have a space");
-            mPassword.requestFocus();
+            mPassText.setError("Password must not have a space");
+            mPassText.requestFocus();
             return false;
         }
 

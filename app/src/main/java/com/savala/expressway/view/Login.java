@@ -134,16 +134,18 @@ public class Login extends AppCompatActivity {
         String emailAddress = mLoginEmail.getText().toString().trim();
         String password = mLoginPassword.getText().toString().trim();
 
+        if(emailAddress.isEmpty() && password.isEmpty()){
+            Toast.makeText(Login.this, "Fill in all the fields", Toast.LENGTH_SHORT).show();
+        }
         if(emailAddress.isEmpty()){
             mLoginEmail.setError("Key in email address");
             mLoginEmail.requestFocus();
             return;
-        }else if(password.isEmpty()){
+        }
+        if(password.isEmpty()){
             mLoginPassword.setError("Key in password");
             mLoginPassword.requestFocus();
             return;
-        }else if(emailAddress.isEmpty() && password.isEmpty()){
-            Toast.makeText(Login.this, "Fill in all the fields", Toast.LENGTH_SHORT).show();
         }else{
             mProgressBar.setVisibility(View.VISIBLE);
             mLoginButton.setVisibility(View.INVISIBLE);
