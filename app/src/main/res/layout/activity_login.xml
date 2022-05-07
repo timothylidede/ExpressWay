@@ -86,18 +86,18 @@
                 android:id="@+id/email_text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/background_edittext"
                 android:layout_below="@+id/email_title"
-                android:textColor="@color/black"
-                android:textSize="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_edittext"
                 android:fontFamily="sans-serif-thin"
-                android:textStyle="bold"
-                android:selectAllOnFocus="false"
-                android:singleLine="true"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/pass_title"
@@ -172,6 +172,14 @@
                         android:src="@drawable/white_logo" />
 
                 </RelativeLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </androidx.cardview.widget.CardView>
 
