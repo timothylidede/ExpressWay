@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.savala.expressway.R;
 
@@ -17,6 +18,8 @@ public class HomeFragment extends BaseFragment{
     //widgets
     private TextView mSearchTitle, mWhenTitle;
     private TextView mExpress, mWay;
+
+    private CardView mDepartureStation;
 
     public static HomeFragment create(){
         return new HomeFragment();
@@ -52,11 +55,20 @@ public class HomeFragment extends BaseFragment{
         mExpress = root.findViewById(R.id.express_title);
         mWay = root.findViewById(R.id.way_title);
 
+        mDepartureStation = (CardView) root.findViewById(R.id.from_destination);
+
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
         mSearchTitle.setTypeface(tf);
         mWhenTitle.setTypeface(tf2);
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        mDepartureStation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }

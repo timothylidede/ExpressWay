@@ -213,9 +213,10 @@
                 tools:backgroundTint="#88d8bd">
 
                 <RelativeLayout
+                    android:id="@+id/layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#88d8bd">
+                    android:background="@drawable/gradient_list">
 
                     <ImageView
                         android:id="@+id/register_photo"

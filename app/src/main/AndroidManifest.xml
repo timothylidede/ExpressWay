@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
+            android:name=".DepartureStation"
+            android:exported="false" />
+        <activity
             android:name=".Logout"
             android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

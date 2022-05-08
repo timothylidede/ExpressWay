@@ -8,7 +8,9 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.method.PasswordTransformationMethod;
 import android.text.style.UnderlineSpan;
@@ -18,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
+
+    //const
+    private static int SPLASH_TIME_OUT = 3000;
 
     //widgets
     private ImageView mBack;
@@ -52,6 +58,12 @@ public class Login extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
+
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
+        animationDrawable.setEnterFadeDuration(3000);
+        animationDrawable.setExitFadeDuration(3000);
+        animationDrawable.start();
 
         //init
         mBack = findViewById(R.id.back);
@@ -123,6 +135,8 @@ public class Login extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mLoginButton.setVisibility(View.INVISIBLE);
                 loginUser();
             }
         });
@@ -134,20 +148,24 @@ public class Login extends AppCompatActivity {
 
         if(emailAddress.isEmpty() && password.isEmpty()){
             Toast.makeText(Login.this, "Fill in all the fields", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mLoginButton.setVisibility(View.VISIBLE);
+            return;
         }
         if(emailAddress.isEmpty()){
             mLoginEmail.setError("Key in email address");
             mLoginEmail.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mLoginButton.setVisibility(View.VISIBLE);
             return;
         }
         if(password.isEmpty()){
             mLoginPassword.setError("Key in password");
             mLoginPassword.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mLoginButton.setVisibility(View.VISIBLE);
             return;
         }else{
-            mProgressBar.setVisibility(View.VISIBLE);
-            mLoginButton.setVisibility(View.INVISIBLE);
-
             mAuth.signInWithEmailAndPassword(emailAddress, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -163,16 +181,17 @@ public class Login extends AppCompatActivity {
                             }
                             else{
                                 if(mAuth.getCurrentUser().isEmailVerified()){
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(Login.this, HomeActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                    finish();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run(){
+                                            Intent intent = new Intent(Login.this, HomeActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }, SPLASH_TIME_OUT);
                                 }else{
                                     Toast.makeText(Login.this, "Verify your Email Address", Toast.LENGTH_LONG).show();
                                 }
-                                mLoginButton.setVisibility(View.VISIBLE);
-                                mProgressBar.setVisibility(View.GONE);
                             }
                         }
                     });
