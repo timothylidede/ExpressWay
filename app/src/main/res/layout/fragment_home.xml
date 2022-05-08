@@ -16,7 +16,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="295dp">
 
                 <RelativeLayout
                     android:id="@+id/layout"
@@ -24,19 +24,199 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:id="@+id/forest"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="45dp"
+                        android:src="@drawable/forest" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_toRightOf="@+id/forest"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="65dp"
+                        android:src="@drawable/busblue" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/forest"
+                        android:src="@drawable/busblue" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_marginTop="185dp"
+                        android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/from_destination"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="110dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp"
                 app:cardElevation="50dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="10dp">
-                
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/from_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="From"
+                        android:textStyle="bold"
+                        android:textColor="#595959"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:id="@+id/building"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/from_title"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/building" />
+
+                    <TextView
+                        android:id="@+id/from_destination_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/building"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Westlands"
+                        android:textColor="#595959"
+                        android:textSize="25dp" />
+
+                    <ImageView
+                        android:id="@+id/edit_from_destination"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/edit"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/to_destination"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@+id/from_destination"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="40dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/to_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="To"
+                        android:textStyle="bold"
+                        android:textColor="#595959"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:id="@+id/to_building"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/to_title"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/building" />
+
+                    <TextView
+                        android:id="@+id/to_destination_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/to_building"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Mlolongo"
+                        android:textColor="#595959"
+                        android:textSize="25dp"/>
+
+                    <ImageView
+                        android:id="@+id/edit_to_destination"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/edit"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/to_destination"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                app:backgroundTint="#88d8bd"
+                app:cardCornerRadius="50dp">
+
+                <RelativeLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_list">
+
+                    <TextView
+                        android:id="@+id/search_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerInParent="true"
+                        android:text="SEARCH FOR BUSES"
+                        android:textColor="@color/white"
+                        android:textSize="25dp" />
+
+                </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
