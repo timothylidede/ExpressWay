@@ -22,8 +22,10 @@
     <com.savala.expressway.view.HomeBottomTabsView
         android:id="@+id/am_home_tabs"
         android:layout_width="match_parent"
-        android:layout_height="154dp"
+        android:layout_height="100dp"
+        android:background="@drawable/top_blue_line"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom" />
+
 
 </RelativeLayout>

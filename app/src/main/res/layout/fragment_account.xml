@@ -104,20 +104,248 @@
                 android:layout_below="@id/edit_button">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/verify_number"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="15dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="50dp">
+                    app:cardElevation="30dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/white">
 
-                        
+                        <ImageView
+                            android:id="@+id/verify"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/verify" />
+
+                        <TextView
+                            android:id="@+id/verify_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/verify"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Verify your mobile number"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/my_bookings"
+                    android:layout_below="@+id/verify_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/bookings"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/blue_bookings" />
+
+                        <TextView
+                            android:id="@+id/bookings_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/bookings"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="My Bookings"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/my_wallet"
+                    android:layout_below="@+id/my_bookings"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/wallet"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/wallet" />
+
+                        <TextView
+                            android:id="@+id/wallet_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/wallet"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Wallet"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/offers"
+                    android:layout_below="@+id/my_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/offer"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/offer" />
+
+                        <TextView
+                            android:id="@+id/offer_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/offer"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Offers"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/about_us"
+                    android:layout_below="@+id/offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/about"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/about" />
+
+                        <TextView
+                            android:id="@+id/about_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/about"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="About Us"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/logout"
+                    android:layout_below="@+id/about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginBottom="50dp"
+                    app:cardElevation="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/log_out"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/logout" />
+
+                        <TextView
+                            android:id="@+id/logout_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/log_out"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Logout"
+                            android:textStyle="bold"
+                            android:textColor="#243665"
+                            android:textSize="20dp" />
+
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>

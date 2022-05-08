@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.savala.expressway.R;
 
@@ -16,6 +17,8 @@ public class AccountFragment extends BaseFragment {
 
     //widgets
     private TextView mExpress, mWay, mWhenTitle;
+
+    private CardView mLogout;
 
     public static AccountFragment create(){
         return new AccountFragment();
@@ -50,11 +53,21 @@ public class AccountFragment extends BaseFragment {
         mWay = root.findViewById(R.id.way_title);
         mWhenTitle = (TextView) root.findViewById(R.id.when_title);
 
+        mLogout = (CardView) root.findViewById(R.id.logout);
+
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
 
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
         mWhenTitle.setTypeface(tf2);
+
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
     }
 }
