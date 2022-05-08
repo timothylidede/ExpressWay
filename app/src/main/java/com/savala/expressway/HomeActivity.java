@@ -71,28 +71,4 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
-    /* Firebase */
-    private void checkCurrentUser(){
-        Log.d(TAG, "checkCurrentUser: checking if user is logged in");
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null){
-            Intent intent = new Intent(HomeActivity.this, SignActivity.class);
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkCurrentUser();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(mAuthListener != null){
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
 }

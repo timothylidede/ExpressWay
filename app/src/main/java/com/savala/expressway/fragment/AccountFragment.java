@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.example.hundredfifty.R;
 import com.savala.expressway.R;
 
 public class AccountFragment extends BaseFragment {
@@ -16,7 +15,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_more;
+        return R.layout.fragment_account;
     }
 
     @Override

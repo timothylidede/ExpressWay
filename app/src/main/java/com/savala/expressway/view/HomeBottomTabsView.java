@@ -79,7 +79,7 @@ public class HomeBottomTabsView extends FrameLayout implements ViewPager.OnPageC
         mStartImage = (ImageView) findViewById(R.id.vst_start_image);
         mEndImage = (ImageView) findViewById(R.id.vst_end_image);
 
-        mSideColor = ContextCompat.getColor(getContext(), R.color.white);
+        mSideColor = ContextCompat.getColor(getContext(), R.color.blue);
 
         mrAgbEvaluator = new ArgbEvaluator();
 

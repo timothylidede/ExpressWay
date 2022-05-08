@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.example.hundredfifty.R;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
@@ -16,7 +15,7 @@ public class BookingsFragment extends BaseFragment{
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_settings;
+        return R.layout.fragment_bookings;
     }
 
     @Override
