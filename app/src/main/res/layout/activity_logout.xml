@@ -53,6 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="Cancel"
+                        android:fontFamily="sans-serif-condensed-light"
                         android:textColor="@color/white"
                         android:textSize="20dp" />
 
@@ -80,9 +81,9 @@
                         android:id="@+id/logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_centerInParent="true"
                         android:text="Logout"
+                        android:fontFamily="sans-serif-condensed-light"
                         android:textColor="@color/white"
                         android:textSize="20dp" />
 

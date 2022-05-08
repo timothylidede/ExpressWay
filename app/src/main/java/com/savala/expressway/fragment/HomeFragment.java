@@ -1,5 +1,6 @@
 package com.savala.expressway.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.savala.expressway.DepartureStation;
 import com.savala.expressway.R;
 
 public class HomeFragment extends BaseFragment{
@@ -67,7 +69,8 @@ public class HomeFragment extends BaseFragment{
         mDepartureStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), DepartureStation.class);
+                startActivity(intent);
             }
         });
     }
