@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.savala.expressway.fragment.AccountFragment;
+import com.savala.expressway.fragment.BookingsFragment;
+import com.savala.expressway.fragment.HomeFragment;
+
 public class HomePagerAdapter extends FragmentPagerAdapter {
     public HomePagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
@@ -15,11 +19,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position){
             case 0:
-                return SettingsFragment.create();
+                return BookingsFragment.create();
             case 1:
-                return FireFragment.create();
+                return HomeFragment.create();
             case 2:
-                return MoreFragment.create();
+                return AccountFragment.create();
         }
 
         return null;
