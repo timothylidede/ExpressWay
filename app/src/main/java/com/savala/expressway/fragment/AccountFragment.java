@@ -1,17 +1,25 @@
 package com.savala.expressway.fragment;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.savala.expressway.R;
+import com.savala.expressway.SignActivity;
 
 public class AccountFragment extends BaseFragment {
 
@@ -19,6 +27,10 @@ public class AccountFragment extends BaseFragment {
     private TextView mExpress, mWay, mWhenTitle;
 
     private CardView mLogout;
+
+    //firbase
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     public static AccountFragment create(){
         return new AccountFragment();
@@ -31,6 +43,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public void inOnCreateView(View root, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         RelativeLayout layout = (RelativeLayout) root.findViewById(R.id.layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
         animationDrawable.setEnterFadeDuration(3000);
@@ -55,6 +68,8 @@ public class AccountFragment extends BaseFragment {
 
         mLogout = (CardView) root.findViewById(R.id.logout);
 
+        mAuth = FirebaseAuth.getInstance();
+
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
 
@@ -65,9 +80,10 @@ public class AccountFragment extends BaseFragment {
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
 
     }
+
 }
