@@ -18,6 +18,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp">
 
+                <RelativeLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
