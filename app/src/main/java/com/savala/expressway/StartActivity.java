@@ -2,6 +2,7 @@ package com.savala.expressway;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -35,6 +36,8 @@ public class StartActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_start);
 
+        setupFirebaseAuth();
+
         mAuth = FirebaseAuth.getInstance();
 
         //init widgets
@@ -62,20 +65,34 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 
-    /* Firebase */
-    private void checkCurrentUser(){
-        Log.d(TAG, "checkCurrentUser: checking if user is logged in");
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null){
-            Intent intent = new Intent(StartActivity.this, SignActivity.class);
-            startActivity(intent);
-        }
+    private void setupFirebaseAuth(){
+        Log.d(TAG, "setupFirebaseAuth: setting up firebase auth");
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if(user!=null){
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                }
+                else{
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+
+                    Log.d(TAG, "onAuthStateChanged: navigating back to sign activity");
+
+                    Intent intent = new Intent(getApplicationContext(), SignActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
+        };
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        checkCurrentUser();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override

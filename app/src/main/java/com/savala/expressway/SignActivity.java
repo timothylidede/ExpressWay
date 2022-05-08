@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -57,5 +58,15 @@ public class SignActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            this.finishAffinity();
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
