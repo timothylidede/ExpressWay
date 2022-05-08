@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
     <ScrollView
@@ -17,40 +17,113 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/upper"
                 android:layout_width="match_parent"
                 android:layout_height="295dp">
 
                 <RelativeLayout
                     android:id="@+id/layout"
-                    android:background="@drawable/gradient_list"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_list">
 
                     <TextView
                         android:id="@+id/hello_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
                         android:layout_marginLeft="20dp"
+                        android:layout_marginTop="60dp"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text="Hello Timothy"
                         android:textColor="@color/white"
                         android:textSize="35dp" />
 
-                    <ImageView
-                        android:id="@+id/account_image"
-                        android:layout_width="80dp"
-                        android:layout_height="100dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_below="@+id/hello_title"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
+                        app:cardCornerRadius="150dp"
+                        app:cardElevation="200dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:src="@drawable/person" />
+                        android:layout_marginTop="25dp">
+
+                        <RelativeLayout
+                            android:id="@+id/layout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_list">
+
+                            <ImageView
+                                android:id="@+id/account_image"
+                                android:layout_width="80dp"
+                                android:layout_height="100dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/person" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/edit_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="273dp"
+                android:layout_marginRight="120dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="50dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/when_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="EDIT PROFILE"
+                        android:textColor="#243665"
+                        android:textSize="18dp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/edit_button">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="50dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+                        
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
         </RelativeLayout>
+
     </ScrollView>
 
     <RelativeLayout
