@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.savala.expressway.AboutUs;
 import com.savala.expressway.EditProfile;
 import com.savala.expressway.Logout;
+import com.savala.expressway.Offers;
 import com.savala.expressway.R;
 import com.savala.expressway.SignActivity;
 import com.savala.expressway.VerifyNumber;

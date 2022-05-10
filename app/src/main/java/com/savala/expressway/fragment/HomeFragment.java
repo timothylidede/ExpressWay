@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 import com.savala.expressway.DepartureStation;
+import com.savala.expressway.DestinationStation;
 import com.savala.expressway.R;
 
 public class HomeFragment extends BaseFragment{
@@ -21,7 +22,7 @@ public class HomeFragment extends BaseFragment{
     private TextView mSearchTitle, mWhenTitle;
     private TextView mExpress, mWay;
 
-    private CardView mDepartureStation;
+    private CardView mDepartureStation, mDestinationStation;
 
     public static HomeFragment create(){
         return new HomeFragment();
@@ -58,6 +59,7 @@ public class HomeFragment extends BaseFragment{
         mWay = root.findViewById(R.id.way_title);
 
         mDepartureStation = (CardView) root.findViewById(R.id.from_destination);
+        mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
@@ -70,6 +72,14 @@ public class HomeFragment extends BaseFragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), DepartureStation.class);
+                startActivity(intent);
+            }
+        });
+
+        mDestinationStation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), DestinationStation.class);
                 startActivity(intent);
             }
         });
