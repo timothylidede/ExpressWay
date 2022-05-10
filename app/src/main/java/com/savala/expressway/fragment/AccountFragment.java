@@ -30,7 +30,7 @@ public class AccountFragment extends BaseFragment {
     //widgets
     private TextView mExpress, mWay, mWhenTitle;
 
-    private CardView mLogout, mEditProfile, mVerifyNumber, mAboutUs;
+    private CardView mLogout, mEditProfile, mVerifyNumber, mAboutUs, mOffers;
 
     public static AccountFragment create(){
         return new AccountFragment();
@@ -70,6 +70,7 @@ public class AccountFragment extends BaseFragment {
         mEditProfile = (CardView) root.findViewById(R.id.edit_button);
         mVerifyNumber = (CardView) root.findViewById(R.id.verify_number);
         mAboutUs = (CardView) root.findViewById(R.id.about_us);
+        mOffers = (CardView) root.findViewById(R.id.offers);
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
@@ -107,6 +108,13 @@ public class AccountFragment extends BaseFragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), AboutUs.class);
                 startActivity(intent);
+            }
+        });
+
+        mOffers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
             }
         });
 
