@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-public class VerifyNumber extends AppCompatActivity {
+public class Offers extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +13,6 @@ public class VerifyNumber extends AppCompatActivity {
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_verify_number);
+        setContentView(R.layout.activity_offers);
     }
 }

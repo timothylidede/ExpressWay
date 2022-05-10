@@ -114,7 +114,7 @@ public class AccountFragment extends BaseFragment {
         mOffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
 
