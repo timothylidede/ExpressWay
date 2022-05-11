@@ -2,6 +2,7 @@ package com.savala.expressway;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,8 @@ public class DepartureStation extends AppCompatActivity {
 
     private TextView mPickText;
 
+    private CardView mMlolongo, mSgr, mJkia, mEastern, mSouthern, mCapital, mHaile, mMuseum, mWestlands, mJames;
+
     public DepartureStation(){}
 
     @Override
@@ -44,17 +47,109 @@ public class DepartureStation extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_departure_station);
 
-        mBack = findViewById(R.id.back);
+        mPickText = findViewById(R.id.pick_text);
         mDone = findViewById(R.id.done);
 
-        mPickText = findViewById(R.id.pick_text);
+        String station = (String) mPickText.getText();
 
-        if(mPickText.getText().equals("Pick a Station")){
-            mDone.setVisibility(View.INVISIBLE);
-        }else{
-            mPickText.getBackground().setAlpha(255);
+        if(station.equals("Mlolongo") ||
+        station.equals("Standard Gauge Railway")||
+        station.equals("Jomo Kenyatta International Airport") ||
+        station.equals("Eastern Bypass") ||
+        station.equals("Southern Bypass") ||
+        station.equals("Capital Centre") ||
+        station.equals("Haile Selassie Avenue") ||
+        station.equals("Museum Hill") ||
+        station.equals("Westlands") ||
+        station.equals("James Gichuru Road")){
             mDone.setVisibility(View.VISIBLE);
         }
+        else{
+            mDone.setVisibility(View.INVISIBLE);
+        }
+
+        mBack = findViewById(R.id.back);
+
+        mMlolongo = findViewById(R.id.mlolongo);
+        mSgr = findViewById(R.id.sgr);
+        mJkia = findViewById(R.id.jkia);
+        mEastern = findViewById(R.id.eastern_bypass);
+        mSouthern = findViewById(R.id.southern_bypass);
+        mCapital = findViewById(R.id.capital_centre);
+        mHaile = findViewById(R.id.haile_selassie);
+        mMuseum = findViewById(R.id.museum_hill);
+        mWestlands = findViewById(R.id.westlands);
+        mJames = findViewById(R.id.james_gichuru);
+
+        mMlolongo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Mlolongo");
+            }
+        });
+
+        mSgr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Standard Gauge Railway");
+            }
+        });
+
+        mJkia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Jomo Kenyatta International Airport");
+            }
+        });
+
+        mEastern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Eastern Bypass");
+            }
+        });
+
+        mSouthern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Southern Bypass");
+            }
+        });
+
+        mCapital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Capital Centre");
+            }
+        });
+
+        mHaile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Haile Selassie");
+            }
+        });
+
+        mMuseum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Museum Hill");
+            }
+        });
+
+        mWestlands.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("Westlands");
+            }
+        });
+
+        mJames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPickText.setText("James Gichuru Road");
+            }
+        });
 
         mDeparture = findViewById(R.id.departure_title);
         mStation = findViewById(R.id.station_title);
@@ -81,7 +176,7 @@ public class DepartureStation extends AppCompatActivity {
         mDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
     }
