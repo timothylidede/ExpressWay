@@ -1,21 +1,48 @@
 package com.savala.expressway;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.savala.expressway.adapter.AdapterDepartureStation;
+import com.savala.expressway.fragment.AccountFragment;
+import com.savala.expressway.model.ModelTollStations;
+
+import java.util.ArrayList;
+
 public class DepartureStation extends AppCompatActivity {
 
-    private ImageView mBack;
+    private ImageView mBack, mDone;
 
     private TextView mDeparture, mStation;
+
+    private EditText mPickText;
+
+    private String station_uid;
+    private String station_name;
+
+    private DatabaseReference uRef;
+
+    RecyclerView recyclerView;
+    AdapterDepartureStation adapterDepartureStation;
+    ArrayList<ModelTollStations> stationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +52,19 @@ public class DepartureStation extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_departure_station);
 
+        Intent intent = getIntent();
+        station_uid = intent.getStringExtra("station_uid");
+
         mBack = findViewById(R.id.back);
+        mDone = findViewById(R.id.done);
+
+        mPickText = findViewById(R.id.pick_text);
+
+        if(mPickText.getText().equals("")){
+            mDone.setVisibility(View.INVISIBLE);
+        }else{
+            mDone.setVisibility(View.VISIBLE);
+        }
 
         mDeparture = findViewById(R.id.departure_title);
         mStation = findViewById(R.id.station_title);
@@ -46,6 +85,36 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        mDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DepartureStation.this, AccountFragment.class);
+                intent.putExtra("station_uid", station_uid);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //get info of picked station
+        uRef = FirebaseDatabase.getInstance().getReference("TollStations");
+        Query dbQuery = uRef.orderByChild("station_id").equalTo(station_uid);
+        dbQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds: snapshot.getChildren()){
+                    station_name = "" + ds.child("display_name").getValue();
+
+                    mPickText.setText(station_name);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

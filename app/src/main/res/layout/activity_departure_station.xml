@@ -24,7 +24,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="295dp">
+                    android:layout_height="200dp">
 
                     <RelativeLayout
                         android:id="@+id/layout"
@@ -36,9 +36,18 @@
                             android:id="@+id/back"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:layout_marginTop="7dp"
                             android:layout_marginLeft="7dp"
+                            android:layout_marginTop="7dp"
                             android:background="@drawable/blue_back" />
+
+                        <ImageView
+                            android:id="@+id/done"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="7dp"
+                            android:background="@drawable/done" />
 
                         <TextView
                             android:id="@+id/pick"
@@ -85,12 +94,34 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="295dp">
+                android:layout_marginTop="200dp">
+
+                <EditText
+                    android:id="@+id/pick_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/background_edittext"
+                    android:editable="false"
+                    android:fontFamily="sans-serif-thin"
+                    android:hint="Pick Station"
+                    android:inputType="textCapWords"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="5dp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/departure_station_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/pick_text"
                     tools:listitem="@layout/row_departure_station">
 
 
