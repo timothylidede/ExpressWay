@@ -23,16 +23,17 @@ import com.savala.expressway.model.ModelTollStations;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterDepartureStation extends RecyclerView.Adapter<AdapterDepartureStation.DepartureStationHolder> {
 
     private Context context;
-    private ArrayList<ModelTollStations> stationList;
+    private List<ModelTollStations> stationList;
 
     //constructor
 
 
-    public AdapterDepartureStation(Context context, ArrayList<ModelTollStations> tollList) {
+    public AdapterDepartureStation(Context context, List<ModelTollStations> tollList) {
         this.context = context;
         this.stationList = tollList;
     }
@@ -42,7 +43,7 @@ public class AdapterDepartureStation extends RecyclerView.Adapter<AdapterDepartu
     public DepartureStationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout (row_user)
 
-        View view = LayoutInflater.from(context).inflate(com.savala.expressway.R.layout.row_departure_station, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_departure_station, parent, false);
 
         return new DepartureStationHolder(view);
     }
@@ -67,7 +68,7 @@ public class AdapterDepartureStation extends RecyclerView.Adapter<AdapterDepartu
 
     private void setStationDetails(ModelTollStations station, DepartureStationHolder holder) {
         //get user info from uid in model
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TollStations");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TollStation");
         ref.orderByChild("station_id").equalTo(station.getStation_id())
                 .addValueEventListener(new ValueEventListener() {
                     @Override

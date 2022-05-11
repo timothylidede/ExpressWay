@@ -29,6 +29,7 @@ import com.savala.expressway.fragment.AccountFragment;
 import com.savala.expressway.model.ModelTollStations;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DepartureStation extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class DepartureStation extends AppCompatActivity {
 
     private TextView mDeparture, mStation;
 
-    private EditText mPickText;
+    private TextView mPickText;
 
     private String station_uid;
     private String station_name;
@@ -45,7 +46,9 @@ public class DepartureStation extends AppCompatActivity {
 
     RecyclerView recyclerView;
     AdapterDepartureStation adapterDepartureStation;
-    ArrayList<ModelTollStations> stationList;
+    List<ModelTollStations> stationList;
+
+    public DepartureStation(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,10 @@ public class DepartureStation extends AppCompatActivity {
 
         mPickText = findViewById(R.id.pick_text);
 
-        if(mPickText.getText().equals("")){
+        if(mPickText.getText().equals("Pick a Station")){
             mDone.setVisibility(View.INVISIBLE);
         }else{
+            mPickText.getBackground().setAlpha(255);
             mDone.setVisibility(View.VISIBLE);
         }
 
@@ -115,7 +119,7 @@ public class DepartureStation extends AppCompatActivity {
         });
 
         //get info of picked station
-        uRef = FirebaseDatabase.getInstance().getReference("TollStations");
+        uRef = FirebaseDatabase.getInstance().getReference("TollStation");
         Query dbQuery = uRef.orderByChild("station_id").equalTo(station_uid);
         dbQuery.addValueEventListener(new ValueEventListener() {
             @Override
@@ -137,7 +141,7 @@ public class DepartureStation extends AppCompatActivity {
 
     private void getStations(){
         //get path of database
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("TollStations");
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("TollStation");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -153,6 +157,10 @@ public class DepartureStation extends AppCompatActivity {
 
                 //adapter
                 adapterDepartureStation = new AdapterDepartureStation(DepartureStation.this, stationList);
+
+                //refresh adapter
+                adapterDepartureStation.notifyDataSetChanged();
+
                 //set to recyclerView
                 recyclerView.setAdapter(adapterDepartureStation);
             }

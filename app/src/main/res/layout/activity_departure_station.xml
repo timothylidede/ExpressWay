@@ -11,7 +11,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
         android:fillViewport="true">
 
         <RelativeLayout
@@ -24,7 +23,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                    android:layout_height="295dp">
 
                     <RelativeLayout
                         android:id="@+id/layout"
@@ -96,36 +95,476 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="200dp">
 
-                <EditText
-                    android:id="@+id/pick_text"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/from_destination"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/background_edittext"
-                    android:editable="false"
-                    android:fontFamily="sans-serif-thin"
-                    android:hint="Pick Station"
-                    android:inputType="textCapWords"
-                    android:paddingStart="20dp"
-                    android:paddingLeft="5dp"
-                    android:selectAllOnFocus="false"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="50dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/departure_station_recycler_view"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/from_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="From"
+                            android:textColor="#243665"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/from_building"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/from_title"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/road" />
+
+                        <TextView
+                            android:id="@+id/pick_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/from_building"
+                            android:alpha="0.5"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Pick a Station"
+                            android:textColor="#243665"
+                            android:textSize="25dp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/pick_text"
-                    tools:listitem="@layout/row_departure_station">
+                    android:layout_marginTop="170dp">
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/mlolongo"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Mlolongo"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/sgr"
+                        android:layout_below="@id/mlolongo"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road1"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road1"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Standard Gauge Railway"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/jkia"
+                        android:layout_below="@id/sgr"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road2"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road2"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Jomo Kenyatta International Airport"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/eastern_bypass"
+                        android:layout_below="@id/jkia"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road3"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road3"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Eastern Bypass"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/southern_bypass"
+                        android:layout_below="@id/eastern_bypass"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road4"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road4"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Southern Bypass"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/capital_centre"
+                        android:layout_below="@id/southern_bypass"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road5"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road5"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Capital Centre"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/haile_selassie"
+                        android:layout_below="@id/capital_centre"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road6"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road6"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Haile Selassie Avenue"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/museum_hill"
+                        android:layout_below="@id/haile_selassie"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road7"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road7"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Museum Hill"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/westlands"
+                        android:layout_below="@id/museum_hill"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road8"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road8"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Westlands"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/james_gichuru"
+                        android:layout_below="@id/westlands"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/road9"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/road" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_toRightOf="@+id/road9"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="James Gichuru Road"
+                                android:textColor="#243665"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
