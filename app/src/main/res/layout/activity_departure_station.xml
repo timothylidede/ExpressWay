@@ -18,64 +18,84 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="295dp">
+                android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:id="@+id/layout"
-                    android:background="@drawable/gradient_list"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/back"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/blue_back" />
-
-                    <TextView
-                        android:id="@+id/pick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="70dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:text="Pick your"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
+                    android:layout_height="295dp">
 
                     <RelativeLayout
-                        android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pick"
-                        android:layout_centerHorizontal="true">
+                        android:id="@+id/layout"
+                        android:background="@drawable/gradient_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/back"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/blue_back" />
 
                         <TextView
-                            android:id="@+id/departure_title"
+                            android:id="@+id/pick"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Departure"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="70dp"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:text="Pick your"
                             android:textColor="@color/white"
-                            android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textSize="30dp" />
 
-                        <TextView
-                            android:id="@+id/station_title"
+                        <RelativeLayout
+                            android:id="@+id/title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/departure_title"
-                            android:text="Station"
-                            android:textColor="#243665"
-                            android:textSize="30sp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
+                            android:layout_below="@+id/pick"
+                            android:layout_centerHorizontal="true">
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/departure_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Departure"
+                                android:textColor="@color/white"
+                                android:textSize="30sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/station_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/departure_title"
+                                android:text="Station"
+                                android:textColor="#243665"
+                                android:textSize="30sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="295dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/departure_station_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/row_departure_station">
+
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 
