@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.fragment.AccountFragment;
+import com.savala.expressway.fragment.HomeFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DepartureStation extends AppCompatActivity {
@@ -35,7 +38,10 @@ public class DepartureStation extends AppCompatActivity {
 
     private TextView mPickText;
 
-    private CardView mMlolongo, mSgr, mJkia, mEastern, mSouthern, mCapital, mHaile, mMuseum, mWestlands, mJames;
+    private CardView mMlolongo, mSgr, mJkia, mEastern, mSouthern,
+            mCapital, mHaile, mMuseum, mWestlands, mJames;
+
+    private String station = "";
 
     public DepartureStation(){}
 
@@ -49,24 +55,7 @@ public class DepartureStation extends AppCompatActivity {
 
         mPickText = findViewById(R.id.pick_text);
         mDone = findViewById(R.id.done);
-
-        String station = (String) mPickText.getText();
-
-        if(station.equals("Mlolongo") ||
-        station.equals("Standard Gauge Railway")||
-        station.equals("Jomo Kenyatta International Airport") ||
-        station.equals("Eastern Bypass") ||
-        station.equals("Southern Bypass") ||
-        station.equals("Capital Centre") ||
-        station.equals("Haile Selassie Avenue") ||
-        station.equals("Museum Hill") ||
-        station.equals("Westlands") ||
-        station.equals("James Gichuru Road")){
-            mDone.setVisibility(View.VISIBLE);
-        }
-        else{
-            mDone.setVisibility(View.INVISIBLE);
-        }
+        mDone.setVisibility(View.INVISIBLE);
 
         mBack = findViewById(R.id.back);
 
@@ -85,6 +74,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Mlolongo");
+                station = "Mlolongo";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -92,6 +83,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Standard Gauge Railway");
+                station = "Standard Gauge Railway";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -99,6 +92,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Jomo Kenyatta International Airport");
+                station = "Jomo Kenyatta International Airport";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -106,6 +101,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Eastern Bypass");
+                station = "Eastern Bypass";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -113,6 +110,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Southern Bypass");
+                station = "Southern Bypass";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -120,13 +119,17 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Capital Centre");
+                station = "Capital Centre";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
         mHaile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPickText.setText("Haile Selassie");
+                mPickText.setText("Haile Selassie Avenue");
+                station = "Haile Selassie Avenue";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -134,6 +137,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Museum Hill");
+                station = "Museum Hill";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -141,6 +146,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("Westlands");
+                station = "Westlands";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -148,6 +155,8 @@ public class DepartureStation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPickText.setText("James Gichuru Road");
+                station = "James Gichuru Road";
+                mDone.setVisibility(View.VISIBLE);
             }
         });
 
@@ -176,6 +185,18 @@ public class DepartureStation extends AppCompatActivity {
         mDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String departure_station = mPickText.getText().toString().trim();
+                String timestamp = "" + System.currentTimeMillis();
+                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                HashMap<String, Object>  hashMap = new HashMap<>();
+                hashMap.put("departure_station", departure_station);
+                hashMap.put("user_id", user_id);
+                hashMap.put("booking_id", timestamp);
+
+                FirebaseDatabase.getInstance().getReference("ResumeBookings")
+                        .child(user_id)
+                        .child(timestamp)
 
             }
         });

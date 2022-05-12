@@ -21,8 +21,11 @@ public class HomeFragment extends BaseFragment{
     //widgets
     private TextView mSearchTitle, mWhenTitle;
     private TextView mExpress, mWay;
+    private TextView mDepartureTitle;
 
     private CardView mDepartureStation, mDestinationStation;
+
+    private String departure_station = "";
 
     public static HomeFragment create(){
         return new HomeFragment();
@@ -35,6 +38,8 @@ public class HomeFragment extends BaseFragment{
 
     @Override
     public void inOnCreateView(View root, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         RelativeLayout layout = (RelativeLayout) root.findViewById(R.id.layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
         animationDrawable.setEnterFadeDuration(3000);
@@ -61,6 +66,9 @@ public class HomeFragment extends BaseFragment{
         mDepartureStation = (CardView) root.findViewById(R.id.from_destination);
         mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
 
+        mDepartureTitle = (TextView) root.findViewById(R.id.from_destination_name);
+        mDepartureTitle.setText(departure_station);
+
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
         mSearchTitle.setTypeface(tf);
@@ -83,5 +91,6 @@ public class HomeFragment extends BaseFragment{
                 startActivity(intent);
             }
         });
+
     }
 }
