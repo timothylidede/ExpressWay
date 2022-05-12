@@ -15,7 +15,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +28,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.fragment.AccountFragment;
 import com.savala.expressway.fragment.HomeFragment;
+import com.savala.expressway.model.ModelMyBookings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -189,14 +193,22 @@ public class DepartureStation extends AppCompatActivity {
                 String timestamp = "" + System.currentTimeMillis();
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                HashMap<String, Object>  hashMap = new HashMap<>();
-                hashMap.put("departure_station", departure_station);
-                hashMap.put("user_id", user_id);
-                hashMap.put("booking_id", timestamp);
+                ModelMyBookings modelMyBookings = new ModelMyBookings(departure_station, timestamp, user_id);
 
                 FirebaseDatabase.getInstance().getReference("ResumeBookings")
                         .child(user_id)
                         .child(timestamp)
+                        .setValue(modelMyBookings)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            finish();
+                        }else{
+                            Toast.makeText(DepartureStation.this, "Try Again", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
             }
         });
