@@ -1,17 +1,26 @@
 package com.savala.expressway.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.DepartureStation;
 import com.savala.expressway.DestinationStation;
 import com.savala.expressway.R;
@@ -25,7 +34,11 @@ public class HomeFragment extends BaseFragment{
 
     private CardView mDepartureStation, mDestinationStation;
 
-    private String departure_station = "";
+    private Boolean clicked = false;
+
+    private String booking_id = "";
+
+    private String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     public static HomeFragment create(){
         return new HomeFragment();
@@ -38,13 +51,18 @@ public class HomeFragment extends BaseFragment{
 
     @Override
     public void inOnCreateView(View root, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
+        
         RelativeLayout layout = (RelativeLayout) root.findViewById(R.id.layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
         animationDrawable.setEnterFadeDuration(3000);
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
+
+        RelativeLayout maplayout = (RelativeLayout) root.findViewById(R.id.map_layout);
+        AnimationDrawable mapanimationDrawable = (AnimationDrawable) maplayout.getBackground();
+        mapanimationDrawable.setEnterFadeDuration(3000);
+        mapanimationDrawable.setExitFadeDuration(3000);
+        mapanimationDrawable.start();
 
         RelativeLayout layout1 = (RelativeLayout) root.findViewById(R.id.layout1);
         AnimationDrawable animationDrawable1 = (AnimationDrawable) layout1.getBackground();
@@ -67,7 +85,6 @@ public class HomeFragment extends BaseFragment{
         mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
 
         mDepartureTitle = (TextView) root.findViewById(R.id.from_destination_name);
-        mDepartureTitle.setText(departure_station);
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
@@ -79,6 +96,7 @@ public class HomeFragment extends BaseFragment{
         mDepartureStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clicked = true;
                 Intent intent = new Intent(getContext(), DepartureStation.class);
                 startActivity(intent);
             }
@@ -92,5 +110,37 @@ public class HomeFragment extends BaseFragment{
             }
         });
 
+        setDepartureStation();
+    }
+
+    private void setDepartureStation() {
+        if(clicked) {
+            booking_id = getArguments().getString("booking_id");
+            Log.d(TAG, "inOnCreateView: clicked once");
+        }else{
+            booking_id = "";
+            Log.d(TAG, "inOnCreateView: not clicked");
+        }
+
+        FirebaseDatabase.getInstance().getReference("ResumeBookings")
+                .child(user_id)
+                .orderByChild("booking_id").equalTo(booking_id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+
+
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String departure_title = "" + ds.child("departure_station").getValue();
+
+                            mDepartureTitle.setText(departure_title);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }

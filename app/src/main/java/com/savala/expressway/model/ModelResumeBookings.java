@@ -1,12 +1,12 @@
 package com.savala.expressway.model;
 
-public class ModelMyBookings{
+public class ModelResumeBookings {
 
     private String departure_station, user_id, booking_id;
 
-    public ModelMyBookings(){}
+    public ModelResumeBookings(){}
 
-    public ModelMyBookings(String departure_station, String user_id, String booking_id) {
+    public ModelResumeBookings(String departure_station, String user_id, String booking_id) {
         this.departure_station = departure_station;
         this.user_id = user_id;
         this.booking_id = booking_id;
@@ -38,7 +38,7 @@ public class ModelMyBookings{
 
     @Override
     public String toString() {
-        return "ModelMyBookings{" +
+        return "ModelResumeBookings{" +
                 "departure_station='" + departure_station + '\'' +
                 ", user_id='" + user_id + '\'' +
                 ", booking_id='" + booking_id + '\'' +

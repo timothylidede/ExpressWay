@@ -3,16 +3,14 @@ package com.savala.expressway;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,19 +18,9 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.savala.expressway.fragment.AccountFragment;
 import com.savala.expressway.fragment.HomeFragment;
-import com.savala.expressway.model.ModelMyBookings;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.savala.expressway.model.ModelResumeBookings;
 
 public class DepartureStation extends AppCompatActivity {
 
@@ -41,6 +29,8 @@ public class DepartureStation extends AppCompatActivity {
     private TextView mDeparture, mStation;
 
     private TextView mPickText;
+
+    private ProgressBar mProgressBar;
 
     private CardView mMlolongo, mSgr, mJkia, mEastern, mSouthern,
             mCapital, mHaile, mMuseum, mWestlands, mJames;
@@ -60,6 +50,8 @@ public class DepartureStation extends AppCompatActivity {
         mPickText = findViewById(R.id.pick_text);
         mDone = findViewById(R.id.done);
         mDone.setVisibility(View.INVISIBLE);
+
+        mProgressBar = findViewById(R.id.progress_bar);
 
         mBack = findViewById(R.id.back);
 
@@ -189,20 +181,27 @@ public class DepartureStation extends AppCompatActivity {
         mDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mDone.setVisibility(View.INVISIBLE);
+                mProgressBar.setVisibility(View.VISIBLE);
+
                 String departure_station = mPickText.getText().toString().trim();
                 String timestamp = "" + System.currentTimeMillis();
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                ModelMyBookings modelMyBookings = new ModelMyBookings(departure_station, timestamp, user_id);
+                ModelResumeBookings modelResumeBookings = new ModelResumeBookings(departure_station, timestamp, user_id);
 
                 FirebaseDatabase.getInstance().getReference("ResumeBookings")
                         .child(user_id)
                         .child(timestamp)
-                        .setValue(modelMyBookings)
+                        .setValue(modelResumeBookings)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
+                            HomeFragment homeFragment = new HomeFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("booking_id", timestamp);
+                            homeFragment.setArguments(bundle);
                             finish();
                         }else{
                             Toast.makeText(DepartureStation.this, "Try Again", Toast.LENGTH_SHORT).show();
