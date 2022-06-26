@@ -19,12 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.savala.expressway.driver.BusDetails;
 import com.savala.expressway.driver.CreateTrip;
 import com.savala.expressway.driver.DriverInformation;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
-    private CardView mContinueButton, mCreateTripCard, mBusDetailsCard, mTripHistory, mOther;
+    private CardView mContinueButton, mCreateTripCard, mBusDetailsCard, mTripHistory, mOngoingTrips;
     private TextView mExpress, mWay, mBuss, mText, mWelcome;
     private ImageView mImage;
     public static BookingsFragment create(){
@@ -57,12 +58,20 @@ public class BookingsFragment extends BaseFragment{
         mCreateTripCard = (CardView) root.findViewById(R.id.create_trip_card);
         mBusDetailsCard = (CardView) root.findViewById(R.id.my_bus_card);
         mTripHistory = (CardView) root.findViewById(R.id.trip_history);
-        mOther = (CardView) root.findViewById(R.id.other);
+        mOngoingTrips = (CardView) root.findViewById(R.id.ongoing_trips);
 
         mCreateTripCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CreateTrip.class);
+                startActivity(intent);
+            }
+        });
+
+        mOngoingTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BusDetails.class);
                 startActivity(intent);
             }
         });
@@ -103,7 +112,7 @@ public class BookingsFragment extends BaseFragment{
                                 mCreateTripCard.setVisibility(View.INVISIBLE);
                                 mTripHistory.setVisibility(View.INVISIBLE);
                                 mBusDetailsCard.setVisibility(View.INVISIBLE);
-                                mOther.setVisibility(View.INVISIBLE);
+                                mOngoingTrips.setVisibility(View.INVISIBLE);
                             }
                             if(role.equals("driver")){
                                 mBuss.setVisibility(View.INVISIBLE);
@@ -115,7 +124,7 @@ public class BookingsFragment extends BaseFragment{
                                 mCreateTripCard.setVisibility(View.VISIBLE);
                                 mTripHistory.setVisibility(View.VISIBLE);
                                 mBusDetailsCard.setVisibility(View.VISIBLE);
-                                mOther.setVisibility(View.VISIBLE);
+                                mOngoingTrips.setVisibility(View.VISIBLE);
                             }
                         }
                     }
