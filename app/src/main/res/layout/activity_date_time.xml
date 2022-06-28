@@ -50,8 +50,8 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
-                        android:alpha=".7"
                         android:layout_toRightOf="@+id/one_line"
+                        android:alpha=".7"
                         android:src="@drawable/grey_two" />
 
                     <ImageView
