@@ -34,7 +34,7 @@
                 android:id="@+id/express_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="Bus"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/express_title"
-                android:text="Time"
+                android:text="Details"
                 android:textColor="#243665"
                 android:textSize="20sp"
                 android:textStyle="bold" />
