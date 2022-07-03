@@ -30,6 +30,21 @@
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="These are the details of your bus"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
         </RelativeLayout>
     </ScrollView>
 
