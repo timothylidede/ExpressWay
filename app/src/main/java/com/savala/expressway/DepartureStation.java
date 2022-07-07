@@ -159,6 +159,12 @@ public class DepartureStation extends AppCompatActivity {
         mDeparture = findViewById(R.id.departure_title);
         mStation = findViewById(R.id.station_title);
 
+        RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
+        AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();
+        top_layout1.setEnterFadeDuration(3000);
+        top_layout1.setExitFadeDuration(3000);
+        top_layout1.start();
+
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,11 +31,14 @@ public class HomeFragment extends BaseFragment{
     //widgets
     private TextView mSearchTitle, mWhenTitle;
     private TextView mExpress, mWay;
-    private TextView mDepartureTitle;
+    private TextView mDepartureTitle, mDestinationTitle;
+    private String departure, destination;
 
     private CardView mDepartureStation, mDestinationStation;
 
     private Boolean clicked = false;
+
+    private ImageView mExchange;
 
     private String booking_id = "";
 
@@ -79,6 +83,9 @@ public class HomeFragment extends BaseFragment{
         mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
 
         mDepartureTitle = (TextView) root.findViewById(R.id.from_destination_name);
+        mDestinationTitle = (TextView) root.findViewById(R.id.to_destination_name);
+        departure = mDepartureTitle.getText().toString().trim();
+        destination = mDestinationTitle.getText().toString().trim();
 
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
@@ -86,6 +93,14 @@ public class HomeFragment extends BaseFragment{
         mWhenTitle.setTypeface(tf2);
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        mExchange = (ImageView) root.findViewById(R.id.exchange);
+        mExchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
         mDepartureStation.setOnClickListener(new View.OnClickListener() {
             @Override
