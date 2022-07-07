@@ -31,35 +31,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <ImageView
-                            android:id="@+id/back"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="7dp"
-                            android:layout_marginTop="7dp"
-                            android:background="@drawable/blue_back" />
-
-                        <ImageView
-                            android:id="@+id/done"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="7dp"
-                            android:background="@drawable/done" />
-
-                        <ProgressBar
-                            android:id="@+id/progress_bar"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:visibility="invisible"
-                            android:indeterminate="true"
-                            android:indeterminateTintMode="src_atop"
-                            android:indeterminateTint="@color/fire"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="7dp" />
-
                         <TextView
                             android:id="@+id/pick"
                             android:layout_width="wrap_content"
@@ -580,5 +551,42 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/gradient_list"
+        android:id="@+id/top_layout">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/blue_back" />
+
+        <ImageView
+            android:id="@+id/done"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/done" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="7dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/fire"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

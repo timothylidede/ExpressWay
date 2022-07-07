@@ -58,12 +58,6 @@ public class HomeFragment extends BaseFragment{
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
 
-        RelativeLayout maplayout = (RelativeLayout) root.findViewById(R.id.map_layout);
-        AnimationDrawable mapanimationDrawable = (AnimationDrawable) maplayout.getBackground();
-        mapanimationDrawable.setEnterFadeDuration(3000);
-        mapanimationDrawable.setExitFadeDuration(3000);
-        mapanimationDrawable.start();
-
         RelativeLayout layout1 = (RelativeLayout) root.findViewById(R.id.layout1);
         AnimationDrawable animationDrawable1 = (AnimationDrawable) layout1.getBackground();
         animationDrawable1.setEnterFadeDuration(3000);

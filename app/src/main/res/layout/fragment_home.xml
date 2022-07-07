@@ -6,39 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/map_card"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@+id/top_layout">
-
-        <RelativeLayout
-            android:id="@+id/map_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_list">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="50dp"
-                android:layout_marginLeft="20dp">
-
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="100dp"
         android:fillViewport="true">
 
