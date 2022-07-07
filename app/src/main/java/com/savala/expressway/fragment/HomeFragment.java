@@ -36,7 +36,7 @@ public class HomeFragment extends BaseFragment{
 
     private CardView mDepartureStation, mDestinationStation;
 
-    private Boolean clicked = false;
+    private Boolean clicked = false, on = false;
 
     private ImageView mExchange;
 
@@ -98,9 +98,21 @@ public class HomeFragment extends BaseFragment{
         mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                if(on = false){
+                    on = true;
+                }else{
+                    on = false;
+                }
             }
         });
+
+        if(on = true){
+            mDestinationTitle.setText(departure);
+            mDepartureTitle.setText(destination);
+        }else{
+            mDepartureTitle.setText(departure);
+            mDestinationTitle.setText(destination);
+        }
 
         mDepartureStation.setOnClickListener(new View.OnClickListener() {
             @Override
