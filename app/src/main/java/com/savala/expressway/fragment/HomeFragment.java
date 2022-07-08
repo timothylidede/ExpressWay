@@ -3,10 +3,12 @@ package com.savala.expressway.fragment;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -58,7 +60,6 @@ public class HomeFragment extends BaseFragment{
 
     @Override
     public void inOnCreateView(View root, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setDepartureStation();
 
         RelativeLayout layout = (RelativeLayout) root.findViewById(R.id.layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
@@ -98,12 +99,20 @@ public class HomeFragment extends BaseFragment{
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
 
+        if(booking_id.equals("")){
+            setDepartureStation();
+        }else{
+            mDepartureTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+            mDepartureTitle.setTextColor(Color.GRAY);
+            mDepartureTitle.setText("Enter Departure Station");
+        }
+
         mExchange = (ImageView) root.findViewById(R.id.exchange);
         mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RotateAnimation rotate = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                rotate.setDuration(5000);
+                rotate.setDuration(500);
                 rotate.setInterpolator(new LinearInterpolator());
                 mExchange.setAnimation(rotate);
 
@@ -124,7 +133,7 @@ public class HomeFragment extends BaseFragment{
             public void onClick(View view) {
                 clicked = "true";
                 Intent intent = new Intent(getContext(), DepartureStation.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -136,23 +145,23 @@ public class HomeFragment extends BaseFragment{
             }
         });
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == 1)
+        {
+            booking_id = data.getStringExtra("booking_id");
+        }
+    }
 
     private void setDepartureStation() {
-        if(clicked.equals("true")) {
-            booking_id = getArguments().getString("booking_id");
-            Log.d(TAG, "inOnCreateView: clicked once");
-        }else{
-            booking_id = "";
-            Log.d(TAG, "inOnCreateView: not clicked");
-        }
 
         FirebaseDatabase.getInstance().getReference("ResumeBookings")
                 .child(user_id)
-                .orderByChild("booking_id").equalTo(booking_id)
+                .orderByChild("user_id").equalTo(user_id)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
-
-
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds:snapshot.getChildren()){
                             String departure_title = "" + ds.child("departure_station").getValue();

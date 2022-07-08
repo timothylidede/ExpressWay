@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savala.expressway.fragment.HomeFragment;
 import com.savala.expressway.model.ModelResumeBookings;
+
+import java.util.HashMap;
 
 public class DepartureStation extends AppCompatActivity {
 
@@ -194,20 +197,22 @@ public class DepartureStation extends AppCompatActivity {
                 String timestamp = "" + System.currentTimeMillis();
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                ModelResumeBookings modelResumeBookings = new ModelResumeBookings(departure_station, timestamp, user_id);
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("booking_id", timestamp);
+                hashMap.put("departure_station", departure_station);
+                hashMap.put("user_id", user_id);
 
                 FirebaseDatabase.getInstance().getReference("ResumeBookings")
                         .child(user_id)
                         .child(timestamp)
-                        .setValue(modelResumeBookings)
+                        .setValue(hashMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            HomeFragment homeFragment = new HomeFragment();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("booking_id", timestamp);
-                            homeFragment.setArguments(bundle);
+                            Intent i = new Intent();
+                            i.putExtra("booking_id", timestamp);
+                            setResult(1, i);
                             finish();
                         }else{
                             Toast.makeText(DepartureStation.this, "Try Again", Toast.LENGTH_SHORT).show();
@@ -217,5 +222,6 @@ public class DepartureStation extends AppCompatActivity {
 
             }
         });
+
     }
 }
