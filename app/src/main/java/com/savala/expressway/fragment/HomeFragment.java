@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.DepartureStation;
 import com.savala.expressway.DestinationStation;
+import com.savala.expressway.JourneyDate;
 import com.savala.expressway.R;
 
 public class HomeFragment extends BaseFragment{
@@ -42,7 +43,7 @@ public class HomeFragment extends BaseFragment{
 
     private ProgressBar mProgressbar1, mProgressbar2;
 
-    private CardView mDepartureStation, mDestinationStation;
+    private CardView mDepartureStation, mDestinationStation, mJourneyDetails;
 
     private String clicked = "false";
 
@@ -92,6 +93,7 @@ public class HomeFragment extends BaseFragment{
 
         mDepartureStation = (CardView) root.findViewById(R.id.from_destination);
         mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
+        mJourneyDetails = (CardView) root.findViewById(R.id.journey_details);
 
         mDepartureTitle = (TextView) root.findViewById(R.id.from_destination_name);
         mDestinationTitle = (TextView) root.findViewById(R.id.to_destination_name);
@@ -104,6 +106,14 @@ public class HomeFragment extends BaseFragment{
         mWhenTitle.setTypeface(tf2);
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        mJourneyDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), JourneyDate.class);
+                startActivity(intent);
+            }
+        });
 
         mExchange = (ImageView) root.findViewById(R.id.exchange);
         mExchange.setOnClickListener(new View.OnClickListener() {
