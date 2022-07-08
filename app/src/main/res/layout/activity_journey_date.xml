@@ -49,6 +49,7 @@
                     android:background="#EFEFEF">
 
                     <LinearLayout
+                        android:id="@+id/linear"
                         android:layout_width="match_parent"
                         android:weightSum="2"
                         android:layout_height="100dp">
@@ -184,6 +185,50 @@
 
                     </LinearLayout>
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/linear">
+
+                        <ImageView
+                            android:id="@+id/forest"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/forest" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_toRightOf="@+id/forest"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="35dp"
+                            android:src="@drawable/busblue" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toLeftOf="@+id/forest"
+                            android:src="@drawable/busblue" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="80dp"
+                            android:background="@color/white">
+
+                            <CalendarView
+                                android:id="@+id/calendar_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"></CalendarView>
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
