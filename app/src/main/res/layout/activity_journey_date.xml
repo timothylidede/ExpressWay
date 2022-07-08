@@ -51,15 +51,71 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:weightSum="2"
-                        android:layout_height="80dp">
+                        android:layout_height="100dp">
 
                         <LinearLayout
+                            android:id="@+id/today"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_marginRight="5dp"
                             android:background="@color/white"
                             android:layout_height="match_parent">
 
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tda"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="Today"
+                                    android:textColor="#243665"
+                                    android:textSize="25dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/today_date"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tda"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="08"
+                                    android:textColor="@color/black"
+                                    android:textSize="25dp" />
+
+                                <TextView
+                                    android:id="@+id/today_month"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tda"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/today_date"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="Jul"
+                                    android:textColor="@color/black"
+                                    android:textSize="25dp" />
+
+                                <TextView
+                                    android:id="@+id/today_year"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tda"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/today_month"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="22"
+                                    android:textColor="@color/black"
+                                    android:textSize="25dp" />
+
+                            </RelativeLayout>
 
                         </LinearLayout>
                         <LinearLayout
@@ -69,7 +125,61 @@
                             android:background="@color/white"
                             android:layout_height="match_parent">
 
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
 
+                                <TextView
+                                    android:id="@+id/tmw"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="Tomorrow"
+                                    android:textColor="#989898"
+                                    android:textSize="25dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tomorrow_date"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tmw"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="09"
+                                    android:textColor="#989898"
+                                    android:textSize="25dp" />
+
+                                <TextView
+                                    android:id="@+id/tomorrow_month"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tmw"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tomorrow_date"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="Jul"
+                                    android:textColor="#989898"
+                                    android:textSize="25dp" />
+
+                                <TextView
+                                    android:id="@+id/tomorrow_year"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tmw"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tomorrow_month"
+                                    android:fontFamily="sans-serif-condensed-light"
+                                    android:text="22"
+                                    android:textColor="#989898"
+                                    android:textSize="25dp" />
+
+                            </RelativeLayout>
                         </LinearLayout>
 
                     </LinearLayout>
