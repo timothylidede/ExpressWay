@@ -11,14 +11,19 @@ import android.view.WindowManager;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class JourneyDate extends AppCompatActivity {
 
     private TextView mExpress, mWay, mPickedDate, mPickedMonth, mPickedYear;
 
-    private ImageView mBack;
+    private ImageView mBack, mDone;
+
+    private ProgressBar mProgressBar;
 
     private LinearLayout mToday, mTomorrow;
 
@@ -37,9 +42,26 @@ public class JourneyDate extends AppCompatActivity {
         mPickedMonth = (TextView) findViewById(R.id.picked_month);
         mPickedYear = (TextView) findViewById(R.id.picked_year);
 
+        mDone = (ImageView) findViewById(R.id.done);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
         String pickedDate = mPickedDate.getText().toString().trim();
         String pickedMonth = mPickedMonth.getText().toString().trim();
         String pickedYear = mPickedYear.getText().toString().trim();
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+
+        pickedDate = "" + dayOfMonth;
+        pickedMonth = "" + getMonthFormat(month);
+        pickedYear = "" + year;
+
+        mPickedDate.setText(pickedDate);
+        mPickedMonth.setText(pickedMonth);
+        mPickedYear.setText(pickedYear);
 
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
@@ -50,9 +72,9 @@ public class JourneyDate extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
                 month = month + 1;
 
-                mPickedDate.setText(dayOfMonth);
-                mPickedMonth.setText(getMonthFormat(month));
-                mPickedYear.setText(year);
+                mPickedDate.setText("" + dayOfMonth);
+                mPickedMonth.setText("" + getMonthFormat(month));
+                mPickedYear.setText("" + year);
             }
         });
 
@@ -98,6 +120,13 @@ public class JourneyDate extends AppCompatActivity {
 
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        mDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
     }
 
     private String getMonthFormat(int month){
