@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment{
 
     private ImageView mExchange;
 
-    private String on = "on", booking_id = "";
+    private String on = "on";
 
     private String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -99,13 +99,8 @@ public class HomeFragment extends BaseFragment{
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
 
-        if(booking_id.equals("")){
-            setDepartureStation();
-        }else{
-            mDepartureTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
-            mDepartureTitle.setTextColor(Color.GRAY);
-            mDepartureTitle.setText("Enter Departure Station");
-        }
+        setDestinationStation();
+        setDepartureStation();
 
         mExchange = (ImageView) root.findViewById(R.id.exchange);
         mExchange.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +128,7 @@ public class HomeFragment extends BaseFragment{
             public void onClick(View view) {
                 clicked = "true";
                 Intent intent = new Intent(getContext(), DepartureStation.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
 
@@ -145,20 +140,10 @@ public class HomeFragment extends BaseFragment{
             }
         });
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode == 1)
-        {
-            booking_id = data.getStringExtra("booking_id");
-        }
-    }
 
     private void setDepartureStation() {
 
         FirebaseDatabase.getInstance().getReference("ResumeBookings")
-                .child(user_id)
                 .orderByChild("user_id").equalTo(user_id)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -167,6 +152,33 @@ public class HomeFragment extends BaseFragment{
                             String departure_title = "" + ds.child("departure_station").getValue();
 
                             mDepartureTitle.setText(departure_title);
+
+                            if(departure_title.equals("")){
+                                mDepartureTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                                mDepartureTitle.setTextColor(Color.GRAY);
+                                mDepartureTitle.setText("Enter Departure Station");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void setDestinationStation() {
+
+        FirebaseDatabase.getInstance().getReference("ResumeBookings")
+                .orderByChild("user_id").equalTo(user_id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String destination_title = "" + ds.child("destination_station").getValue();
+
+                            mDestinationTitle.setText(destination_title);
                         }
                     }
 

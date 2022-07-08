@@ -103,15 +103,16 @@
 
                     <TextView
                         android:id="@+id/from_destination_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@+id/building"
+                        android:layout_toLeftOf="@+id/edit_from_destination"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="Westlands"
+                        android:text=""
                         android:textColor="#243665"
-                        android:textSize="25dp" />
+                        android:textSize="20dp" />
 
                     <ImageView
                         android:id="@+id/edit_from_destination"
@@ -168,24 +169,25 @@
 
                     <TextView
                         android:id="@+id/to_destination_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@+id/to_building"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="Mlolongo"
+                        android:layout_toLeftOf="@+id/edit_to_destination"
+                        android:text=""
                         android:textColor="#243665"
-                        android:textSize="25dp" />
+                        android:textSize="20dp" />
 
                     <ImageView
                         android:id="@+id/edit_to_destination"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
-                        android:src="@drawable/edit"/>
+                        android:src="@drawable/edit" />
 
 
                 </RelativeLayout>
