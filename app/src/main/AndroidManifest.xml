@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
+            android:name=".JourneyDate"
+            android:exported="false" />
+        <activity
             android:name=".DestinationStation"
             android:exported="false" />
         <activity
