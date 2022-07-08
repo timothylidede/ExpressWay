@@ -101,14 +101,26 @@
                         android:layout_marginTop="5dp"
                         android:src="@drawable/building" />
 
+                    <ProgressBar
+                        android:id="@+id/progress_bar1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="7dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/fire"
+                        android:indeterminateTintMode="src_atop"
+                        android:visibility="invisible" />
+
                     <TextView
                         android:id="@+id/from_destination_name"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@+id/building"
                         android:layout_toLeftOf="@+id/edit_from_destination"
+                        android:layout_toRightOf="@+id/building"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text=""
                         android:textColor="#243665"
@@ -145,6 +157,18 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="7dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/fire"
+                        android:indeterminateTintMode="src_atop"
+                        android:visibility="invisible" />
 
                     <TextView
                         android:id="@+id/to_title"

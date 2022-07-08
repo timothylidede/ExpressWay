@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,6 +39,8 @@ public class HomeFragment extends BaseFragment{
     private TextView mExpress, mWay;
     private TextView mDepartureTitle, mDestinationTitle;
     private String departure, destination;
+
+    private ProgressBar mProgressbar1, mProgressbar2;
 
     private CardView mDepartureStation, mDestinationStation;
 
@@ -79,6 +82,9 @@ public class HomeFragment extends BaseFragment{
         top_layout1.setExitFadeDuration(3000);
         top_layout1.start();
 
+        mProgressbar1 = (ProgressBar) root.findViewById(R.id.progress_bar1);
+        mProgressbar2 = (ProgressBar) root.findViewById(R.id.progress_bar2);
+
         mSearchTitle = (TextView) root.findViewById(R.id.search_title);
         mWhenTitle = (TextView) root.findViewById(R.id.when_title);
         mExpress = root.findViewById(R.id.express_title);
@@ -98,9 +104,6 @@ public class HomeFragment extends BaseFragment{
         mWhenTitle.setTypeface(tf2);
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
-
-        setDestinationStation();
-        setDepartureStation();
 
         mExchange = (ImageView) root.findViewById(R.id.exchange);
         mExchange.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +142,13 @@ public class HomeFragment extends BaseFragment{
                 startActivity(intent);
             }
         });
+
+        setDestinationStation();
+        setDepartureStation();
     }
 
     private void setDepartureStation() {
+        mProgressbar1.setVisibility(View.VISIBLE);
 
         FirebaseDatabase.getInstance().getReference("ResumeBookings")
                 .orderByChild("user_id").equalTo(user_id)
@@ -152,23 +159,22 @@ public class HomeFragment extends BaseFragment{
                             String departure_title = "" + ds.child("departure_station").getValue();
 
                             mDepartureTitle.setText(departure_title);
-
-                            if(departure_title.equals("")){
-                                mDepartureTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
-                                mDepartureTitle.setTextColor(Color.GRAY);
-                                mDepartureTitle.setText("Enter Departure Station");
-                            }
+                            departure = departure_title;
+                            mProgressbar1.setVisibility(View.INVISIBLE);
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                            mDepartureTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                            mDepartureTitle.setTextColor(Color.GRAY);
+                            mDepartureTitle.setText("Enter Departure Station");
                     }
                 });
     }
 
     private void setDestinationStation() {
+        mProgressbar2.setVisibility(View.VISIBLE);
 
         FirebaseDatabase.getInstance().getReference("ResumeBookings")
                 .orderByChild("user_id").equalTo(user_id)
@@ -179,6 +185,9 @@ public class HomeFragment extends BaseFragment{
                             String destination_title = "" + ds.child("destination_station").getValue();
 
                             mDestinationTitle.setText(destination_title);
+                            destination = destination_title;
+
+                            mProgressbar2.setVisibility(View.INVISIBLE);
                         }
                     }
 

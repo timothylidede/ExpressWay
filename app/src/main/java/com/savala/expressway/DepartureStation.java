@@ -194,7 +194,6 @@ public class DepartureStation extends AppCompatActivity {
                 mProgressBar.setVisibility(View.VISIBLE);
 
                 String departure_station = mPickText.getText().toString().trim();
-                String destination_station = "";
                 String timestamp = "" + System.currentTimeMillis();
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -202,11 +201,10 @@ public class DepartureStation extends AppCompatActivity {
                 hashMap.put("booking_id", timestamp);
                 hashMap.put("departure_station", departure_station);
                 hashMap.put("user_id", user_id);
-                hashMap.put("destination_station", destination_station);
 
                 FirebaseDatabase.getInstance().getReference("ResumeBookings")
                         .child(user_id)
-                        .setValue(hashMap)
+                        .updateChildren(hashMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

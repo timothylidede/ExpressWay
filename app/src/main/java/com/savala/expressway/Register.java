@@ -30,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savala.expressway.model.User;
 
+import java.util.HashMap;
+
 public class Register extends AppCompatActivity {
 
     //widgets
@@ -182,6 +184,21 @@ public class Register extends AppCompatActivity {
 
                                     User user = new User(firstName, lastName, emailAddress, userID);
 
+                                    String departure_station = "Enter departure station";
+                                    String destination_station = "Enter destination station";
+                                    String timestamp = "" + System.currentTimeMillis();
+                                    String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                    HashMap<String, Object> hashMap = new HashMap<>();
+                                    hashMap.put("booking_id", timestamp);
+                                    hashMap.put("departure_station", departure_station);
+                                    hashMap.put("user_id", user_id);
+                                    hashMap.put("destination_station", destination_station);
+
+                                    FirebaseDatabase.getInstance().getReference("ResumeBookings")
+                                            .child(user_id)
+                                            .setValue(hashMap);
+
                                     myUserRef.child(userID)
                                             .setValue(user)
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -190,7 +207,7 @@ public class Register extends AppCompatActivity {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(Register.this
                                                                 , "Sign Up Success"
-                                                                , Toast.LENGTH_LONG).show();
+                                                                , Toast.LENGTH_SHORT).show();
                                                         mProgressBar.setVisibility(View.INVISIBLE);
                                                         mSignUp.setVisibility(View.VISIBLE);
 
