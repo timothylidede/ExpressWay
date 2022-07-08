@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class JourneyDate extends AppCompatActivity {
 
-    private TextView mExpress, mWay;
+    private TextView mExpress, mWay, mPickedDate, mPickedMonth, mPickedYear;
 
     private ImageView mBack;
 
@@ -33,14 +33,26 @@ public class JourneyDate extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_journey_date);
 
+        mPickedDate = (TextView) findViewById(R.id.picked_date);
+        mPickedMonth = (TextView) findViewById(R.id.picked_month);
+        mPickedYear = (TextView) findViewById(R.id.picked_year);
+
+        String pickedDate = mPickedDate.getText().toString().trim();
+        String pickedMonth = mPickedMonth.getText().toString().trim();
+        String pickedYear = mPickedYear.getText().toString().trim();
+
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
 
         mCalendarView = findViewById(R.id.calendar_view);
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+                month = month + 1;
 
+                mPickedDate.setText(dayOfMonth);
+                mPickedMonth.setText(getMonthFormat(month));
+                mPickedYear.setText(year);
             }
         });
 
@@ -86,5 +98,34 @@ public class JourneyDate extends AppCompatActivity {
 
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+    }
+
+    private String getMonthFormat(int month){
+        if(month == 1)
+            return "Jan";
+        if(month == 2)
+            return "Feb";
+        if(month == 3)
+            return "Mar";
+        if(month == 4)
+            return "Apr";
+        if(month == 5)
+            return "May";
+        if(month == 6)
+            return "Jun";
+        if(month == 7)
+            return "Jul";
+        if(month == 8)
+            return "Aug";
+        if(month == 9)
+            return "Sep";
+        if(month == 10)
+            return "Oct";
+        if(month == 11)
+            return "Nov";
+        if(month == 12)
+            return "Dec";
+
+        return "Jul";
     }
 }
