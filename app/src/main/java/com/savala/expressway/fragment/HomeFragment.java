@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,11 +39,11 @@ public class HomeFragment extends BaseFragment{
 
     private CardView mDepartureStation, mDestinationStation;
 
-    private Boolean clicked = false, on = false;
+    private String clicked = "false";
 
     private ImageView mExchange;
 
-    private String booking_id = "";
+    private String on = "on", booking_id = "";
 
     private String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -55,7 +58,8 @@ public class HomeFragment extends BaseFragment{
 
     @Override
     public void inOnCreateView(View root, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        
+        setDepartureStation();
+
         RelativeLayout layout = (RelativeLayout) root.findViewById(R.id.layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
         animationDrawable.setEnterFadeDuration(3000);
@@ -98,26 +102,27 @@ public class HomeFragment extends BaseFragment{
         mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(on = false){
-                    on = true;
+                RotateAnimation rotate = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(5000);
+                rotate.setInterpolator(new LinearInterpolator());
+                mExchange.setAnimation(rotate);
+
+                if(on.equals("on")){
+                    on = "off";
+                    mDestinationTitle.setText(departure);
+                    mDepartureTitle.setText(destination);
                 }else{
-                    on = false;
+                    on = "on";
+                    mDepartureTitle.setText(departure);
+                    mDestinationTitle.setText(destination);
                 }
             }
         });
 
-        if(on = true){
-            mDestinationTitle.setText(departure);
-            mDepartureTitle.setText(destination);
-        }else{
-            mDepartureTitle.setText(departure);
-            mDestinationTitle.setText(destination);
-        }
-
         mDepartureStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicked = true;
+                clicked = "true";
                 Intent intent = new Intent(getContext(), DepartureStation.class);
                 startActivity(intent);
             }
@@ -130,12 +135,10 @@ public class HomeFragment extends BaseFragment{
                 startActivity(intent);
             }
         });
-
-        setDepartureStation();
     }
 
     private void setDepartureStation() {
-        if(clicked) {
+        if(clicked.equals("true")) {
             booking_id = getArguments().getString("booking_id");
             Log.d(TAG, "inOnCreateView: clicked once");
         }else{
