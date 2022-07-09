@@ -54,7 +54,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="sans-serif-condensed-light"
-                            android:text="08"
+                            android:text=""
                             android:textColor="#243665"
                             android:textSize="30dp"
                             android:textStyle="bold" />
@@ -67,7 +67,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_toRightOf="@+id/picked_date"
                             android:fontFamily="sans-serif-condensed-light"
-                            android:text="Jul"
+                            android:text=""
                             android:textColor="#243665"
                             android:textSize="30dp"
                             android:textStyle="bold" />
@@ -80,7 +80,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_toRightOf="@+id/picked_month"
                             android:fontFamily="sans-serif-condensed-light"
-                            android:text="22"
+                            android:text=""
                             android:textColor="#243665"
                             android:textSize="30dp"
                             android:textStyle="bold" />
@@ -171,7 +171,6 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="08"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
@@ -184,7 +183,6 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_toRightOf="@+id/today_date"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="Jul"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
@@ -197,7 +195,6 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_toRightOf="@+id/today_month"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="22"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
@@ -236,7 +233,6 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="09"
                                     android:textColor="#989898"
                                     android:textSize="20dp" />
 
@@ -249,7 +245,6 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_toRightOf="@+id/tomorrow_date"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="Jul"
                                     android:textColor="#989898"
                                     android:textSize="20dp" />
 
@@ -262,7 +257,6 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_toRightOf="@+id/tomorrow_month"
                                     android:fontFamily="sans-serif-condensed-light"
-                                    android:text="22"
                                     android:textColor="#989898"
                                     android:textSize="20dp" />
 

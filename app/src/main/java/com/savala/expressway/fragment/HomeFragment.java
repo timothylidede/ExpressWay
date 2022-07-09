@@ -33,17 +33,19 @@ import com.savala.expressway.DestinationStation;
 import com.savala.expressway.JourneyDate;
 import com.savala.expressway.R;
 
+import java.util.Calendar;
+
 public class HomeFragment extends BaseFragment{
 
     //widgets
-    private TextView mSearchTitle, mWhenTitle;
+    private TextView mSearchTitle, mDate, mMonth, mYear;
     private TextView mExpress, mWay;
     private TextView mDepartureTitle, mDestinationTitle;
     private String departure, destination;
 
-    private ProgressBar mProgressbar1, mProgressbar2;
+    private ProgressBar mProgressbar1, mProgressbar2, mProgressBar3;
 
-    private CardView mDepartureStation, mDestinationStation, mJourneyDetails;
+    private CardView mDepartureStation, mDestinationStation, mJourneyDetails, mSearch;
 
     private String clicked = "false";
 
@@ -85,9 +87,14 @@ public class HomeFragment extends BaseFragment{
 
         mProgressbar1 = (ProgressBar) root.findViewById(R.id.progress_bar1);
         mProgressbar2 = (ProgressBar) root.findViewById(R.id.progress_bar2);
+        mProgressBar3 = (ProgressBar) root.findViewById(R.id.progress_bar3);
 
         mSearchTitle = (TextView) root.findViewById(R.id.search_title);
-        mWhenTitle = (TextView) root.findViewById(R.id.when_title);
+
+        mDate = (TextView) root.findViewById(R.id.date);
+        mMonth = (TextView) root.findViewById(R.id.month);
+        mYear = (TextView) root.findViewById(R.id.year);
+
         mExpress = root.findViewById(R.id.express_title);
         mWay = root.findViewById(R.id.way_title);
 
@@ -103,15 +110,34 @@ public class HomeFragment extends BaseFragment{
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(), "fonts/Poppins-Regular.ttf");
         mSearchTitle.setTypeface(tf);
-        mWhenTitle.setTypeface(tf2);
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+
+        String pickedDate = "" + dayOfMonth;
+        String pickedMonth = "" + getMonthFormat(month);
+        String pickedYear = "" + year;
+
+        mDate.setText(pickedDate);
+        mMonth.setText(pickedMonth);
+        mYear.setText(pickedYear);
 
         mJourneyDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), JourneyDate.class);
                 startActivity(intent);
+            }
+        });
+
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
@@ -155,6 +181,7 @@ public class HomeFragment extends BaseFragment{
 
         setDestinationStation();
         setDepartureStation();
+        setDateDetails();
     }
 
     private void setDepartureStation() {
@@ -206,5 +233,62 @@ public class HomeFragment extends BaseFragment{
 
                     }
                 });
+    }
+
+    private void setDateDetails(){
+        mProgressBar3.setVisibility(View.INVISIBLE);
+
+        FirebaseDatabase.getInstance().getReference("ResumeBookings")
+                .orderByChild("user_id").equalTo(user_id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String day = "" + ds.child("day").getValue();
+                            String month = "" + ds.child("month").getValue();
+                            String year = "" + ds.child("year").getValue();
+
+                            mDate.setText(day);
+                            mMonth.setText(month);
+                            mYear.setText(year);
+
+                            mProgressBar3.setVisibility(View.INVISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private String getMonthFormat(int month){
+        if(month == 1)
+            return "Jan";
+        if(month == 2)
+            return "Feb";
+        if(month == 3)
+            return "Mar";
+        if(month == 4)
+            return "Apr";
+        if(month == 5)
+            return "May";
+        if(month == 6)
+            return "Jun";
+        if(month == 7)
+            return "Jul";
+        if(month == 8)
+            return "Aug";
+        if(month == 9)
+            return "Sep";
+        if(month == 10)
+            return "Oct";
+        if(month == 11)
+            return "Nov";
+        if(month == 12)
+            return "Dec";
+
+        return "Jul";
     }
 }

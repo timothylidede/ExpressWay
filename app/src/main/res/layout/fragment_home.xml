@@ -197,9 +197,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
+                        android:layout_toLeftOf="@+id/edit_to_destination"
                         android:layout_toRightOf="@+id/to_building"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:layout_toLeftOf="@+id/edit_to_destination"
                         android:text=""
                         android:textColor="#243665"
                         android:textSize="20dp" />
@@ -235,6 +235,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ProgressBar
+                        android:id="@+id/progress_bar3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="7dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/fire"
+                        android:indeterminateTintMode="src_atop"
+                        android:visibility="invisible" />
+
                     <TextView
                         android:id="@+id/journey_date_title"
                         android:layout_width="wrap_content"
@@ -257,52 +269,41 @@
                         android:src="@drawable/calendar" />
 
                     <TextView
-                        android:id="@+id/date_number"
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/calendar_img"
                         android:layout_marginLeft="7dp"
                         android:layout_toRightOf="@+id/calendar_img"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="8"
+                        android:text=""
                         android:textStyle="bold"
                         android:textColor="#243665"
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/date_day"
+                        android:id="@+id/month"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/journey_date_title"
+                        android:layout_alignTop="@+id/calendar_img"
                         android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/date_number"
+                        android:layout_toRightOf="@+id/date"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="Sun"
+                        android:text=""
                         android:textColor="#243665"
-                        android:textSize="12dp" />
+                        android:textSize="20dp"/>
 
                     <TextView
-                        android:id="@+id/date_month"
+                        android:id="@+id/year"
                         android:layout_width="wrap_content"
+                        android:layout_alignTop="@+id/calendar_img"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/date_day"
                         android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/date_number"
+                        android:layout_toRightOf="@+id/month"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="May"
+                        android:text=""
                         android:textColor="#243665"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:id="@+id/when_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:layout_marginRight="15dp"
-                        android:text="Today"
-                        android:textColor="#243665"
-                        android:textSize="23dp" />
+                        android:textSize="20dp"/>
 
 
                 </RelativeLayout>
