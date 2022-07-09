@@ -59,7 +59,7 @@ public class JourneyDate extends AppCompatActivity {
 
         mTodayDate = (TextView) findViewById(R.id.today_date);
         mTodayMonth = (TextView) findViewById(R.id.today_month);
-        mTodayDate = (TextView) findViewById(R.id.today_year);
+        mTodayYear = (TextView) findViewById(R.id.today_year);
 
         mTomorrowDate = (TextView) findViewById(R.id.tomorrow_date);
         mTomorrowMonth = (TextView) findViewById(R.id.tomorrow_month);
@@ -79,11 +79,11 @@ public class JourneyDate extends AppCompatActivity {
         int tomorrow = dayOfMonth + 1;
 
         String pickedDate = "" + dayOfMonth;
-        String pickedMonth = "" + getMonthFormat(month);
+        String pickedMonth = "" + getMonthFormat(month + 1);
         String pickedYear = "" + year;
 
         String todayDate = "" + dayOfMonth;
-        String todayMonth = "" + month;
+        String todayMonth = "" + getMonthFormat(month + 1);
         String todayYear = "" + year;
         String tomorrowDate = "" + tomorrow;
 
@@ -103,6 +103,9 @@ public class JourneyDate extends AppCompatActivity {
         mWay = findViewById(R.id.way_title);
 
         mCalendarView = findViewById(R.id.calendar_view);
+        mCalendarView.setMinDate(System.currentTimeMillis()-1000);
+        mCalendarView.setMaxDate(System.currentTimeMillis() + 604800000);
+
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year,

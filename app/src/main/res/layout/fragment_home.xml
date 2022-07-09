@@ -296,14 +296,14 @@
                     <TextView
                         android:id="@+id/year"
                         android:layout_width="wrap_content"
-                        android:layout_alignTop="@+id/calendar_img"
                         android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/calendar_img"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/month"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text=""
                         android:textColor="#243665"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp" />
 
 
                 </RelativeLayout>

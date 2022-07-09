@@ -18,11 +18,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +37,7 @@ import com.savala.expressway.JourneyDate;
 import com.savala.expressway.R;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class HomeFragment extends BaseFragment{
 
@@ -45,7 +49,7 @@ public class HomeFragment extends BaseFragment{
 
     private ProgressBar mProgressbar1, mProgressbar2, mProgressBar3;
 
-    private CardView mDepartureStation, mDestinationStation, mJourneyDetails, mSearch;
+    private CardView mDepartureStation, mDestinationStation, mJourneyDetails, mSearchButton;
 
     private String clicked = "false";
 
@@ -101,6 +105,8 @@ public class HomeFragment extends BaseFragment{
         mDepartureStation = (CardView) root.findViewById(R.id.from_destination);
         mDestinationStation = (CardView) root.findViewById(R.id.to_destination);
         mJourneyDetails = (CardView) root.findViewById(R.id.journey_details);
+        
+        mSearchButton = (CardView) root.findViewById(R.id.search_button); 
 
         mDepartureTitle = (TextView) root.findViewById(R.id.from_destination_name);
         mDestinationTitle = (TextView) root.findViewById(R.id.to_destination_name);
@@ -119,7 +125,7 @@ public class HomeFragment extends BaseFragment{
         int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
 
         String pickedDate = "" + dayOfMonth;
-        String pickedMonth = "" + getMonthFormat(month);
+        String pickedMonth = "" + getMonthFormat(month + 1);
         String pickedYear = "" + year;
 
         mDate.setText(pickedDate);
@@ -133,11 +139,64 @@ public class HomeFragment extends BaseFragment{
                 startActivity(intent);
             }
         });
-
-        mSearch.setOnClickListener(new View.OnClickListener() {
+        
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String departure = mDepartureTitle.getText().toString().trim();
+                String destination = mDestinationTitle.getText().toString().trim();
+                String day = mDate.getText().toString().trim();
+                String month = mMonth.getText().toString().trim();
+                String year = mYear.getText().toString().trim();
+                
+                if(departure.equals("Mlolongo") ||
+                        departure.equals("Standard Gauge Railway") ||
+                        departure.equals("Jomo Kenyatta International Airport") ||
+                        departure.equals("Eastern Bypass") ||
+                        departure.equals("Southern Bypass") ||
+                        departure.equals("Capital Centre") ||
+                        departure.equals("Haile Selassie Avenue") ||
+                        departure.equals("Museum Hill") ||
+                        departure.equals("Westlands") ||
+                        departure.equals("James Gichuru Road")){
+                    
+                    if(destination.equals("Mlolongo") ||
+                            destination.equals("Standard Gauge Railway") ||
+                            destination.equals("Jomo Kenyatta International Airport") ||
+                            destination.equals("Eastern Bypass") ||
+                            destination.equals("Southern Bypass") ||
+                            destination.equals("Capital Centre") ||
+                            destination.equals("Haile Selassie Avenue") ||
+                            destination.equals("Museum Hill") ||
+                            destination.equals("Westlands") ||
+                            destination.equals("James Gichuru Road")){
 
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("destination_station", destination);
+                        hashMap.put("departure_station", departure);
+                        hashMap.put("day", day);
+                        hashMap.put("month", month);
+                        hashMap.put("year", year);
+
+                        FirebaseDatabase.getInstance().getReference("Bookings")
+                                .child(user_id)
+                                .setValue(hashMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+
+                                        }
+                                    }
+                                });
+                        
+                    }else{
+                        Toast.makeText(getContext(), "Pick valid destination station", Toast.LENGTH_SHORT).show();
+                    }
+                    
+                }else{
+                    Toast.makeText(getContext(), "Pick valid departure station", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
