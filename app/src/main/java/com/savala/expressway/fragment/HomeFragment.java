@@ -35,6 +35,7 @@ import com.savala.expressway.DepartureStation;
 import com.savala.expressway.DestinationStation;
 import com.savala.expressway.JourneyDate;
 import com.savala.expressway.R;
+import com.savala.expressway.view.AvailableBus;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class HomeFragment extends BaseFragment{
     private TextView mDepartureTitle, mDestinationTitle;
     private String departure, destination;
 
-    private ProgressBar mProgressbar1, mProgressbar2, mProgressBar3;
+    private ProgressBar mProgressbar1, mProgressbar2, mProgressBar3, mProgressBar4;
 
     private CardView mDepartureStation, mDestinationStation, mJourneyDetails, mSearchButton;
 
@@ -92,6 +93,7 @@ public class HomeFragment extends BaseFragment{
         mProgressbar1 = (ProgressBar) root.findViewById(R.id.progress_bar1);
         mProgressbar2 = (ProgressBar) root.findViewById(R.id.progress_bar2);
         mProgressBar3 = (ProgressBar) root.findViewById(R.id.progress_bar3);
+        mProgressBar4 = (ProgressBar) root.findViewById(R.id.progress_bar4);
 
         mSearchTitle = (TextView) root.findViewById(R.id.search_title);
 
@@ -143,6 +145,9 @@ public class HomeFragment extends BaseFragment{
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProgressBar4.setVisibility(View.VISIBLE);
+                mSearchButton.setVisibility(View.INVISIBLE);
+
                 String departure = mDepartureTitle.getText().toString().trim();
                 String destination = mDestinationTitle.getText().toString().trim();
                 String day = mDate.getText().toString().trim();
@@ -185,7 +190,11 @@ public class HomeFragment extends BaseFragment{
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
+                                            mProgressBar4.setVisibility(View.INVISIBLE);
+                                            mSearchButton.setVisibility(View.VISIBLE);
 
+                                            Intent intent = new Intent(getContext(), AvailableBus.class);
+                                            startActivity(intent);
                                         }
                                     }
                                 });
