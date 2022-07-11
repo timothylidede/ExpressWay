@@ -71,6 +71,32 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/manufacturer"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Number Plate"
+                android:textColor="#243665"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/number_plate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text5"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="KAT 456Y"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
     </ScrollView>
 
