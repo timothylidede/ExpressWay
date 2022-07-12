@@ -1,13 +1,10 @@
 package com.savala.expressway.fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +32,7 @@ import com.savala.expressway.DepartureStation;
 import com.savala.expressway.DestinationStation;
 import com.savala.expressway.JourneyDate;
 import com.savala.expressway.R;
-import com.savala.expressway.view.AvailableBus;
+import com.savala.expressway.AvailableBus;
 
 import java.util.Calendar;
 import java.util.HashMap;

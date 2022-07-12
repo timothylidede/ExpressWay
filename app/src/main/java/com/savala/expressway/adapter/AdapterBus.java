@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.savala.expressway.PassengerInformation;
 import com.savala.expressway.R;
 import com.savala.expressway.model.ModelBus;
 
@@ -52,8 +55,8 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ViewPack.class);
-                intent.putExtra("packId", pack_id);
+                Intent intent = new Intent(context, PassengerInformation.class);
+                intent.putExtra("number_plate", number_plate);
                 context.startActivity(intent);
             }
         });

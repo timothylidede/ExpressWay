@@ -1,17 +1,18 @@
 package com.savala.expressway.model;
 
 public class ModelBus {
-    private String number_plate, route, time, price, seats, rating;
+    private String number_plate, route, time, price, seats, rating, date;
 
     public ModelBus(){}
 
-    public ModelBus(String number_plate, String route, String time, String price, String seats, String rating) {
+    public ModelBus(String number_plate, String route, String time, String price, String seats, String rating, String date) {
         this.number_plate = number_plate;
         this.route = route;
         this.time = time;
         this.price = price;
         this.seats = seats;
         this.rating = rating;
+        this.date = date;
     }
 
     public String getNumber_plate() {
@@ -62,6 +63,14 @@ public class ModelBus {
         this.rating = rating;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "ModelBus{" +
@@ -71,6 +80,7 @@ public class ModelBus {
                 ", price='" + price + '\'' +
                 ", seats='" + seats + '\'' +
                 ", rating='" + rating + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

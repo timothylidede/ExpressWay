@@ -13,7 +13,7 @@
             android:name=".PassengerInformation"
             android:exported="false" />
         <activity
-            android:name=".view.AvailableBus"
+            android:name=".AvailableBus"
             android:exported="false" />
         <activity
             android:name=".JourneyDate"
