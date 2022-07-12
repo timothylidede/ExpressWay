@@ -16,38 +16,37 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.savala.expressway.R;
+import com.savala.expressway.model.ModelBus;
 
 import java.util.ArrayList;
 
-public class AdapterBus extends RecyclerView.Adapter<AdapterBus.PackHolder> {
+public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
 
     private Context context;
-    private ArrayList<ModelMyPacks> myPacksList;
-    private int memberCount = 0;
+    private ArrayList<ModelBus> busList;
 
     //constructor
-    public AdapterBus(Context context, ArrayList<ModelBus> myPacksList) {
+    public AdapterBus(Context context, ArrayList<ModelBus> busList) {
         this.context = context;
-        this.myPacksList = myPacksList;
+        this.busList = busList;
     }
 
     @NonNull
     @Override
-    public PackHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout (row_user)
 
-        View view = LayoutInflater.from(context).inflate(R.layout.row_pack, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_bus, parent, false);
 
-        return new PackHolder(view);
+        return new BusHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PackHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final BusHolder holder, int position) {
         // get data
-        final ModelMyPacks myPacks = myPacksList.get(position);
-        String pack_id = myPacks.getPack_id();
-        String user_id = myPacks.getUser_id();
-        String alpha = myPacks.getAlpha();
+        final ModelBus bus = busList.get(position);
+        String number_plate = bus.getNumber_plate();
 
         //click potential to open to user
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,70 +58,28 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.PackHolder> {
             }
         });
 
-        setMyPacksFromPacks(myPacks, holder);
-        setMyPacksFromUser(myPacks, holder);
-        getMemberCount(myPacks, holder);
+        setBusDetails(bus, holder);
     }
 
-    private void getMemberCount(ModelMyPacks myPacks, PackHolder holder) {
-
-        FirebaseDatabase.getInstance().getReference("my_packs_members_count")
-                .child(myPacks.getPack_id())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds:snapshot.getChildren()){
-                            memberCount++;
-                        }
-                        holder.mRowPackMemberCount.setText(String.valueOf(memberCount));
-
-                        memberCount = 0;
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
-    private void setMyPacksFromPacks(ModelMyPacks myPacks, PackHolder holder) {
-        FirebaseDatabase.getInstance().getReference("packs")
-                .orderByChild("pack_id").equalTo(myPacks.getPack_id())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds: snapshot.getChildren()){
-
-                            String packName = "" + ds.child("pack_name").getValue();
-
-                            holder.mRowPackName.setText(packName);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
-    private void setMyPacksFromUser(ModelMyPacks myPacks, PackHolder holder) {
+    private void setBusDetails(ModelBus bus, BusHolder holder) {
         //get user info from uid in model
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("user_account_settings");
-        ref.orderByChild("user_id").equalTo(myPacks.getAlpha())
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Bus");
+        ref.orderByChild("number_plate").equalTo(bus.getNumber_plate())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds: snapshot.getChildren()){
-                            String alphaName = "" + ds.child("display_name").getValue();
-                            String alphaUid = "" + ds.child("user_id").getValue();
+                            String number_plate = "" + ds.child("number_plate").getValue();
+                            String time = "" + ds.child("time").getValue();
+                            String price = "" + ds.child("price").getValue();
+                            String rating = "" + ds.child("rating").getValue();
+                            String route = "" + ds.child("route").getValue();
 
-                            if(!alphaUid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                                holder.mRowPackAlphaName.setText(alphaName);
-                            }else{
-                                holder.mRowPackAlphaName.setText("Me");
-                            }
+                            holder.mRating.setText(rating);
+                            holder.mRoute.setText(route);
+                            holder.mTime.setText(time);
+                            holder.mNumberPlate.setText(number_plate);
+                            holder.mPrice.setText(price);
                         }
                     }
 
@@ -135,18 +92,20 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.PackHolder> {
 
     @Override
     public int getItemCount() {
-        return myPacksList.size();
+        return busList.size();
     }
 
-    class PackHolder extends RecyclerView.ViewHolder{
-        private TextView mRowPackName, mRowPackAlphaName, mRowPackMemberCount;
+    class BusHolder extends RecyclerView.ViewHolder{
+        private TextView mNumberPlate, mRoute, mTime, mPrice, mRating;
 
-        public PackHolder(@NonNull View itemView) {
+        public BusHolder(@NonNull View itemView) {
             super(itemView);
 
-            mRowPackAlphaName = itemView.findViewById(R.id.row_pack_display_name_alpha);
-            mRowPackName = itemView.findViewById(R.id.row_pack_display_name);
-            mRowPackMemberCount = itemView.findViewById(R.id.row_pack_member_count);
+            mNumberPlate = itemView.findViewById(R.id.number_plate);
+            mRoute = itemView.findViewById(R.id.route);
+            mTime= itemView.findViewById(R.id.time);
+            mPrice = itemView.findViewById(R.id.price);
+            mRating = itemView.findViewById(R.id.rating);
         }
     }
 }
