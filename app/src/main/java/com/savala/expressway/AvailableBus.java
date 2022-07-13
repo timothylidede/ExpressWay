@@ -62,6 +62,12 @@ public class AvailableBus extends AppCompatActivity {
             }
         });
 
+        RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
+        AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();
+        top_layout1.setEnterFadeDuration(3000);
+        top_layout1.setExitFadeDuration(3000);
+        top_layout1.start();
+
         mNothing = (RelativeLayout) findViewById(R.id.nothing);
         mRecycler = (RelativeLayout) findViewById(R.id.recycler);
 

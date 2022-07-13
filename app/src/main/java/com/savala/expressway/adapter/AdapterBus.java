@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.savala.expressway.BoardingPoint;
 import com.savala.expressway.PassengerInformation;
 import com.savala.expressway.R;
 import com.savala.expressway.model.ModelBus;
@@ -55,7 +56,7 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PassengerInformation.class);
+                Intent intent = new Intent(context, BoardingPoint.class);
                 intent.putExtra("number_plate", number_plate);
                 context.startActivity(intent);
             }
