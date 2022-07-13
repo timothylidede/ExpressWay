@@ -58,7 +58,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="2"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -149,6 +149,7 @@
             android:background="@drawable/blue_back" />
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/done"
             android:layout_width="40dp"
             android:layout_height="40dp"

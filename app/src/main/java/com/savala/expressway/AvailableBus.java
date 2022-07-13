@@ -34,7 +34,7 @@ public class AvailableBus extends AppCompatActivity {
 
     private ImageView mDone, mBack;
 
-    private TextView mBusesFound, mDate, mRoute, mDay;
+    private TextView mBusesFound, mDate, mRoute, mDay, mBuss;
 
     private ProgressBar mProgressBar;
 
@@ -85,6 +85,7 @@ public class AvailableBus extends AppCompatActivity {
         mDate = (TextView) findViewById(R.id.date);
         mRoute = (TextView) findViewById(R.id.route);
         mDay = (TextView) findViewById(R.id.day);
+        mBuss = (TextView) findViewById(R.id.buss);
 
         //init recyclerview
         recyclerView = findViewById(R.id.bus_recycler_view);
@@ -96,6 +97,19 @@ public class AvailableBus extends AppCompatActivity {
 
         //init userList
         busList = new ArrayList<>();
+
+        int bus = Integer.parseInt(mBusesFound.getText().toString());
+        if(bus <= 0){
+            mBusesFound.setText("0");
+            mNothing.setVisibility(View.VISIBLE);
+            mRecycler.setVisibility(View.INVISIBLE);
+            mDone.setVisibility(View.INVISIBLE);
+        }else if(bus == 1){
+            mBuss.setText("Bus Found");
+        } else{
+            mNothing.setVisibility(View.GONE);
+            mRecycler.setVisibility(View.VISIBLE);
+        }
 
         setDate();
         setRoute();
@@ -166,23 +180,37 @@ public class AvailableBus extends AppCompatActivity {
                             String route = departure_station + " - " + destination_station;
 
                             FirebaseDatabase.getInstance().getReference("Bus").
-                                    orderByChild("route").equalTo(route)
+                                    orderByChild("day").equalTo(day)
                                     .addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            busList.clear();
-
                                             for (DataSnapshot ds : snapshot.getChildren()) {
-                                                //get data
-                                                ModelBus bus = ds.getValue(ModelBus.class);
 
-                                                busList.add(bus);
+                                                FirebaseDatabase.getInstance().getReference("Bus").
+                                                        orderByChild("route").equalTo(route)
+                                                        .addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                busList.clear();
+
+                                                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                                                    //get data
+                                                                    ModelBus bus = ds.getValue(ModelBus.class);
+
+                                                                    busList.add(bus);
+                                                                }
+
+                                                                //adapter
+                                                                adapterBus = new AdapterBus(AvailableBus.this, busList);
+                                                                //set to recyclerView
+                                                                recyclerView.setAdapter(adapterBus);
+                                                            }
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                                            }
+                                                        });
                                             }
-
-                                            //adapter
-                                            adapterBus = new AdapterBus(AvailableBus.this, busList);
-                                            //set to recyclerView
-                                            recyclerView.setAdapter(adapterBus);
                                         }
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
@@ -217,23 +245,43 @@ public class AvailableBus extends AppCompatActivity {
 
                             FirebaseDatabase.getInstance().getReference("Bus")
                                     .orderByChild("route").equalTo(route)
-                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    .addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            for(DataSnapshot singleSnapshot : snapshot.getChildren()){
-                                                mBusCount++;
-                                            }
-                                            mBusesFound.setText(String.valueOf(mBusCount));
+                                            for(DataSnapshot ds: snapshot.getChildren()){
 
-                                            int bus = Integer.parseInt(mBusesFound.getText().toString());
+                                                FirebaseDatabase.getInstance().getReference("Bus")
+                                                        .orderByChild("day").equalTo(day)
+                                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                for(DataSnapshot singleSnapshot : snapshot.getChildren()){
+                                                                    mBusCount++;
+                                                                }
+                                                                mBusesFound.setText(String.valueOf(mBusCount-1));
 
-                                            if(bus == 0){
-                                                mNothing.setVisibility(View.VISIBLE);
-                                                mRecycler.setVisibility(View.INVISIBLE);
-                                                mDone.setVisibility(View.INVISIBLE);
-                                            }else{
-                                                mNothing.setVisibility(View.GONE);
-                                                mRecycler.setVisibility(View.VISIBLE);
+                                                                int bus = Integer.parseInt(mBusesFound.getText().toString());
+
+                                                                if(bus <= 0){
+                                                                    mBusesFound.setText("0");
+                                                                    mNothing.setVisibility(View.VISIBLE);
+                                                                    mRecycler.setVisibility(View.INVISIBLE);
+                                                                    mDone.setVisibility(View.INVISIBLE);
+                                                                }else if(bus == 1){
+                                                                    mBuss.setText("Bus Found");
+                                                                } else{
+                                                                    mNothing.setVisibility(View.GONE);
+                                                                    mRecycler.setVisibility(View.VISIBLE);
+                                                                }
+
+                                                                mBusCount = 0;
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                                            }
+                                                        });
                                             }
                                         }
 
