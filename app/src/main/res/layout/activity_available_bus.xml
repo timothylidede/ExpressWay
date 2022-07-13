@@ -18,9 +18,38 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:layout_marginTop="70dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="70dp">
+
+                <RelativeLayout
+                    android:id="@+id/nothing"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buses_found"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="70dp">
+
+                    <ImageView
+                        android:id="@+id/nothing_image"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:alpha=".5"
+                        android:src="@drawable/nothing" />
+
+                    <TextView
+                        android:id="@+id/nothing_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/nothing_image"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="No buses were found"
+                        android:textColor="@color/teal_200"
+                        android:textSize="20dp" />
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/buses_found"
@@ -29,10 +58,23 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="2 Buses Found"
-                    android:textStyle="bold"
+                    android:text="2"
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/buss"
+                    android:layout_toRightOf="@+id/buses_found"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Buses Found"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/date"
@@ -40,16 +82,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/buses_found"
+                    android:layout_toRightOf="@+id/buss"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="(13 July 2022)"
                     android:textColor="@color/teal_200"
                     android:textSize="20dp" />
 
+                <TextView
+                    android:id="@+id/day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/buses_found"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textColor="@color/teal_200"
+                    android:textSize="20dp"
+                    android:visibility="invisible" />
+
                 <RelativeLayout
-                    android:layout_below="@+id/buses_found"
+                    android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/buses_found"
                     android:layout_marginTop="10dp">
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -72,17 +127,18 @@
         android:id="@+id/top_layout">
 
         <TextView
+            android:id="@+id/route"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/back"
             android:layout_centerVertical="true"
-            android:textSize="17dp"
             android:layout_toLeftOf="@+id/done"
+            android:layout_toRightOf="@+id/back"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:text="Jomo Kenyatta Internation Airport - Haile Selassie Avenue"
             android:textColor="@color/fire"
-            android:textStyle="bold"
-            android:text="Jomo Kenyatta Internation Airport - Haile Selassie Avenue"/>
+            android:textSize="17dp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/back"

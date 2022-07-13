@@ -88,16 +88,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/price"
-                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed-light"
                 android:text="17 seats available"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-condensed-light"/>
+                android:textSize="20dp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="75dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/seats"
+                android:layout_below="@+id/seats"
+                android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
                 android:layout_marginRight="20dp">
 
@@ -118,13 +119,13 @@
                         android:id="@+id/rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/star"
                         android:text="4.0"
                         android:textColor="@color/white"
-                        android:textStyle="bold"
                         android:textSize="18dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"/>
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>

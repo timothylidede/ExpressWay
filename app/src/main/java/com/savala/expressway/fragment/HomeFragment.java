@@ -150,8 +150,13 @@ public class HomeFragment extends BaseFragment{
                 String day = mDate.getText().toString().trim();
                 String month = mMonth.getText().toString().trim();
                 String year = mYear.getText().toString().trim();
-                
-                if(departure.equals("Mlolongo") ||
+                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                if(departure.equals(destination) || destination.equals(departure)){
+                    Toast.makeText(getContext(), "Departure and destination stations cannot be similar", Toast.LENGTH_LONG).show();
+                    mProgressBar4.setVisibility(View.INVISIBLE);
+                    mSearchButton.setVisibility(View.VISIBLE);
+                }else if(departure.equals("Mlolongo") ||
                         departure.equals("Standard Gauge Railway") ||
                         departure.equals("Jomo Kenyatta International Airport") ||
                         departure.equals("Eastern Bypass") ||
@@ -177,6 +182,7 @@ public class HomeFragment extends BaseFragment{
                         hashMap.put("destination_station", destination);
                         hashMap.put("departure_station", departure);
                         hashMap.put("day", day);
+                        hashMap.put("user_id", user_id);
                         hashMap.put("month", month);
                         hashMap.put("year", year);
 

@@ -77,12 +77,14 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
                             String price = "" + ds.child("price").getValue();
                             String rating = "" + ds.child("rating").getValue();
                             String route = "" + ds.child("route").getValue();
+                            String seats = "" + ds.child("seats").getValue();
 
                             holder.mRating.setText(rating);
                             holder.mRoute.setText(route);
                             holder.mTime.setText(time);
                             holder.mNumberPlate.setText(number_plate);
                             holder.mPrice.setText(price);
+                            holder.mSeats.setText(seats + " seats available");
                         }
                     }
 
@@ -99,7 +101,7 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
     }
 
     class BusHolder extends RecyclerView.ViewHolder{
-        private TextView mNumberPlate, mRoute, mTime, mPrice, mRating;
+        private TextView mNumberPlate, mRoute, mTime, mPrice, mRating, mSeats;
 
         public BusHolder(@NonNull View itemView) {
             super(itemView);
@@ -109,6 +111,7 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
             mTime= itemView.findViewById(R.id.time);
             mPrice = itemView.findViewById(R.id.price);
             mRating = itemView.findViewById(R.id.rating);
+            mSeats = itemView.findViewById(R.id.seats);
         }
     }
 }

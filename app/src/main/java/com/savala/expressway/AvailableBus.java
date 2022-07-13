@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.R;
 import com.savala.expressway.adapter.AdapterBus;
@@ -33,13 +34,17 @@ public class AvailableBus extends AppCompatActivity {
 
     private ImageView mDone, mBack;
 
-    private TextView mBusesFound, mDate;
+    private TextView mBusesFound, mDate, mRoute, mDay;
 
     private ProgressBar mProgressBar;
+
+    private RelativeLayout mNothing, mRecycler;
 
     private RecyclerView recyclerView;
     private AdapterBus adapterBus;
     ArrayList<ModelBus> busList;
+
+    private int mBusCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,9 @@ public class AvailableBus extends AppCompatActivity {
             }
         });
 
+        mNothing = (RelativeLayout) findViewById(R.id.nothing);
+        mRecycler = (RelativeLayout) findViewById(R.id.recycler);
+
         mBack = (ImageView) findViewById(R.id.back);
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +77,8 @@ public class AvailableBus extends AppCompatActivity {
 
         mBusesFound = (TextView) findViewById(R.id.buses_found);
         mDate = (TextView) findViewById(R.id.date);
-        setDate();
+        mRoute = (TextView) findViewById(R.id.route);
+        mDay = (TextView) findViewById(R.id.day);
 
         //init recyclerview
         recyclerView = findViewById(R.id.bus_recycler_view);
@@ -82,23 +91,49 @@ public class AvailableBus extends AppCompatActivity {
         //init userList
         busList = new ArrayList<>();
 
+        setDate();
+        setRoute();
         getBuses();
-
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
-        AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
-        animationDrawable.setEnterFadeDuration(3000);
-        animationDrawable.setExitFadeDuration(3000);
-        animationDrawable.start();
+        getBusCount();
     }
 
-    private void setDate() {
-        FirebaseDatabase.getInstance().getReference("ResumeBookings")
+    private void setRoute() {
+        FirebaseDatabase.getInstance().getReference("Bookings")
                 .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds:snapshot.getChildren()){
-                            String date = "" + ds.child("date").getValue();
+                            String departure_station = "" + ds.child("departure_station").getValue();
+                            String destination_station = "" + ds.child("destination_station").getValue();
+
+                            String route = departure_station + " - " + destination_station;
+
+                            mRoute.setText(route);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void setDate() {
+        FirebaseDatabase.getInstance().getReference("Bookings")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String day = "" + ds.child("day").getValue();
+                            String month = "" + ds.child("month").getValue();
+                            String year = "" + ds.child("year").getValue();
+                            String destination_station = "" +ds.child("destination_station").getValue();
+                            String departure_station = "" +ds.child("departure_station").getValue();
+
+                            String date = day + " " + month + " " + year;
 
                             mDate.setText(date);
                         }
@@ -112,31 +147,102 @@ public class AvailableBus extends AppCompatActivity {
     }
 
     private void getBuses() {
-        String date = mDate.getText().toString().trim();
-
-        FirebaseDatabase.getInstance().getReference("Bus").
-                orderByChild("date").equalTo(date)
+        FirebaseDatabase.getInstance().getReference("Bookings")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                busList.clear();
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String day = "" + ds.child("day").getValue();
+                            String destination_station = "" +ds.child("destination_station").getValue();
+                            String departure_station = "" +ds.child("departure_station").getValue();
 
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    //get data
-                    ModelBus bus = ds.getValue(ModelBus.class);
+                            String route = departure_station + " - " + destination_station;
 
-                    busList.add(bus);
-                }
+                            FirebaseDatabase.getInstance().getReference("Bus").
+                                    orderByChild("route").equalTo(route)
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            busList.clear();
 
-                //adapter
-                adapterBus = new AdapterBus(AvailableBus.this, busList);
-                //set to recyclerView
-                recyclerView.setAdapter(adapterBus);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                                //get data
+                                                ModelBus bus = ds.getValue(ModelBus.class);
 
-            }
-        });
+                                                busList.add(bus);
+                                            }
+
+                                            //adapter
+                                            adapterBus = new AdapterBus(AvailableBus.this, busList);
+                                            //set to recyclerView
+                                            recyclerView.setAdapter(adapterBus);
+                                        }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void getBusCount(){
+        mBusCount = 0;
+
+        FirebaseDatabase.getInstance().getReference("Bookings")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String day = "" + ds.child("day").getValue();
+
+                            String destination_station = "" +ds.child("destination_station").getValue();
+                            String departure_station = "" +ds.child("departure_station").getValue();
+
+                            String route = departure_station + " - " + destination_station;
+
+                            FirebaseDatabase.getInstance().getReference("Bus")
+                                    .orderByChild("route").equalTo(route)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            for(DataSnapshot singleSnapshot : snapshot.getChildren()){
+                                                mBusCount++;
+                                            }
+                                            mBusesFound.setText(String.valueOf(mBusCount));
+
+                                            int bus = Integer.parseInt(mBusesFound.getText().toString());
+
+                                            if(bus == 0){
+                                                mNothing.setVisibility(View.VISIBLE);
+                                                mRecycler.setVisibility(View.INVISIBLE);
+                                                mDone.setVisibility(View.INVISIBLE);
+                                            }else{
+                                                mNothing.setVisibility(View.GONE);
+                                                mRecycler.setVisibility(View.VISIBLE);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }
