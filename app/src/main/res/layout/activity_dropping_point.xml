@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".BoardingPoint">
+    tools:context=".DroppingPoint">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-light"
-                android:text="Your boarding location"
+                android:text="Your dropping location"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -73,22 +73,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
                 android:layout_below="@+id/location_card"
-                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
                 android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="20dp">
-
-                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/map"
-                    tools:context=".PostLocation"
-                    android:name="com.google.android.gms.maps.SupportMapFragment" />
+                android:layout_height="200dp">
 
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
@@ -120,7 +112,7 @@
                 android:id="@+id/express_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Boarding"
+                android:text="Dropping"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
