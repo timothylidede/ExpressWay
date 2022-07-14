@@ -73,10 +73,11 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+
             <RelativeLayout
-                android:layout_below="@+id/number"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/number">
 
                 <TextView
                     android:id="@+id/text"
@@ -84,11 +85,11 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
-                    android:textStyle="bold"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="Driver Information &amp; Car details"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/text2"
@@ -123,10 +124,11 @@
                     android:layout_below="@+id/firstname_title"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:hint="First Name"
                     android:background="@drawable/background_edittext"
                     android:fontFamily="sans-serif-thin"
-                    android:paddingStart="20dp"
                     android:inputType="textCapWords"
+                    android:paddingStart="20dp"
                     android:paddingLeft="5dp"
                     android:selectAllOnFocus="false"
                     android:singleLine="true"
@@ -140,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/firstname_text"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
                     android:text="Last Name"
                     android:textColor="#243665"
                     android:textSize="18dp" />
@@ -150,11 +153,12 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/secondname_title"
                     android:layout_marginLeft="20dp"
+                    android:hint="Last Name"
                     android:layout_marginRight="20dp"
-                    android:paddingStart="20dp"
                     android:background="@drawable/background_edittext"
                     android:fontFamily="sans-serif-thin"
                     android:inputType="textCapWords"
+                    android:paddingStart="20dp"
                     android:paddingLeft="5dp"
                     android:selectAllOnFocus="false"
                     android:singleLine="true"
@@ -168,7 +172,7 @@
                     android:layout_height="30dp"
                     android:layout_below="@+id/secondname_text"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp" />
 
                 <TextView
                     android:id="@+id/text3"
@@ -191,24 +195,25 @@
                     android:layout_below="@+id/text3"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="Whos is the manufacturer of your bus? \n (Check Logbook)"
+                    android:text="Who is the manufacturer of your bus? \n (Check Logbook)"
                     android:textColor="#243665"
                     android:textSize="18dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/spinner"
-                    android:layout_below="@+id/text4"
-                    android:layout_margin="20dp"
-                    android:hint="@string/select"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/select">
 
                     <AutoCompleteTextView
                         android:id="@+id/autoComplete_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="none"/>
+                        android:inputType="none" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,7 +236,66 @@
                     android:layout_below="@+id/text5"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="Whos is the manufacturer of your bus? \n (Check Logbook)"
+                    android:text="Vehicle Year of Manufacture"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/year"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text6"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/select2">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoComplete_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/year"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Number Plate"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/numberplate_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/text7"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/background_edittext"
+                    android:fontFamily="sans-serif-thin"
+                    android:hint="KCD 123A"
+                    android:inputType="textCapWords"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="5dp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/numberplate_text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Color"
                     android:textColor="#243665"
                     android:textSize="18dp" />
             </RelativeLayout>
