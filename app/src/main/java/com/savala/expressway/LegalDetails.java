@@ -1,16 +1,21 @@
 package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class LegalDetails extends AppCompatActivity {
     private TextView mExpress, mWay;
+
+    private CardView mNextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,15 @@ public class LegalDetails extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_legal_details);
+
+        mNextButton = (CardView) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LegalDetails.this, Documents.class);
+                startActivity(intent);
+            }
+        });
 
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);

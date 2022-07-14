@@ -1,7 +1,9 @@
 package com.savala.expressway;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 
 public class DriverInformation extends AppCompatActivity{
     private TextView mExpress, mWay;
+
+    private CardView mNextButton;
 
     private String[] manufacturers = {"Mercedes-Benz AG", "Iveco S.P.A", "MAN SE", "AB Volvo",
             "Scania AB", "EvoBus GmbH", "Temsa Europe NV", "Neoman Bus GmbH",
@@ -40,6 +44,15 @@ public class DriverInformation extends AppCompatActivity{
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_driver_information);
+
+        mNextButton = (CardView) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DriverInformation.this, LegalDetails.class);
+                startActivity(intent);
+            }
+        });
 
         autoCompleteTextView = findViewById(R.id.autoComplete_text);
         adapterItems = new ArrayAdapter<String>(this, R.layout.manufacturer_list, manufacturers);
