@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
+            android:name=".Documents"
+            android:exported="false" />
+        <activity
             android:name=".LegalDetails"
             android:exported="false" />
         <activity
