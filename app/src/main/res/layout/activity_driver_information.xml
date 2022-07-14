@@ -287,6 +287,34 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/next_button"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:layout_below="@+id/numberplate_text"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="60dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/blue">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:layout_centerInParent="true"
+                            android:textStyle="bold"/>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
