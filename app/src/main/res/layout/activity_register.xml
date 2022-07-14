@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/firstname_text"
                 android:layout_marginLeft="20dp"
-                android:text="Second Name"
+                android:text="Last Name"
                 android:textColor="#243665"
                 android:textSize="18dp" />
 

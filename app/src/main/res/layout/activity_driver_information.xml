@@ -19,6 +19,7 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
+                android:id="@+id/number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -72,7 +73,96 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Driver Information &amp; Car details"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_below="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Only your first name and vehicle details will be visible to customers during a trip"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/firstname_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="First Name"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/firstname_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/firstname_title"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/background_edittext"
+                    android:fontFamily="sans-serif-thin"
+                    android:paddingStart="20dp"
+                    android:inputType="textCapWords"
+                    android:paddingLeft="5dp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/secondname_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/firstname_text"
+                    android:layout_marginLeft="20dp"
+                    android:text="Last Name"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/secondname_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/secondname_title"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/background_edittext"
+                    android:fontFamily="sans-serif-thin"
+                    android:inputType="textCapWords"
+                    android:paddingLeft="5dp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 
