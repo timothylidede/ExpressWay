@@ -9,6 +9,20 @@
 
     <string name="google_maps_API_key">AIzaSyCXACSGCKBdLCXKLe9qtvxuODRoqfX_zU8</string>
 
+    <string-array name="manufacturers">
+        <item>Mercedes-Benz AG</item>
+        <item>Iveco S.P.A</item>
+        <item>MAN SE</item>
+        <item>AB Volvo</item>
+        <item>Scania AB</item>
+        <item>EvoBus GmbH</item>
+        <item>Temsa Europe NV</item>
+        <item>Neoman Bus GmbH</item>
+        <item>Alexander Dennis Ltd.</item>
+        <item>Solaris Bus &amp; Coach SA.</item>
+    </string-array>
     <string name="select">Select Manufacturer</string>
+    <string name="select2">Select Year</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
