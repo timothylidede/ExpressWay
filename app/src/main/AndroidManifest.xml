@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
+            android:name=".DroppingLocation"
+            android:exported="false" />
+        <activity
             android:name=".BoardingPoint"
             android:exported="false" />
         <activity

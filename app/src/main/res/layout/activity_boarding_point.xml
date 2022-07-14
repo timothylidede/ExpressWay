@@ -22,15 +22,67 @@
                 android:id="@+id/buss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-light"
-                android:text="Pick boarding location"
+                android:text="Your boarding location"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/location_card"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/buss"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Mlolongo, Athi River"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="1000 hrs"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_below="@+id/location_card"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardElevation="20dp"
+                app:cardCornerRadius="10dp"
+                android:layout_height="200dp">
+
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
 
