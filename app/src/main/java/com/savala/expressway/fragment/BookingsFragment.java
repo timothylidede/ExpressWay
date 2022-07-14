@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.savala.expressway.DriverInformation;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
@@ -34,7 +35,8 @@ public class BookingsFragment extends BaseFragment{
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent()
+                Intent intent = new Intent(getContext(), DriverInformation.class);
+                startActivity(intent);
             }
         });
 

@@ -79,25 +79,25 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/gradient_list"
-        android:id="@+id/top_layout">
+        android:background="@drawable/gradient_list">
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_height="wrap_content">
+            android:layout_marginLeft="10dp">
 
             <TextView
                 android:id="@+id/express_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="Driver"
                 android:textColor="@color/white"
-                android:text="Driver" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/way_title"
