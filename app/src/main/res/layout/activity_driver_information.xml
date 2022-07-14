@@ -124,9 +124,9 @@
                     android:layout_below="@+id/firstname_title"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="First Name"
                     android:background="@drawable/background_edittext"
                     android:fontFamily="sans-serif-thin"
+                    android:hint="First Name"
                     android:inputType="textCapWords"
                     android:paddingStart="20dp"
                     android:paddingLeft="5dp"
@@ -153,10 +153,10 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/secondname_title"
                     android:layout_marginLeft="20dp"
-                    android:hint="Last Name"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/background_edittext"
                     android:fontFamily="sans-serif-thin"
+                    android:hint="Last Name"
                     android:inputType="textCapWords"
                     android:paddingStart="20dp"
                     android:paddingLeft="5dp"
@@ -291,12 +291,12 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/next_button"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="100dp"
+                    android:layout_height="60dp"
                     android:layout_below="@+id/numberplate_text"
-                    android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_height="60dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="100dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -306,12 +306,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="sans-serif-condensed-light"
                             android:text="Next"
                             android:textColor="@color/white"
                             android:textSize="25dp"
-                            android:fontFamily="sans-serif-condensed-light"
-                            android:layout_centerInParent="true"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
