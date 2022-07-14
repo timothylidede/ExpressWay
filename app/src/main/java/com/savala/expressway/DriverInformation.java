@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class DriverInformation extends AppCompatActivity {
-    private TextView mExpress, mWay;
+public class DriverInformation extends AppCompatActivity{
+    private TextView mExpress, mWay, mManufacturer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,7 @@ public class DriverInformation extends AppCompatActivity {
 
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
+        mManufacturer = (TextView) findViewById(R.id.manufacturer);
 
         RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
         AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();

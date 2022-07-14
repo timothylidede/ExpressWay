@@ -92,15 +92,15 @@
 
                 <TextView
                     android:id="@+id/text2"
-                    android:layout_below="@+id/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/text"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="30dp"
-                    android:gravity="center"
                     android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
                     android:text="Only your first name and vehicle details will be visible to customers during a trip"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
@@ -162,6 +162,95 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/secondname_text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/checkbox"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_toRightOf="@+id/checkbox"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
+                    android:text="I have a bus that I will drive on ExpressWay"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Whos is the manufacturer of your bus? \n (Check Logbook)"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#DADADA"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+
+                <TextView
+                    android:id="@+id/manufacturer"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/text4"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignEnd="@+id/spinner"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/sort_down"/>
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinner"
+                    android:layout_alignLeft="@+id/text6"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="30dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
+                    android:text="If you don't find your vehicle model from list then let us know at kenya@xpressway.edu"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text5"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Whos is the manufacturer of your bus? \n (Check Logbook)"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
