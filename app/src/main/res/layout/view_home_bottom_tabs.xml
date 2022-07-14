@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/vst_start_image"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="26dp"
         android:layout_gravity="start|bottom"
         android:src="@drawable/driver"

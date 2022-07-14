@@ -14,11 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
+        <activity
+            android:name=".DriverInformation"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCXACSGCKBdLCXKLe9qtvxuODRoqfX_zU8" />

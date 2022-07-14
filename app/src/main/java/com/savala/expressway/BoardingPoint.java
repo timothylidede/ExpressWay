@@ -31,7 +31,7 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         mMap = googleMap;
 
         if (mLocationPermissionsGranted) {
-            getDeviceLocation();
+            //getDeviceLocation();
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -78,73 +78,73 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
 
-        if(isServicesOK()){
+        if (isServicesOK()) {
             init();
         }
 
         getLocationPermission();
     }
 
-    private void getLocationPermission(){
+    private void getLocationPermission() {
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION};
 
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                    COARSE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                    COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mLocationPermissionsGranted = true;
                 initMap();
-            }else{
+            } else {
                 ActivityCompat.requestPermissions(this,
                         permissions,
                         LOCATION_PERMISSION_REQUEST_CODE);
             }
-        }else{
+        } else {
             ActivityCompat.requestPermissions(this,
                     permissions,
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
 
-    private void init(){
-        mMagnify.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || event.getAction() == KeyEvent.ACTION_DOWN
-                        || event.getAction() == KeyEvent.KEYCODE_ENTER){
-                    //execute method for searching
-                    geoLocate();
-                }
-
-                return false;
-            }
-        });
-
-        hideSoftKeyboard();
+    private void init() {
+//        mMagnify.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if(actionId == EditorInfo.IME_ACTION_SEARCH
+//                        || actionId == EditorInfo.IME_ACTION_DONE
+//                        || event.getAction() == KeyEvent.ACTION_DOWN
+//                        || event.getAction() == KeyEvent.KEYCODE_ENTER){
+//                    //execute method for searching
+//                    geoLocate();
+//                }
+//
+//                return false;
+//            }
+//        });
+//
+//        hideSoftKeyboard();
     }
 
-    public boolean isServicesOK(){
+    public boolean isServicesOK() {
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(BoardingPoint.this);
 
-        if(available == ConnectionResult.SUCCESS){
+        if (available == ConnectionResult.SUCCESS) {
             //everything is fine and the user can make map request
 
 
-        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
             //an error occurred but we can resolve it
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(BoardingPoint.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
-        }else{
+        } else {
             Toast.makeText(this, "Unable to make map requests", Toast.LENGTH_SHORT).show();
         }
 
         return false;
     }
 
-    private void initMap(){
+    private void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(BoardingPoint.this);
     }
@@ -157,8 +157,8 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         switch (requestCode) {
             case LOCATION_PERMISSION_REQUEST_CODE: {
                 if (grantResults.length > 0) {
-                    for (int i = 0; i < grantResults.length; i++){
-                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
                             mLocationPermissionsGranted = false;
                             return;
                         }
@@ -171,3 +171,4 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         }
 
     }
+}

@@ -5,4 +5,110 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_layout"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/buss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Sign Up to Drive"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buss"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="~ Meet people in the city \n ~ Make extra cash, any time \n ~ Get paid fast"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/text"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/driver_image" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/continue_button"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/image"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="60dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Continue"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:layout_centerInParent="true"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/gradient_list"
+        android:id="@+id/top_layout">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/express_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Driver" />
+
+            <TextView
+                android:id="@+id/way_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/express_title"
+                android:text="Account"
+                android:textColor="#243665"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </RelativeLayout>
