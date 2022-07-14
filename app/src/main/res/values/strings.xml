@@ -23,7 +23,6 @@
     </string-array>
     <string name="select">Select Manufacturer</string>
     <string name="select2">Select Year</string>
-    <string name="select3">Select Color</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

@@ -287,17 +287,6 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/numberplate_text"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Color"
-                    android:textColor="#243665"
-                    android:textSize="18dp" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
