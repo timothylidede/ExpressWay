@@ -13,14 +13,29 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.HashMap;
 
 public class DriverInformation extends AppCompatActivity{
-    private TextView mExpress, mWay;
+    private TextView mExpress, mWay, mManufacturer, mYear;
+
+    private EditText mFirstName, mSecondName, mNumberPlate;
+
+    private CheckBox mCheckBox;
 
     private CardView mNextButton;
+
+    private ProgressBar mProgressBar;
 
     private String[] manufacturers = {"Mercedes-Benz AG", "Iveco S.P.A", "MAN SE", "AB Volvo",
             "Scania AB", "EvoBus GmbH", "Temsa Europe NV", "Neoman Bus GmbH",
@@ -36,6 +51,8 @@ public class DriverInformation extends AppCompatActivity{
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterYears;
 
+    private ImageView mBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +62,31 @@ public class DriverInformation extends AppCompatActivity{
         getSupportActionBar().hide();
         setContentView(R.layout.activity_driver_information);
 
+        mFirstName = findViewById(R.id.firstname_text);
+        mSecondName = findViewById(R.id.secondname_text);
+        mNumberPlate = findViewById(R.id.numberplate_text);
+
+        mManufacturer = findViewById(R.id.manufacturer);
+        mYear = findViewById(R.id.year_text);
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
         mNextButton = (CardView) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DriverInformation.this, LegalDetails.class);
-                startActivity(intent);
+                mProgressBar.setVisibility(View.VISIBLE);
+                mNextButton.setVisibility(View.INVISIBLE);
+                next();
             }
         });
 
@@ -61,6 +97,7 @@ public class DriverInformation extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 String manufacturer = parent.getItemAtPosition(position).toString();
+                mManufacturer.setText(manufacturer);
             }
         });
 
@@ -71,6 +108,7 @@ public class DriverInformation extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 String year = parent.getItemAtPosition(position).toString();
+                mYear.setText(year);
             }
         });
 
@@ -88,5 +126,44 @@ public class DriverInformation extends AppCompatActivity{
 
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
+    }
+
+    private void next() {
+        String first_name = mFirstName.getText().toString().trim();
+        String second_name = mSecondName.getText().toString().trim();
+        String manufacturer = mManufacturer.getText().toString().trim();
+        String year = mYear.getText().toString().trim();
+        String number_plate = mNumberPlate.getText().toString().trim();
+        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        if(first_name.isEmpty()){
+            mFirstName.setError("Key in your first name");
+            mFirstName.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }
+        if(second_name.isEmpty()){
+            mSecondName.setError("Key in your last name");
+            mSecondName.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }else if(number_plate.isEmpty()){
+            mNumberPlate.setError("Key in your bus' number plate");
+            mNumberPlate.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }else if(manufacturer.isEmpty()){
+            Toast.makeText(DriverInformation.this, "Select Manufacturer", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(year.isEmpty()){
+            Toast.makeText(DriverInformation.this, "Select Year of manufacture", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(mCheckBox.isChecked()){
+
+            HashMap
+        }
     }
 }

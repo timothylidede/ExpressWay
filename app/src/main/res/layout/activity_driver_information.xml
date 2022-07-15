@@ -168,6 +168,7 @@
 
                 <CheckBox
                     android:id="@+id/checkbox"
+                    android:checked="true"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_below="@+id/secondname_text"
@@ -214,6 +215,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="none" />
+
+                    <TextView
+                        android:id="@+id/manufacturer"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/firstname_text"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#243665"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/year_text"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/firstname_text"
+                        android:textColor="#243665"
+                        android:textSize="18dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -315,6 +333,17 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_below="@+id/numberplate_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@+id/next_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
@@ -329,9 +358,9 @@
             android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="7dp"
-            android:layout_centerVertical="true"
             android:background="@drawable/blue_back" />
 
         <RelativeLayout
