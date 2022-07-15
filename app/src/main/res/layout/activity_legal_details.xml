@@ -31,6 +31,7 @@
                         android:id="@+id/one"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:alpha=".7"
                         android:layout_centerVertical="true"
                         android:src="@drawable/grey_one" />
 
@@ -49,7 +50,6 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/one_line"
-                        android:alpha=".7"
                         android:src="@drawable/blue_two" />
 
                     <ImageView
@@ -123,9 +123,9 @@
                     android:layout_below="@+id/firstname_title"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="18456428"
                     android:background="@drawable/background_edittext"
                     android:fontFamily="sans-serif-thin"
+                    android:hint="18456428"
                     android:inputType="textCapWords"
                     android:paddingStart="20dp"
                     android:paddingLeft="5dp"
@@ -192,6 +192,16 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:layout_below="@+id/driverlicense_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@+id/next_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </RelativeLayout>
 
@@ -208,9 +218,9 @@
             android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="7dp"
-            android:layout_centerVertical="true"
             android:background="@drawable/blue_back" />
 
         <RelativeLayout
@@ -240,18 +250,6 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="7dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/fire"
-            android:indeterminateTintMode="src_atop"
-            android:visibility="invisible" />
 
     </RelativeLayout>
 

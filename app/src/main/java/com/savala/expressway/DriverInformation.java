@@ -1,5 +1,6 @@
 package com.savala.expressway;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -22,7 +23,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.savala.expressway.model.ModelDriver;
 
 import java.util.HashMap;
 
@@ -130,11 +135,10 @@ public class DriverInformation extends AppCompatActivity{
 
     private void next() {
         String first_name = mFirstName.getText().toString().trim();
-        String second_name = mSecondName.getText().toString().trim();
+        String last_name = mSecondName.getText().toString().trim();
         String manufacturer = mManufacturer.getText().toString().trim();
         String year = mYear.getText().toString().trim();
         String number_plate = mNumberPlate.getText().toString().trim();
-        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         if(first_name.isEmpty()){
             mFirstName.setError("Key in your first name");
@@ -143,7 +147,7 @@ public class DriverInformation extends AppCompatActivity{
             mNextButton.setVisibility(View.VISIBLE);
             return;
         }
-        if(second_name.isEmpty()){
+        if(last_name.isEmpty()){
             mSecondName.setError("Key in your last name");
             mSecondName.requestFocus();
             mProgressBar.setVisibility(View.INVISIBLE);
@@ -157,13 +161,24 @@ public class DriverInformation extends AppCompatActivity{
             return;
         }else if(manufacturer.isEmpty()){
             Toast.makeText(DriverInformation.this, "Select Manufacturer", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
             return;
         }else if(year.isEmpty()){
             Toast.makeText(DriverInformation.this, "Select Year of manufacture", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
             return;
-        }else if(mCheckBox.isChecked()){
+        }else{
+            Intent intent = new Intent(DriverInformation.this, LegalDetails.class);
+            intent.putExtra("first_name", first_name);
+            intent.putExtra("last_name", last_name);
+            intent.putExtra("bus_manufacturer", manufacturer);
+            intent.putExtra("year", year);
+            intent.putExtra("number_plate", number_plate);
+            startActivity(intent);
+            finish();
 
-            HashMap
         }
     }
 }

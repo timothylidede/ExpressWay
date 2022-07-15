@@ -31,6 +31,7 @@
                         android:id="@+id/one"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:alpha=".7"
                         android:layout_centerVertical="true"
                         android:src="@drawable/grey_one" />
 
@@ -67,7 +68,6 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/two_line"
-                        android:alpha=".7"
                         android:src="@drawable/blue_three" />
 
                 </RelativeLayout>
@@ -108,7 +108,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/nationalID_card"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/text2"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -153,42 +153,27 @@
                             android:textSize="17dp" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/uploadID_button"
-                            android:layout_width="150dp"
-                            android:layout_height="60dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_below="@+id/text5"
                             android:layout_marginTop="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginBottom="100dp">
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginRight="20dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/blue">
+                                android:background="#C8F3E4">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <ImageView
+                                    android:id="@+id/uploadID_image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/add"
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:src="@drawable/add" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_toRightOf="@id/add"
-                                        android:fontFamily="sans-serif-condensed-light"
-                                        android:text="Upload"
-                                        android:textColor="@color/white"
-                                        android:textSize="25dp"
-                                        android:textStyle="bold" />
-                                </RelativeLayout>
+                                    android:backgroundTint="#8A6666"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/add_photo" />
 
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -200,7 +185,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/driver_pfp_card"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/nationalID_card"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -245,42 +230,27 @@
                             android:textSize="17dp" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/uploadPP_button"
-                            android:layout_width="150dp"
-                            android:layout_height="60dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_below="@+id/text8"
                             android:layout_marginTop="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginBottom="100dp">
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginRight="20dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/blue">
+                                android:background="#C8F3E4">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <ImageView
+                                    android:id="@+id/uploadPP_image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/add1"
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:src="@drawable/add" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_toRightOf="@id/add1"
-                                        android:fontFamily="sans-serif-condensed-light"
-                                        android:text="Upload"
-                                        android:textColor="@color/white"
-                                        android:textSize="25dp"
-                                        android:textStyle="bold" />
-                                </RelativeLayout>
+                                    android:backgroundTint="#8A6666"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/add_photo" />
 
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -292,7 +262,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/regular_dl_card"
                     android:layout_width="match_parent"
-                    android:layout_height="285dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/driver_pfp_card"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -317,12 +287,12 @@
 
                         <TextView
                             android:id="@+id/text10"
-                            android:layout_below="@+id/text9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/text9"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
                             android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
                             android:text="Required*"
                             android:textColor="#F80000"
                             android:textSize="18dp" />
@@ -339,42 +309,27 @@
                             android:textSize="17dp" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/uploadRegularDL_button"
-                            android:layout_width="150dp"
-                            android:layout_height="60dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_below="@+id/text11"
                             android:layout_marginTop="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginBottom="100dp">
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginRight="20dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/blue">
+                                android:background="#C8F3E4">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <ImageView
+                                    android:id="@+id/uploadRegularDL_image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/add3"
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:src="@drawable/add" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_toRightOf="@id/add3"
-                                        android:fontFamily="sans-serif-condensed-light"
-                                        android:text="Upload"
-                                        android:textColor="@color/white"
-                                        android:textSize="25dp"
-                                        android:textStyle="bold" />
-                                </RelativeLayout>
+                                    android:backgroundTint="#8A6666"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/add_photo" />
 
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -386,7 +341,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/good_conduct_card"
                     android:layout_width="match_parent"
-                    android:layout_height="305dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/ntsa_card"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -434,42 +389,27 @@
                             android:textSize="17dp" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/uploadGoodConduct_button"
-                            android:layout_width="150dp"
-                            android:layout_height="60dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_below="@+id/text16"
                             android:layout_marginTop="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginBottom="100dp">
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginRight="20dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/blue">
+                                android:background="#C8F3E4">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <ImageView
+                                    android:id="@+id/uploadGoodConduct_image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/add4"
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:src="@drawable/add" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_toRightOf="@id/add4"
-                                        android:fontFamily="sans-serif-condensed-light"
-                                        android:text="Upload"
-                                        android:textColor="@color/white"
-                                        android:textSize="25dp"
-                                        android:textStyle="bold" />
-                                </RelativeLayout>
+                                    android:backgroundTint="#8A6666"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/add_photo" />
 
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -481,7 +421,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ntsa_card"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/regular_dl_card"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -517,41 +457,27 @@
                             android:textSize="18dp" />
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/uploadNTSA_button"
-                            android:layout_width="150dp"
-                            android:layout_height="60dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_below="@+id/text13"
                             android:layout_marginTop="20dp"
-                            android:layout_alignParentEnd="true"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginRight="20dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/blue">
+                                android:background="#C8F3E4">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <ImageView
+                                    android:id="@+id/uploadNTSA"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/add2"
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:src="@drawable/add" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_toRightOf="@id/add2"
-                                        android:fontFamily="sans-serif-condensed-light"
-                                        android:text="Upload"
-                                        android:textColor="@color/white"
-                                        android:textSize="25dp"
-                                        android:textStyle="bold" />
-                                </RelativeLayout>
+                                    android:backgroundTint="#8A6666"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/add_photo" />
 
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -587,6 +513,16 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:layout_below="@+id/good_conduct_card"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@+id/next_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </RelativeLayout>
         </RelativeLayout>
