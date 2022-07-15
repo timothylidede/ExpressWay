@@ -1,30 +1,23 @@
 package com.savala.expressway.fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.savala.expressway.AboutUs;
-import com.savala.expressway.EditProfile;
-import com.savala.expressway.Logout;
-import com.savala.expressway.Offers;
+import com.savala.expressway.common.AboutUs;
+import com.savala.expressway.common.EditProfile;
+import com.savala.expressway.auth.Logout;
+import com.savala.expressway.common.Offers;
 import com.savala.expressway.R;
-import com.savala.expressway.SignActivity;
-import com.savala.expressway.VerifyNumber;
+import com.savala.expressway.auth.VerifyNumber;
 
 public class AccountFragment extends BaseFragment {
 

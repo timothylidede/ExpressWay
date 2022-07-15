@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.driver;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.savala.expressway.R;
 
 public class LegalDetails extends AppCompatActivity {
     private TextView mExpress, mWay;

@@ -19,7 +19,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.savala.expressway.DriverInformation;
+import com.savala.expressway.driver.CreateTrip;
+import com.savala.expressway.driver.DriverInformation;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
@@ -55,16 +56,10 @@ public class BookingsFragment extends BaseFragment{
         mCreateTripCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), CreateTrip.class);
+                startActivity(intent);
             }
         });
-
-        RelativeLayout top_layout = (RelativeLayout) root.findViewById(R.id.top_layout);
-        AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();
-        top_layout1.setEnterFadeDuration(3000);
-        top_layout1.setExitFadeDuration(3000);
-        top_layout1.start();
-
 
         FirebaseDatabase.getInstance().getReference("Role")
                 .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())

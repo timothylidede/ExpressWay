@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.passenger;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,18 +15,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.R;
 import com.savala.expressway.adapter.AdapterBus;
 import com.savala.expressway.model.ModelBus;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -269,6 +264,8 @@ public class AvailableBus extends AppCompatActivity {
                                                                     mDone.setVisibility(View.INVISIBLE);
                                                                 }else if(bus == 1){
                                                                     mBuss.setText("Bus Found");
+                                                                    mRecycler.setVisibility(View.VISIBLE);
+                                                                    mNothing.setVisibility(View.INVISIBLE);
                                                                 } else{
                                                                     mNothing.setVisibility(View.GONE);
                                                                     mRecycler.setVisibility(View.VISIBLE);

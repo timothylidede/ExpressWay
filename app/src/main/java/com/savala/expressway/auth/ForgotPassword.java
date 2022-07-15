@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

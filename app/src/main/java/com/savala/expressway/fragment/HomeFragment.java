@@ -28,11 +28,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.savala.expressway.DepartureStation;
-import com.savala.expressway.DestinationStation;
-import com.savala.expressway.JourneyDate;
+import com.savala.expressway.passenger.DepartureStation;
+import com.savala.expressway.passenger.DestinationStation;
+import com.savala.expressway.passenger.JourneyDate;
 import com.savala.expressway.R;
-import com.savala.expressway.AvailableBus;
+import com.savala.expressway.passenger.AvailableBus;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -150,6 +150,7 @@ public class HomeFragment extends BaseFragment{
                 String day = mDate.getText().toString().trim();
                 String month = mMonth.getText().toString().trim();
                 String year = mYear.getText().toString().trim();
+                String timestamp = "" + System.currentTimeMillis();
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 if(departure.equals(destination) || destination.equals(departure)){
@@ -182,12 +183,13 @@ public class HomeFragment extends BaseFragment{
                         hashMap.put("destination_station", destination);
                         hashMap.put("departure_station", departure);
                         hashMap.put("day", day);
+                        hashMap.put("timestamp", timestamp);
                         hashMap.put("user_id", user_id);
                         hashMap.put("month", month);
                         hashMap.put("year", year);
 
                         FirebaseDatabase.getInstance().getReference("Bookings")
-                                .child(user_id)
+                                .child(timestamp)
                                 .setValue(hashMap)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

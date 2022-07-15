@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.passenger;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.savala.expressway.R;
 
 public class DroppingPoint extends AppCompatActivity {
 

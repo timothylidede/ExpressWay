@@ -284,7 +284,7 @@
         android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/gradient_list">
+        android:background="@color/black">
 
         <RelativeLayout
             android:layout_width="wrap_content"

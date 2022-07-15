@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,6 +10,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.savala.expressway.R;
 
 public class SignActivity extends AppCompatActivity {
 

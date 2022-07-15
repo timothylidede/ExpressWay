@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.auth;
 
 import static android.content.ContentValues.TAG;
 
@@ -28,6 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.savala.expressway.R;
 import com.savala.expressway.model.User;
 
 import java.util.HashMap;

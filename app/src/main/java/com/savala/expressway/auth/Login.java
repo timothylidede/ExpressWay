@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.auth;
 
 import static android.content.ContentValues.TAG;
 
@@ -28,7 +28,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.savala.expressway.R;
+import com.savala.expressway.common.HomeActivity;
 
 public class Login extends AppCompatActivity {
 

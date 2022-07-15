@@ -1,4 +1,4 @@
-package com.savala.expressway;
+package com.savala.expressway.passenger;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.savala.expressway.R;
 
 import java.util.Calendar;
 import java.util.HashMap;
