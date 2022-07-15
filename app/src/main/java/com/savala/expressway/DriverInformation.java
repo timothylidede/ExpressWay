@@ -26,7 +26,10 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.model.ModelDriver;
 
 import java.util.HashMap;
@@ -73,6 +76,26 @@ public class DriverInformation extends AppCompatActivity{
 
         mManufacturer = findViewById(R.id.manufacturer);
         mYear = findViewById(R.id.year_text);
+
+        FirebaseDatabase.getInstance().getReference("User")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren()){
+                            String first_name = "" + ds.child("first_name").getValue();
+                            String last_name = "" + ds.child("last_name").getValue();
+
+                            mFirstName.setText(first_name);
+                            mSecondName.setText(last_name);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         mBack = findViewById(R.id.back);
         mBack.setOnClickListener(new View.OnClickListener() {

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/top_layout"
+        android:layout_marginBottom="100dp"
         android:fillViewport="true">
 
         <RelativeLayout
@@ -29,8 +30,206 @@
                 android:visibility="invisible" />
 
             <TextView
+                android:id="@+id/welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Welcome Timothy"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/first_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/welcome"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="20dp"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#000B1B">
+
+                            <ImageView
+                                android:id="@+id/trip_image"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="50dp"
+                                android:layout_marginLeft="50dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/trip" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/trip_image"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Create a trip"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="20dp"
+                                android:textColor="@color/white"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="20dp"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#000B1B">
+
+                            <ImageView
+                                android:id="@+id/trip_image"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="50dp"
+                                android:src="@drawable/trip" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/trip_image"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Create a trip"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="20dp"
+                                android:textColor="@color/white"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/second_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/first_row"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="20dp"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#000B1B">
+
+                            <ImageView
+                                android:id="@+id/trip_image"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="50dp"
+                                android:layout_marginLeft="50dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/trip" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/trip_image"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Create a trip"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="20dp"
+                                android:textColor="@color/white"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="20dp"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#000B1B">
+
+                            <ImageView
+                                android:id="@+id/trip_image"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="50dp"
+                                android:layout_marginLeft="50dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/trip" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/trip_image"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Create a trip"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="20dp"
+                                android:textColor="@color/white"
+                                android:textSize="25dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
                 android:id="@+id/text"
-                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/buss"
@@ -39,11 +238,11 @@
                 android:fontFamily="sans-serif-condensed-light"
                 android:text="~ Meet people in the city \n ~ Make extra cash, any time \n ~ Get paid fast"
                 android:textColor="@color/black"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/image"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_below="@+id/text"
@@ -51,7 +250,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/driver_image" />
+                android:src="@drawable/driver_image"
+                android:visibility="invisible" />
 
             <androidx.cardview.widget.CardView
                 android:visibility="invisible"

@@ -38,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 import com.savala.expressway.model.ModelDriver;
 
 import java.security.Permissions;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class Documents extends AppCompatActivity {
@@ -402,6 +403,14 @@ public class Documents extends AppCompatActivity {
     private void next() {
         String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("user_id", FirebaseAuth.getInstance().getCurrentUser());
+        hashMap.put("role", "driver");
+
+        FirebaseDatabase.getInstance().getReference("Role")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .setValue(hashMap);
+
         ModelDriver modelDriver = new ModelDriver(first_name, last_name, bus_manufacturer, year,
                 number_plate, national_id, dl_ref_no, imageOne, imageTwo, imageFour,
                 imageThree, imageFive);
@@ -413,7 +422,7 @@ public class Documents extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Documents.this, "success nigga", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Documents.this, "You are now an ExpressWay Driver", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }

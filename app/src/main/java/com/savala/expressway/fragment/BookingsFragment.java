@@ -59,7 +59,6 @@ public class BookingsFragment extends BaseFragment{
 
 
         FirebaseDatabase.getInstance().getReference("Role")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
