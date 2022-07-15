@@ -123,7 +123,7 @@
                     android:layout_below="@+id/firstname_title"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/background_edittext"
+                    android:background="@drawable/black_edittext"
                     android:fontFamily="sans-serif-thin"
                     android:hint="18456428"
                     android:inputType="textCapWords"
@@ -152,10 +152,10 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/secondname_title"
                     android:layout_marginLeft="20dp"
-                    android:hint="ABC123"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/background_edittext"
+                    android:background="@drawable/black_edittext"
                     android:fontFamily="sans-serif-thin"
+                    android:hint="ABC123"
                     android:inputType="textCapWords"
                     android:paddingStart="20dp"
                     android:paddingLeft="5dp"
@@ -178,7 +178,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/blue">
+                        android:background="@color/black">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -209,10 +209,10 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/gradient_list"
-        android:id="@+id/top_layout">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/back"
@@ -224,11 +224,11 @@
             android:background="@drawable/blue_back" />
 
         <RelativeLayout
-            android:layout_toRightOf="@id/back"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content">
+            android:layout_toRightOf="@id/back">
 
             <TextView
                 android:id="@+id/express_title"

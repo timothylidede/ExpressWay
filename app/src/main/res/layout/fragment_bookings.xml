@@ -36,12 +36,13 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-light"
-                android:text="Welcome Timothy"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:layout_marginTop="30dp"
                 android:id="@+id/first_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +51,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -81,11 +82,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/trip_image"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginTop="20dp"
                                 android:layout_marginBottom="20dp"
                                 android:fontFamily="sans-serif-condensed-light"
                                 android:text="Create a Trip"
                                 android:textColor="@color/white"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -93,7 +95,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
@@ -124,11 +126,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/bus_image"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginTop="20dp"
                                 android:layout_marginBottom="20dp"
                                 android:fontFamily="sans-serif-condensed-light"
                                 android:text="Bus Details"
                                 android:textColor="@color/white"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -144,11 +147,12 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/trip_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="20dp"
@@ -174,11 +178,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/trip_history_image"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginTop="20dp"
                                 android:layout_marginBottom="20dp"
                                 android:fontFamily="sans-serif-condensed-light"
                                 android:text="Trip History"
                                 android:textColor="@color/white"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -186,11 +191,12 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="20dp"
@@ -215,12 +221,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/other_image"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
                                 android:fontFamily="sans-serif-condensed-light"
                                 android:text="Create a trip"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginBottom="20dp"
                                 android:textColor="@color/white"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -263,7 +270,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/blue">
+                    android:background="@color/black">
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -24,8 +24,8 @@ import com.savala.expressway.driver.DriverInformation;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
-    private CardView mContinueButton, mCreateTripCard, mBusDetailsCard, mTripHistory;
-    private TextView mExpress, mWay, mBuss, mText;
+    private CardView mContinueButton, mCreateTripCard, mBusDetailsCard, mTripHistory, mOther;
+    private TextView mExpress, mWay, mBuss, mText, mWelcome;
     private ImageView mImage;
     public static BookingsFragment create(){
         return new BookingsFragment();
@@ -52,7 +52,13 @@ public class BookingsFragment extends BaseFragment{
             }
         });
 
+        mWelcome = (TextView) root.findViewById(R.id.welcome);
+
         mCreateTripCard = (CardView) root.findViewById(R.id.create_trip_card);
+        mBusDetailsCard = (CardView) root.findViewById(R.id.my_bus_card);
+        mTripHistory = (CardView) root.findViewById(R.id.trip_history);
+        mOther = (CardView) root.findViewById(R.id.other);
+
         mCreateTripCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +66,24 @@ public class BookingsFragment extends BaseFragment{
                 startActivity(intent);
             }
         });
+
+        FirebaseDatabase.getInstance().getReference("Driver")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds: snapshot.getChildren()){
+                            String firstname = "" + ds.child("first_name").getValue();
+
+                            mWelcome.setText("Welcome " + firstname);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         FirebaseDatabase.getInstance().getReference("Role")
                 .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -74,6 +98,24 @@ public class BookingsFragment extends BaseFragment{
                                 mText.setVisibility(View.VISIBLE);
                                 mContinueButton.setVisibility(View.VISIBLE);
                                 mImage.setVisibility(View.VISIBLE);
+
+                                mWelcome.setVisibility(View.INVISIBLE);
+                                mCreateTripCard.setVisibility(View.INVISIBLE);
+                                mTripHistory.setVisibility(View.INVISIBLE);
+                                mBusDetailsCard.setVisibility(View.INVISIBLE);
+                                mOther.setVisibility(View.INVISIBLE);
+                            }
+                            if(role.equals("driver")){
+                                mBuss.setVisibility(View.INVISIBLE);
+                                mText.setVisibility(View.INVISIBLE);
+                                mContinueButton.setVisibility(View.INVISIBLE);
+                                mImage.setVisibility(View.INVISIBLE);
+
+                                mWelcome.setVisibility(View.VISIBLE);
+                                mCreateTripCard.setVisibility(View.VISIBLE);
+                                mTripHistory.setVisibility(View.VISIBLE);
+                                mBusDetailsCard.setVisibility(View.VISIBLE);
+                                mOther.setVisibility(View.VISIBLE);
                             }
                         }
                     }

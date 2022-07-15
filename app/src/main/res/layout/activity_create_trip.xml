@@ -17,6 +17,70 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Create Trip"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="Create a trip fast and quick and start getting clients"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Pick your departure toll station"
+                android:textColor="#243665"
+                android:textSize="18dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/departure_station"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text4"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Select Departure Station">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+                <TextView
+                    android:id="@+id/departure_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_below="@+id/firstname_text"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </RelativeLayout>
     </ScrollView>

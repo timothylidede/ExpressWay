@@ -164,7 +164,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#C8F3E4">
+                                android:background="#C5C5C5">
 
                                 <ImageView
                                     android:id="@+id/uploadID_image"
@@ -241,7 +241,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#C8F3E4">
+                                android:background="#C5C5C5">
 
                                 <ImageView
                                     android:id="@+id/uploadPP_image"
@@ -320,7 +320,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#C8F3E4">
+                                android:background="#C5C5C5">
 
                                 <ImageView
                                     android:id="@+id/uploadRegularDL_image"
@@ -400,7 +400,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#C8F3E4">
+                                android:background="#C5C5C5">
 
                                 <ImageView
                                     android:id="@+id/uploadGoodConduct_image"
@@ -468,7 +468,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#C8F3E4">
+                                android:background="#C5C5C5">
 
                                 <ImageView
                                     android:id="@+id/uploadNTSA"
@@ -499,7 +499,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/blue">
+                        android:background="@color/black">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -529,26 +529,26 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/gradient_list"
-        android:id="@+id/top_layout">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="7dp"
-            android:layout_centerVertical="true"
             android:background="@drawable/blue_back" />
 
         <RelativeLayout
-            android:layout_toRightOf="@id/back"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content">
+            android:layout_toRightOf="@id/back">
 
             <TextView
                 android:id="@+id/express_title"

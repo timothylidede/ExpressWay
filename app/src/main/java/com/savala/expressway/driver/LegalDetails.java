@@ -72,12 +72,6 @@ public class LegalDetails extends AppCompatActivity {
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
 
-        RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
-        AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();
-        top_layout1.setEnterFadeDuration(3000);
-        top_layout1.setExitFadeDuration(3000);
-        top_layout1.start();
-
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
 

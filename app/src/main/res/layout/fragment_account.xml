@@ -373,7 +373,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="My" />
+                android:text="Passenger" />
 
             <TextView
                 android:id="@+id/way_title"
