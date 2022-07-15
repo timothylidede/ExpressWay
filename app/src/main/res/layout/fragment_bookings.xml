@@ -55,6 +55,7 @@
                     android:layout_weight="1">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/create_trip_card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="20dp"
@@ -63,27 +64,26 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#000B1B">
+                            android:background="@color/black">
 
                             <ImageView
                                 android:id="@+id/trip_image"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginRight="50dp"
+                                android:layout_centerHorizontal="true"
                                 android:layout_marginLeft="50dp"
-                                android:layout_centerInParent="true"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginRight="50dp"
                                 android:src="@drawable/trip" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/trip_image"
-                                android:fontFamily="sans-serif-condensed-light"
-                                android:text="Create a trip"
-                                android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="20dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Create a Trip"
                                 android:textColor="@color/white"
                                 android:textSize="25dp" />
                         </RelativeLayout>
@@ -98,6 +98,7 @@
                     android:layout_weight="1">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/my_bus_card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="20dp"
@@ -106,27 +107,26 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#000B1B">
+                            android:background="@color/black">
 
                             <ImageView
-                                android:id="@+id/trip_image"
+                                android:id="@+id/bus_image"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true"
                                 android:layout_marginLeft="50dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="30dp"
                                 android:layout_marginRight="50dp"
-                                android:src="@drawable/trip" />
+                                android:src="@drawable/my_bus" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/trip_image"
-                                android:fontFamily="sans-serif-condensed-light"
-                                android:text="Create a trip"
-                                android:layout_marginTop="10dp"
+                                android:layout_below="@+id/bus_image"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="20dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Bus Details"
                                 android:textColor="@color/white"
                                 android:textSize="25dp" />
                         </RelativeLayout>
@@ -157,27 +157,26 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#000B1B">
+                            android:background="@color/black">
 
                             <ImageView
-                                android:id="@+id/trip_image"
+                                android:id="@+id/trip_history_image"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginRight="50dp"
+                                android:layout_centerHorizontal="true"
                                 android:layout_marginLeft="50dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/trip" />
+                                android:layout_marginTop="30dp"
+                                android:layout_marginRight="50dp"
+                                android:src="@drawable/trip_history" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/trip_image"
-                                android:fontFamily="sans-serif-condensed-light"
-                                android:text="Create a trip"
-                                android:layout_marginTop="10dp"
+                                android:layout_below="@+id/trip_history_image"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="20dp"
+                                android:fontFamily="sans-serif-condensed-light"
+                                android:text="Trip History"
                                 android:textColor="@color/white"
                                 android:textSize="25dp" />
                         </RelativeLayout>
@@ -200,25 +199,24 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#000B1B">
+                            android:background="@color/black">
 
                             <ImageView
-                                android:id="@+id/trip_image"
+                                android:id="@+id/other_image"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginRight="50dp"
+                                android:layout_centerHorizontal="true"
                                 android:layout_marginLeft="50dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/trip" />
+                                android:layout_marginTop="30dp"
+                                android:layout_marginRight="50dp"
+                                android:src="@drawable/other" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/trip_image"
+                                android:layout_below="@+id/other_image"
                                 android:fontFamily="sans-serif-condensed-light"
                                 android:text="Create a trip"
-                                android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="20dp"
                                 android:textColor="@color/white"

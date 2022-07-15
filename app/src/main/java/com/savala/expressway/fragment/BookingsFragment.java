@@ -23,7 +23,7 @@ import com.savala.expressway.DriverInformation;
 import com.savala.expressway.R;
 
 public class BookingsFragment extends BaseFragment{
-    private CardView mContinueButton;
+    private CardView mContinueButton, mCreateTripCard, mBusDetailsCard, mTripHistory;
     private TextView mExpress, mWay, mBuss, mText;
     private ImageView mImage;
     public static BookingsFragment create(){
@@ -48,6 +48,14 @@ public class BookingsFragment extends BaseFragment{
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), DriverInformation.class);
                 startActivity(intent);
+            }
+        });
+
+        mCreateTripCard = (CardView) root.findViewById(R.id.create_trip_card);
+        mCreateTripCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
