@@ -195,9 +195,17 @@ public class Register extends AppCompatActivity {
                                     hashMap.put("user_id", user_id);
                                     hashMap.put("destination_station", destination_station);
 
+                                    HashMap<String, Object> hashMap2 = new HashMap<>();
+                                    hashMap2.put("role", "user");
+                                    hashMap2.put("user_id", user_id);
+
                                     FirebaseDatabase.getInstance().getReference("ResumeBookings")
                                             .child(user_id)
-                                            .setValue(hashMap);
+                                            .setValue(hashMap2);
+
+                                    FirebaseDatabase.getInstance().getReference("Role")
+                                            .child(user_id)
+                                            .setValue(hashMap2);
 
                                     myUserRef.child(userID)
                                             .setValue(user)

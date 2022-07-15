@@ -25,10 +25,12 @@
                 android:text="Sign Up to Drive"
                 android:textColor="@color/black"
                 android:textSize="30dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/text"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/buss"
@@ -41,16 +43,18 @@
 
             <ImageView
                 android:id="@+id/image"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_below="@+id/text"
-                android:layout_marginTop="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/driver_image" />
 
             <androidx.cardview.widget.CardView
+                android:visibility="invisible"
                 android:id="@+id/continue_button"
                 android:layout_width="match_parent"
                 android:layout_below="@+id/image"
@@ -66,12 +70,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-condensed-light"
                         android:text="Continue"
                         android:textColor="@color/white"
                         android:textSize="25dp"
-                        android:fontFamily="sans-serif-condensed-light"
-                        android:layout_centerInParent="true"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
