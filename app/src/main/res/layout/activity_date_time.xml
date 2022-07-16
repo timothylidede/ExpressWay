@@ -218,7 +218,7 @@
                     android:id="@+id/progressBar"
                     android:layout_gravity="center"
                     android:visibility="visible"
-                    android:layout_below="@+id/price"
+                    android:layout_below="@+id/time"
                     android:layout_centerHorizontal="true"
                     android:layout_alignTop="@+id/next_button"
                     android:layout_marginTop="10dp"
