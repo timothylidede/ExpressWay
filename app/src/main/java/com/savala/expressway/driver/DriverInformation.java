@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,7 +16,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +29,7 @@ import com.savala.expressway.R;
 public class DriverInformation extends AppCompatActivity{
     private TextView mExpress, mWay, mManufacturer, mYear;
 
-    private EditText mFirstName, mSecondName, mNumberPlate;
+    private EditText mFirstName, mSecondName, mNumberPlate, mNumberOfSeats;
 
     private CheckBox mCheckBox;
 
@@ -67,6 +65,7 @@ public class DriverInformation extends AppCompatActivity{
         mFirstName = findViewById(R.id.firstname_text);
         mSecondName = findViewById(R.id.secondname_text);
         mNumberPlate = findViewById(R.id.numberplate_text);
+        mNumberOfSeats = findViewById(R.id.numberofseats_text);
 
         mManufacturer = findViewById(R.id.manufacturer);
         mYear = findViewById(R.id.year_text);
@@ -113,7 +112,7 @@ public class DriverInformation extends AppCompatActivity{
         });
 
         autoCompleteTextView = findViewById(R.id.autoComplete_text);
-        adapterItems = new ArrayAdapter<String>(this, R.layout.manufacturer_list, manufacturers);
+        adapterItems = new ArrayAdapter<String>(this, R.layout.list, manufacturers);
         autoCompleteTextView.setAdapter(adapterItems);
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -124,7 +123,7 @@ public class DriverInformation extends AppCompatActivity{
         });
 
         autoCompleteYear = findViewById(R.id.autoComplete_year);
-        adapterYears = new ArrayAdapter<String>(this, R.layout.year_list, years);
+        adapterYears = new ArrayAdapter<String>(this, R.layout.list, years);
         autoCompleteYear.setAdapter(adapterYears);
         autoCompleteYear.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -136,7 +135,6 @@ public class DriverInformation extends AppCompatActivity{
 
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
-
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
         Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
 
@@ -150,6 +148,7 @@ public class DriverInformation extends AppCompatActivity{
         String manufacturer = mManufacturer.getText().toString().trim();
         String year = mYear.getText().toString().trim();
         String number_plate = mNumberPlate.getText().toString().trim();
+        String number_of_seats = mNumberOfSeats.getText().toString().trim();
 
         if(first_name.isEmpty()){
             mFirstName.setError("Key in your first name");
@@ -170,6 +169,12 @@ public class DriverInformation extends AppCompatActivity{
             mProgressBar.setVisibility(View.INVISIBLE);
             mNextButton.setVisibility(View.VISIBLE);
             return;
+        }else if(number_of_seats.isEmpty()){
+            mNumberOfSeats.setError("Key in your bus' number of seats");
+            mNumberOfSeats.requestFocus();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
         }else if(manufacturer.isEmpty()){
             Toast.makeText(DriverInformation.this, "Select Manufacturer", Toast.LENGTH_SHORT).show();
             mProgressBar.setVisibility(View.INVISIBLE);
@@ -187,6 +192,7 @@ public class DriverInformation extends AppCompatActivity{
             intent.putExtra("bus_manufacturer", manufacturer);
             intent.putExtra("year", year);
             intent.putExtra("number_plate", number_plate);
+            intent.putExtra("number_of_seats", number_of_seats);
             startActivity(intent);
             finish();
 

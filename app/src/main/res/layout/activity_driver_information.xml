@@ -86,7 +86,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="Driver Information &amp; Car details"
+                    android:text="Driver Information &amp; Bus details"
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -306,11 +306,42 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/text13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/numberplate_text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Number of Seats"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/numberofseats_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/text13"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/black_edittext"
+                    android:fontFamily="sans-serif-thin"
+                    android:hint="50"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="5dp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_below="@+id/numberplate_text"
+                    android:layout_below="@+id/numberofseats_text"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"

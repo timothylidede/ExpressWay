@@ -3,13 +3,11 @@ package com.savala.expressway.model;
 public class ModelDriver {
     private String first_name, last_name, bus_manufacturer, year, number_plate,
             national_id, dl_ref_no, id_photo, profile_photo, dl_photo, ntsa_license,
-            good_conduct;
+            good_conduct, number_of_seats;
 
-    public ModelDriver(){}
+    private ModelDriver(){}
 
-    public ModelDriver(String first_name, String last_name, String bus_manufacturer, String year,
-                       String number_plate, String national_id, String dl_ref_no, String id_photo,
-                       String profile_photo, String dl_photo, String ntsa_license, String good_conduct) {
+    public ModelDriver(String first_name, String last_name, String bus_manufacturer, String year, String number_plate, String national_id, String dl_ref_no, String id_photo, String profile_photo, String dl_photo, String ntsa_license, String good_conduct, String number_of_seats) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.bus_manufacturer = bus_manufacturer;
@@ -22,6 +20,7 @@ public class ModelDriver {
         this.dl_photo = dl_photo;
         this.ntsa_license = ntsa_license;
         this.good_conduct = good_conduct;
+        this.number_of_seats = number_of_seats;
     }
 
     public String getFirst_name() {
@@ -120,6 +119,14 @@ public class ModelDriver {
         this.good_conduct = good_conduct;
     }
 
+    public String getNumber_of_seats() {
+        return number_of_seats;
+    }
+
+    public void setNumber_of_seats(String number_of_seats) {
+        this.number_of_seats = number_of_seats;
+    }
+
     @Override
     public String toString() {
         return "ModelDriver{" +
@@ -135,6 +142,7 @@ public class ModelDriver {
                 ", dl_photo='" + dl_photo + '\'' +
                 ", ntsa_license='" + ntsa_license + '\'' +
                 ", good_conduct='" + good_conduct + '\'' +
+                ", number_of_seats='" + number_of_seats + '\'' +
                 '}';
     }
 }

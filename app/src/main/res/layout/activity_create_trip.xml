@@ -66,7 +66,7 @@
                 android:hint="Select Departure Station">
 
                 <AutoCompleteTextView
-                    android:id="@+id/autoComplete_text"
+                    android:id="@+id/autoComplete_departure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none" />
@@ -75,12 +75,87 @@
                     android:id="@+id/departure_text"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_below="@+id/firstname_text"
                     android:layout_marginLeft="20dp"
                     android:textColor="#243665"
                     android:textSize="18dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/departure_station"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Pick your destination toll station"
+                android:textColor="#243665"
+                android:textSize="18dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/destination_station"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text5"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Select Destination Station">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+                <TextView
+                    android:id="@+id/destination_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#243665"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/destination_station"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="100dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Next"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:layout_below="@+id/destination_station"
+                android:layout_centerHorizontal="true"
+                android:layout_alignTop="@+id/next_button"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </RelativeLayout>
     </ScrollView>

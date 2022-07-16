@@ -24,7 +24,7 @@ public class LegalDetails extends AppCompatActivity {
 
     private EditText mNationalID, mDriverLicense;
 
-    private String first_name, last_name, bus_manufacturer, year, number_plate;
+    private String first_name, last_name, bus_manufacturer, year, number_plate, number_of_seats;
 
     private ImageView mBack;
 
@@ -58,6 +58,7 @@ public class LegalDetails extends AppCompatActivity {
         bus_manufacturer = intent.getStringExtra("bus_manufacturer");
         year = intent.getStringExtra("year");
         number_plate = intent.getStringExtra("number_plate");
+        number_of_seats = intent.getStringExtra("number_of_seats");
 
         mNextButton = (CardView) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +105,7 @@ public class LegalDetails extends AppCompatActivity {
             intent.putExtra("number_plate", number_plate);
             intent.putExtra("national_id", national_id);
             intent.putExtra("dl_ref_no", dl_ref_no);
+            intent.putExtra("number_of_seats", number_of_seats);
             startActivity(intent);
             finish();
         }
