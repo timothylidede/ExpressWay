@@ -102,11 +102,12 @@ public class Price extends AppCompatActivity {
     }
 
     private void next() {
-        Intent intent = new Intent(Price.this, .class);
+        Intent intent = new Intent(Price.this, DateTime.class);
         intent.putExtra("departure_station", departure_station);
         intent.putExtra("destination_station", destination_station);
         intent.putExtra("route", route);
         intent.putExtra("price", price);
         startActivity(intent);
+        finish();
     }
 }
