@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.savala.expressway.R;
 
 public class CreateTrip extends AppCompatActivity {
     private TextView mExpress, mWay, mDeparture, mDestination;
+
+    private ImageView mBack;
 
     private CardView mNextButton;
 
@@ -45,6 +48,14 @@ public class CreateTrip extends AppCompatActivity {
         setContentView(R.layout.activity_create_trip);
 
         mNextButton = (CardView) findViewById(R.id.next_button);
+
+        mBack = (ImageView) findViewById(R.id.back);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         mProgressBar = findViewById(R.id.progressBar);
 
