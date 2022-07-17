@@ -42,7 +42,7 @@ public class Documents extends AppCompatActivity {
     private CardView mNextButton;
 
     private String first_name, last_name, bus_manufacturer, year, number_plate, national_id, number_of_seats,
-            dl_ref_no;
+            dl_ref_no, rating;
 
     private ProgressBar mProgressBar;
 
@@ -77,6 +77,7 @@ public class Documents extends AppCompatActivity {
         national_id = intent.getStringExtra("national_id");
         dl_ref_no = intent.getStringExtra("dl_ref_no");
         number_of_seats = intent.getStringExtra("number_of_seats");
+        rating = "5.0";
 
         mUploadIDImage = findViewById(R.id.uploadID_image);
         mUploadGoodConductImage = findViewById(R.id.uploadGoodConduct_image);
@@ -402,7 +403,7 @@ public class Documents extends AppCompatActivity {
 
         ModelDriver modelDriver = new ModelDriver(first_name, last_name, bus_manufacturer, year,
                 number_plate, national_id, dl_ref_no, imageOne, imageTwo, imageFour,
-                imageThree, imageFive, number_of_seats);
+                imageThree, imageFive, number_of_seats, rating);
 
         FirebaseDatabase.getInstance().getReference("Driver")
                 .child(user_id)

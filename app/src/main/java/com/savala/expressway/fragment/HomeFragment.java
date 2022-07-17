@@ -189,7 +189,7 @@ public class HomeFragment extends BaseFragment{
                         hashMap.put("year", year);
 
                         FirebaseDatabase.getInstance().getReference("Bookings")
-                                .child(timestamp)
+                                .child(user_id)
                                 .setValue(hashMap)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

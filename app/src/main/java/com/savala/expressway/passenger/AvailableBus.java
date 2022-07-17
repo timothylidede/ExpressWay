@@ -93,19 +93,6 @@ public class AvailableBus extends AppCompatActivity {
         //init userList
         busList = new ArrayList<>();
 
-        int bus = Integer.parseInt(mBusesFound.getText().toString());
-        if(bus <= 0){
-            mBusesFound.setText("0");
-            mNothing.setVisibility(View.VISIBLE);
-            mRecycler.setVisibility(View.INVISIBLE);
-            mDone.setVisibility(View.INVISIBLE);
-        }else if(bus == 1){
-            mBuss.setText("Bus Found");
-        } else{
-            mNothing.setVisibility(View.GONE);
-            mRecycler.setVisibility(View.VISIBLE);
-        }
-
         setDate();
         setRoute();
         getBuses();
@@ -169,10 +156,6 @@ public class AvailableBus extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds:snapshot.getChildren()){
                             String day = "" + ds.child("day").getValue();
-                            String destination_station = "" +ds.child("destination_station").getValue();
-                            String departure_station = "" +ds.child("departure_station").getValue();
-
-                            String route = departure_station + " - " + destination_station;
 
                             FirebaseDatabase.getInstance().getReference("Bus").
                                     orderByChild("day").equalTo(day)
@@ -180,6 +163,7 @@ public class AvailableBus extends AppCompatActivity {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             for (DataSnapshot ds : snapshot.getChildren()) {
+                                                String route = "" +ds.child("route").getValue();
 
                                                 FirebaseDatabase.getInstance().getReference("Bus").
                                                         orderByChild("route").equalTo(route)
@@ -233,27 +217,23 @@ public class AvailableBus extends AppCompatActivity {
                         for(DataSnapshot ds:snapshot.getChildren()){
                             String day = "" + ds.child("day").getValue();
 
-                            String destination_station = "" +ds.child("destination_station").getValue();
-                            String departure_station = "" +ds.child("departure_station").getValue();
-
-                            String route = departure_station + " - " + destination_station;
-
                             FirebaseDatabase.getInstance().getReference("Bus")
-                                    .orderByChild("route").equalTo(route)
+                                    .orderByChild("day").equalTo(day)
                                     .addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             for(DataSnapshot ds: snapshot.getChildren()){
+                                                String route = "" +ds.child("route").getValue();
 
                                                 FirebaseDatabase.getInstance().getReference("Bus")
-                                                        .orderByChild("day").equalTo(day)
+                                                        .orderByChild("route").equalTo(route)
                                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                                 for(DataSnapshot singleSnapshot : snapshot.getChildren()){
                                                                     mBusCount++;
                                                                 }
-                                                                mBusesFound.setText(String.valueOf(mBusCount-1));
+                                                                mBusesFound.setText(String.valueOf(mBusCount));
 
                                                                 int bus = Integer.parseInt(mBusesFound.getText().toString());
 
@@ -264,8 +244,8 @@ public class AvailableBus extends AppCompatActivity {
                                                                     mDone.setVisibility(View.INVISIBLE);
                                                                 }else if(bus == 1){
                                                                     mBuss.setText("Bus Found");
+                                                                    mNothing.setVisibility(View.GONE);
                                                                     mRecycler.setVisibility(View.VISIBLE);
-                                                                    mNothing.setVisibility(View.INVISIBLE);
                                                                 } else{
                                                                     mNothing.setVisibility(View.GONE);
                                                                     mRecycler.setVisibility(View.VISIBLE);

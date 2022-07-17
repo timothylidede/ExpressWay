@@ -3,11 +3,11 @@ package com.savala.expressway.model;
 public class ModelDriver {
     private String first_name, last_name, bus_manufacturer, year, number_plate,
             national_id, dl_ref_no, id_photo, profile_photo, dl_photo, ntsa_license,
-            good_conduct, number_of_seats;
+            good_conduct, number_of_seats, rating;
 
     private ModelDriver(){}
 
-    public ModelDriver(String first_name, String last_name, String bus_manufacturer, String year, String number_plate, String national_id, String dl_ref_no, String id_photo, String profile_photo, String dl_photo, String ntsa_license, String good_conduct, String number_of_seats) {
+    public ModelDriver(String first_name, String last_name, String bus_manufacturer, String year, String number_plate, String national_id, String dl_ref_no, String id_photo, String profile_photo, String dl_photo, String ntsa_license, String good_conduct, String number_of_seats, String rating) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.bus_manufacturer = bus_manufacturer;
@@ -21,6 +21,7 @@ public class ModelDriver {
         this.ntsa_license = ntsa_license;
         this.good_conduct = good_conduct;
         this.number_of_seats = number_of_seats;
+        this.rating = rating;
     }
 
     public String getFirst_name() {
@@ -127,6 +128,14 @@ public class ModelDriver {
         this.number_of_seats = number_of_seats;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
         return "ModelDriver{" +
@@ -143,6 +152,7 @@ public class ModelDriver {
                 ", ntsa_license='" + ntsa_license + '\'' +
                 ", good_conduct='" + good_conduct + '\'' +
                 ", number_of_seats='" + number_of_seats + '\'' +
+                ", rating='" + rating + '\'' +
                 '}';
     }
 }

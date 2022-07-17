@@ -51,7 +51,7 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/one_line"
-                        android:src="@drawable/blue_two" />
+                        android:src="@drawable/black_two" />
 
                     <ImageView
                         android:id="@+id/two_line"
@@ -102,7 +102,7 @@
                     android:layout_marginRight="30dp"
                     android:fontFamily="sans-serif-condensed-light"
                     android:gravity="center"
-                    android:text="Confirm the route displayed is correct"
+                    android:text="Confirm that the route displayed is correct"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 

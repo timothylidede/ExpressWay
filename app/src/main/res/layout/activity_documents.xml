@@ -68,7 +68,7 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/two_line"
-                        android:src="@drawable/blue_three" />
+                        android:src="@drawable/black_three" />
 
                 </RelativeLayout>
             </RelativeLayout>

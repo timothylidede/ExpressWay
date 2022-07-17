@@ -73,11 +73,11 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
                             String time = "" + ds.child("time").getValue();
                             String price = "" + ds.child("price").getValue();
                             String rating = "" + ds.child("rating").getValue();
-                            String route = "" + ds.child("route").getValue();
                             String seats = "" + ds.child("seats").getValue();
+                            String bus_manufacturer = "" + ds.child("bus_manufacturer").getValue();
 
                             holder.mRating.setText(rating);
-                            holder.mRoute.setText(route);
+                            holder.mBusManufacturer.setText(bus_manufacturer);
                             holder.mTime.setText(time);
                             holder.mNumberPlate.setText(number_plate);
                             holder.mPrice.setText(price);
@@ -98,13 +98,13 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
     }
 
     class BusHolder extends RecyclerView.ViewHolder{
-        private TextView mNumberPlate, mRoute, mTime, mPrice, mRating, mSeats;
+        private TextView mNumberPlate, mBusManufacturer, mTime, mPrice, mRating, mSeats;
 
         public BusHolder(@NonNull View itemView) {
             super(itemView);
 
             mNumberPlate = itemView.findViewById(R.id.number_plate);
-            mRoute = itemView.findViewById(R.id.route);
+            mBusManufacturer = itemView.findViewById(R.id.bus_manufacturer);
             mTime= itemView.findViewById(R.id.time);
             mPrice = itemView.findViewById(R.id.price);
             mRating = itemView.findViewById(R.id.rating);

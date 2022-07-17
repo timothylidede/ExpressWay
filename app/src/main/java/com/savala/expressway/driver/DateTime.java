@@ -18,15 +18,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.R;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class DateTime extends AppCompatActivity {
 
     private ImageView mBack;
 
-    private TextView mDate, mTime;
+    private TextView mDate, mTime, mDayText;
 
     private CalendarView mCalendarView;
 
@@ -34,10 +42,10 @@ public class DateTime extends AppCompatActivity {
 
     private AutoCompleteTextView autoCompleteTime;
 
-    private String[] time = {"0000 hrs", "0100 hrs", "0200 hrs", "0300 hrs", "0400 hrs", "0500 hrs",
-            "0600 hrs", "0700 hrs", "0800 hrs", "0900 hrs", "1000 hrs", "1100 hrs", "1200 hrs",
-            "1300 hrs", "1400 hrs", "1500 hrs", "1600 hrs", "1700 hrs", "1800 hrs", "1900 hrs",
-            "2000 hrs", "2100 hrs", "2200 hrs", "2300 hrs"};
+    private String[] time = {"12:00 am", "01:00 am", "02:00 am", "03:00 am", "04:00 am", "05:00 am",
+            "06:00 am", "07:00 am", "08:00 am", "09:00 am", "10:00 am", "11:00 am", "12:00 pm",
+            "1:00 pm", "02:00 pm", "03:00 pm", "04:00 pm", "05:00 pm",
+            "06:00 pm", "07:00 pm", "08:00 pm", "09:00 pm", "10:00 pm", "11:00 pm"};
 
     ArrayAdapter<String> adapterTime;
 
@@ -64,6 +72,7 @@ public class DateTime extends AppCompatActivity {
         mDate = findViewById(R.id.date);
         mTime = findViewById(R.id.time_text);
         mCalendarView = findViewById(R.id.calendar_view);
+        mDayText = findViewById(R.id.day);
 
         mNextButton = findViewById(R.id.next_button);
         mProgressBar = findViewById(R.id.progressBar);
@@ -89,10 +98,11 @@ public class DateTime extends AppCompatActivity {
                                             int month, int dayOfMonth) {
                 month = month + 1;
                 String mDay = "" + dayOfMonth;
-                String mMonth = "" + month;
+                String mMonth = "" + getMonthFormat(month);
                 String mYear = "" + year;
 
                 mDate.setText(mDay + " " + mMonth + " " + mYear);
+                mDayText.setText(mDay);
             }
         });
 
@@ -136,6 +146,7 @@ public class DateTime extends AppCompatActivity {
     private void next() {
         String date = mDate.getText().toString().trim();
         String time = mTime.getText().toString().trim();
+        String day = mDayText.getText().toString().trim();
 
         if(date.isEmpty()){
             Toast.makeText(DateTime.this, "Select Date", Toast.LENGTH_SHORT).show();
@@ -148,15 +159,61 @@ public class DateTime extends AppCompatActivity {
             mNextButton.setVisibility(View.VISIBLE);
             return;
         }else{
-            Intent intent = new Intent(DateTime.this, .class);
-            intent.putExtra("departure_station", departure_station);
-            intent.putExtra("destination_station", destination_station);
-            intent.putExtra("route", route);
-            intent.putExtra("price", price);
-            intent.putExtra("date", date);
-            intent.putExtra("time", time);
-            startActivity(intent);
-            finish();
+
+            FirebaseDatabase.getInstance().getReference("Driver")
+                    .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot ds: snapshot.getChildren()){
+                                String number_plate = "" + ds.child("number_plate").getValue();
+                                String number_of_seats = "" + ds.child("number_of_seats").getValue();
+                                String rating = "" + ds.child("rating").getValue();
+                                String bus_manufacturer = "" + ds.child("bus_manufacturer").getValue();
+
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("departure_station", departure_station);
+                                hashMap.put("destination_station", destination_station);
+                                hashMap.put("route", route);
+                                hashMap.put("price", price);
+                                hashMap.put("date", date);
+                                hashMap.put("time", time);
+                                hashMap.put("day", day);
+                                hashMap.put("number_plate", number_plate);
+                                hashMap.put("seats", number_of_seats);
+                                hashMap.put("rating", rating);
+                                hashMap.put("bus_manufacturer", bus_manufacturer);
+
+                                FirebaseDatabase.getInstance().getReference("Bus")
+                                        .child(number_plate)
+                                        .setValue(hashMap)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(DateTime.this, "Trip successfully created. Wait for passengers to start booking", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DateTime.this, "To check progress of the trip booking, go to \"Ongoing Trips\"", Toast.LENGTH_LONG).show();
+                                                    finish();
+                                                }else{
+                                                    Toast.makeText(DateTime.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
+                                                    mProgressBar.setVisibility(View.INVISIBLE);
+                                                    mNextButton.setVisibility(View.VISIBLE);
+
+                                                }
+                                            }
+                                        });
+
+                                FirebaseDatabase.getInstance().getReference("PendingTrip")
+                                        .child(number_plate)
+                                        .setValue(hashMap);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
         }
     }
 

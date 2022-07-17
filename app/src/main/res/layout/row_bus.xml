@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:id="@+id/first"
@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/busteal" />
@@ -52,12 +52,12 @@
             android:layout_marginLeft="30dp">
 
             <TextView
-                android:id="@+id/route"
+                android:id="@+id/bus_manufacturer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-condensed-light"
-                android:text="Jomo Kenyatta International Airport - Haile Selassie Avenue"
+                android:text="Scania AB"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -66,12 +66,11 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/route"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"
+                android:layout_below="@+id/bus_manufacturer"
+                android:fontFamily="sans-serif-condensed-light"
                 android:text="0800 hrs"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-condensed-light"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/price"
@@ -105,7 +104,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/teal_200">
+                    android:background="#88d8bd">
 
                     <ImageView
                         android:id="@+id/star"

@@ -115,6 +115,11 @@ public class CreateTrip extends AppCompatActivity {
             mProgressBar.setVisibility(View.INVISIBLE);
             mNextButton.setVisibility(View.VISIBLE);
             return;
+        }else if(destination_station.equals(departure_station)){
+            Toast.makeText(CreateTrip.this, "Departure Station and Destination Station cannot be the same", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
         }else{
             Intent intent = new Intent(CreateTrip.this, Price.class);
             intent.putExtra("departure_station", departure_station);
