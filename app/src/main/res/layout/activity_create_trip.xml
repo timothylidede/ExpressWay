@@ -70,6 +70,24 @@
                         android:alpha=".7"
                         android:src="@drawable/grey_three" />
 
+                    <ImageView
+                        android:id="@+id/three_line"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/three"
+                        android:alpha=".7"
+                        android:src="@drawable/horizontal_line" />
+
+                    <ImageView
+                        android:id="@+id/four"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/three_line"
+                        android:alpha=".7"
+                        android:src="@drawable/grey_four" />
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -209,14 +227,14 @@
 
                 <ProgressBar
                     android:id="@+id/progressBar"
-                    android:layout_gravity="center"
-                    android:visibility="visible"
-                    android:layout_below="@+id/destination_station"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignTop="@+id/next_button"
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/destination_station"
+                    android:layout_alignTop="@+id/next_button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible" />
 
             </RelativeLayout>
         </RelativeLayout>

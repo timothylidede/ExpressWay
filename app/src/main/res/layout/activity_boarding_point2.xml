@@ -18,11 +18,86 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <RelativeLayout
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/one"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:alpha=".7"
+                        android:src="@drawable/grey_one" />
+
+                    <ImageView
+                        android:id="@+id/one_line"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/one"
+                        android:alpha=".7"
+                        android:src="@drawable/horizontal_line" />
+
+                    <ImageView
+                        android:id="@+id/two"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/one_line"
+                        android:src="@drawable/black_two" />
+
+                    <ImageView
+                        android:id="@+id/two_line"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/two"
+                        android:alpha=".7"
+                        android:src="@drawable/horizontal_line" />
+
+                    <ImageView
+                        android:id="@+id/three"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/two_line"
+                        android:alpha=".7"
+                        android:src="@drawable/grey_three" />
+
+                    <ImageView
+                        android:id="@+id/three_line"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/three"
+                        android:alpha=".7"
+                        android:src="@drawable/horizontal_line" />
+
+                    <ImageView
+                        android:id="@+id/four"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/three_line"
+                        android:alpha=".7"
+                        android:src="@drawable/grey_four" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/number"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:text="Boarding Point"
@@ -49,18 +124,18 @@
                 android:id="@+id/place_picker"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:inputType="none"
-                android:drawableLeft="@drawable/ic_baseline_location_on_24"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
                 android:layout_below="@+id/text2"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/black_edittext"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
                 android:drawablePadding="10dp"
                 android:hint="Enter address, city or locality"
-                android:paddingStart="10dp"
                 android:imeOptions="actionSearch"
-                android:layout_marginEnd="20dp"
+                android:inputType="none"
                 android:maxLength="30"
-                android:background="@drawable/background_edittext"/>
+                android:paddingStart="10dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
@@ -81,10 +156,37 @@
                     tools:context=".PostLocation"
                     android:name="com.google.android.gms.maps.SupportMapFragment" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:alpha=".1"
+                        android:text="latitude"
+                        android:textColor="#B1B1B1" />
+
+                    <TextView
+                        android:id="@+id/longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#B1B1B1"
+                        android:text="longitude"
+                        android:layout_toRightOf="@+id/latitude"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:alpha=".1"/>
+
+                </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/done_button"
+                android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@+id/card"

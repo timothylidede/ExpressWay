@@ -67,9 +67,27 @@
                         android:id="@+id/three"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:alpha=".7"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/two_line"
-                        android:src="@drawable/black_three" />
+                        android:src="@drawable/grey_three" />
+
+                    <ImageView
+                        android:id="@+id/three_line"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/three"
+                        android:alpha=".7"
+                        android:src="@drawable/horizontal_line" />
+
+                    <ImageView
+                        android:id="@+id/four"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/three_line"
+                        android:src="@drawable/black_four" />
 
                 </RelativeLayout>
             </RelativeLayout>

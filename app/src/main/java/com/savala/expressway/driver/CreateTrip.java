@@ -121,7 +121,7 @@ public class CreateTrip extends AppCompatActivity {
             mNextButton.setVisibility(View.VISIBLE);
             return;
         }else{
-            Intent intent = new Intent(CreateTrip.this, Price.class);
+            Intent intent = new Intent(CreateTrip.this, BoardingPoint.class);
             intent.putExtra("departure_station", departure_station);
             intent.putExtra("destination_station", destination_station);
             startActivity(intent);
