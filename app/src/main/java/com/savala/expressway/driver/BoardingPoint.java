@@ -185,7 +185,7 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
             mNextButton.setVisibility(View.VISIBLE);
             return;
         }else{
-            Intent intent = new Intent(BoardingPoint.this, BoardingPoint.class);
+            Intent intent = new Intent(BoardingPoint.this, Price.class);
             intent.putExtra("departure_station", departure_station);
             intent.putExtra("destination_station", destination_station);
             intent.putExtra("latitude", latitude);

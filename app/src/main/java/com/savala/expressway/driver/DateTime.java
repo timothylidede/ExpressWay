@@ -175,6 +175,7 @@ public class DateTime extends AppCompatActivity {
                                 String bus_manufacturer = "" + ds.child("bus_manufacturer").getValue();
 
                                 String hour = time.substring(0, 2);
+                                String timezone = time.substring(6,8);
 
                                 HashMap<String, Object> hashMap = new HashMap<>();
                                 hashMap.put("departure_station", departure_station);
@@ -192,6 +193,7 @@ public class DateTime extends AppCompatActivity {
                                 hashMap.put("rating", rating);
                                 hashMap.put("bus_manufacturer", bus_manufacturer);
                                 hashMap.put("hour", hour);
+                                hashMap.put("timezone", timezone);
 
                                 FirebaseDatabase.getInstance().getReference("Bus")
                                         .child(number_plate)

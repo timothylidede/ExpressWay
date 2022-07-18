@@ -18,9 +18,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.savala.expressway.R;
 
 public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallback {
@@ -30,21 +38,20 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         mMap = googleMap;
 
         if (mLocationPermissionsGranted) {
-            //getDeviceLocation();
+            setMapLocation();
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 return;
             }
             mMap.setMyLocationEnabled(true);
-
-            init();
         }
     }
 
     private TextView mExpress, mWay;
-    private GoogleMap mMap;
 
+    private TextView mLocation, mTime;
+    private GoogleMap mMap;
 
     //constants
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -65,6 +72,9 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         mExpress = findViewById(R.id.express_title);
         mWay = findViewById(R.id.way_title);
 
+        mLocation = findViewById(R.id.location);
+        mTime = findViewById(R.id.time);
+
         RelativeLayout top_layout = (RelativeLayout) findViewById(R.id.top_layout);
         AnimationDrawable top_layout1 = (AnimationDrawable) top_layout.getBackground();
         top_layout1.setEnterFadeDuration(3000);
@@ -77,11 +87,87 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         mExpress.setTypeface(tf);
         mWay.setTypeface(tf);
 
-        if (isServicesOK()) {
-            init();
-        }
-
         getLocationPermission();
+        setLocationDetails();
+        setTimeDetails();
+    }
+
+    private void setTimeDetails() {
+        FirebaseDatabase.getInstance().getReference("Driver")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds: snapshot.getChildren()){
+                            String number_plate = "" + ds.child("number_plate").getValue();
+
+                            FirebaseDatabase.getInstance().getReference("Bus")
+                                    .orderByChild("number_plate").equalTo(number_plate)
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            for(DataSnapshot ds: snapshot.getChildren()){
+                                                String timezone = "" + ds.child("timezone").getValue();
+
+                                                String mHour = "" + ds.child("hour").getValue();
+                                                int hour = Integer.parseInt(mHour);
+
+                                                String real_hour = String.valueOf(hour - 1);
+
+                                                mTime.setText(real_hour + ":50 " + timezone);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void setLocationDetails() {
+        FirebaseDatabase.getInstance().getReference("Driver")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds: snapshot.getChildren()){
+                            String number_plate = "" + ds.child("number_plate").getValue();
+
+                            FirebaseDatabase.getInstance().getReference("Bus")
+                                    .orderByChild("number_plate").equalTo(number_plate)
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            for(DataSnapshot ds: snapshot.getChildren()){
+                                                String location = "" + ds.child("place_name").getValue();
+
+                                                mLocation.setText(location);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
     private void getLocationPermission() {
@@ -104,25 +190,6 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
                     permissions,
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
-    }
-
-    private void init() {
-//        mMagnify.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if(actionId == EditorInfo.IME_ACTION_SEARCH
-//                        || actionId == EditorInfo.IME_ACTION_DONE
-//                        || event.getAction() == KeyEvent.ACTION_DOWN
-//                        || event.getAction() == KeyEvent.KEYCODE_ENTER){
-//                    //execute method for searching
-//                    geoLocate();
-//                }
-//
-//                return false;
-//            }
-//        });
-//
-//        hideSoftKeyboard();
     }
 
     public boolean isServicesOK() {
@@ -169,5 +236,52 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
             }
         }
 
+    }
+
+    private void setMapLocation() {
+
+        FirebaseDatabase.getInstance().getReference("Driver")
+                .orderByChild("user_id").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds: snapshot.getChildren()){
+                            String number_plate = "" + ds.child("number_plate").getValue();
+
+                            FirebaseDatabase.getInstance().getReference("Bus")
+                                    .orderByChild("number_plate").equalTo(number_plate)
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            for(DataSnapshot ds: snapshot.getChildren()){
+                                                String place_name = "" + ds.child("place_name").getValue();
+                                                float latitude = Float.parseFloat("" + ds.child("latitude").getValue());
+                                                float longitude = Float.parseFloat("" + ds.child("longitude").getValue());
+
+                                                LatLng latLng = new LatLng(latitude, longitude);
+
+                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f));
+                                                MarkerOptions options = new MarkerOptions()
+                                                        .position(latLng)
+                                                        .title(place_name);
+                                                mMap.addMarker(options);
+
+                                                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }

@@ -49,30 +49,31 @@
                         android:id="@+id/location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="Mlolongo, Athi River"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="1000 hrs"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_below="@+id/location_card"
@@ -91,6 +92,44 @@
                     android:name="com.google.android.gms.maps.SupportMapFragment" />
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/card"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="100dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Next"
+                        android:textColor="@color/white"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:layout_below="@+id/card"
+                android:layout_centerHorizontal="true"
+                android:layout_alignTop="@+id/next_button"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </ScrollView>
 
@@ -136,27 +175,6 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/done"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="7dp"
-            android:background="@drawable/done" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="7dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/fire"
-            android:indeterminateTintMode="src_atop"
-            android:visibility="invisible" />
 
     </RelativeLayout>
 
