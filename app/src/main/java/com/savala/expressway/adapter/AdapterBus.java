@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,9 +53,30 @@ public class AdapterBus extends RecyclerView.Adapter<AdapterBus.BusHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BoardingPoint.class);
-                intent.putExtra("number_plate", number_plate);
-                context.startActivity(intent);
+
+                FirebaseDatabase.getInstance().getReference("DoneBooking")
+                        .orderByChild("number_plate").equalTo(number_plate)
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot ds: snapshot.getChildren()){
+                                    String number_plate2 = "" + ds.child("number_plate").getValue();
+
+                                    if(number_plate2.equals(number_plate)){
+                                        Toast.makeText(context, "Already booked this bus", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Intent intent = new Intent(context, BoardingPoint.class);
+                                        intent.putExtra("number_plate", number_plate);
+                                        context.startActivity(intent);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
             }
         });
 
