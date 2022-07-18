@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpressWay">
         <activity
+            android:name=".driver.BoardingPoint"
+            android:exported="false" />
+        <activity
             android:name=".driver.BusDetails"
             android:exported="false" />
         <activity

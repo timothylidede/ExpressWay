@@ -68,11 +68,25 @@ public class BookingsFragment extends BaseFragment{
             }
         });
 
-        mOngoingTrips.setOnClickListener(new View.OnClickListener() {
+        mBusDetailsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BusDetails.class);
                 startActivity(intent);
+            }
+        });
+
+        mOngoingTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        mTripHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 

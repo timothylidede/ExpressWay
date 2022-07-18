@@ -171,6 +171,8 @@ public class DateTime extends AppCompatActivity {
                                 String rating = "" + ds.child("rating").getValue();
                                 String bus_manufacturer = "" + ds.child("bus_manufacturer").getValue();
 
+                                String hour = time.substring(0, 2);
+
                                 HashMap<String, Object> hashMap = new HashMap<>();
                                 hashMap.put("departure_station", departure_station);
                                 hashMap.put("destination_station", destination_station);
@@ -183,6 +185,7 @@ public class DateTime extends AppCompatActivity {
                                 hashMap.put("seats", number_of_seats);
                                 hashMap.put("rating", rating);
                                 hashMap.put("bus_manufacturer", bus_manufacturer);
+                                hashMap.put("hour", hour);
 
                                 FirebaseDatabase.getInstance().getReference("Bus")
                                         .child(number_plate)
