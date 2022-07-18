@@ -17,12 +17,14 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,6 +84,7 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
 
     private String departure_station, destination_station;
     private CardView mNextButton;
+    private ProgressBar mProgressBar;
 
     //constants
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -98,6 +101,8 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_boarding_point2);
+
+        mProgressBar = findViewById(R.id.progressBar);
 
         Intent intent = getIntent();
         departure_station = intent.getStringExtra("departure_station");
@@ -146,7 +151,49 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
             init();
         }
 
+        mNextButton = findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mNextButton.setVisibility(View.INVISIBLE);
+                next();
+            }
+        });
+
         getLocationPermission();
+    }
+
+    private void next() {
+        String latitude = mLatitude.getText().toString().trim();
+        String longitude = mLongitude.getText().toString().trim();
+        String place_name = mMagnify.getText().toString().trim();
+
+        if(TextUtils.isEmpty(place_name)){
+            Toast.makeText(BoardingPoint.this, "Choose a valid location from the map", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }else if(TextUtils.isEmpty(latitude)){
+            Toast.makeText(BoardingPoint.this, "Choose a valid location from the map", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }else if(TextUtils.isEmpty(longitude)){
+            Toast.makeText(BoardingPoint.this, "Choose a valid location from the map", Toast.LENGTH_SHORT).show();
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mNextButton.setVisibility(View.VISIBLE);
+            return;
+        }else{
+            Intent intent = new Intent(BoardingPoint.this, BoardingPoint.class);
+            intent.putExtra("departure_station", departure_station);
+            intent.putExtra("destination_station", destination_station);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            intent.putExtra("place_name", place_name);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void disableMagnify(EditText editText) {

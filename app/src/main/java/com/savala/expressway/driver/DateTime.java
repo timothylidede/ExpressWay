@@ -53,7 +53,7 @@ public class DateTime extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
 
-    private String departure_station, destination_station, route, price;
+    private String departure_station, destination_station, latitude, longitude, place_name, route, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,9 @@ public class DateTime extends AppCompatActivity {
         Intent intent = getIntent();
         departure_station = intent.getStringExtra("departure_station");
         destination_station = intent.getStringExtra("destination_station");
+        latitude = intent.getStringExtra("latitude");
+        longitude = intent.getStringExtra("longitude");
+        place_name = intent.getStringExtra("place_name");
         route = intent.getStringExtra("route");
         price = intent.getStringExtra("price");
 
@@ -178,6 +181,9 @@ public class DateTime extends AppCompatActivity {
                                 hashMap.put("destination_station", destination_station);
                                 hashMap.put("route", route);
                                 hashMap.put("price", price);
+                                hashMap.put("latitude", latitude);
+                                hashMap.put("longitude", longitude);
+                                hashMap.put("place_name", place_name);
                                 hashMap.put("date", date);
                                 hashMap.put("time", time);
                                 hashMap.put("day", day);

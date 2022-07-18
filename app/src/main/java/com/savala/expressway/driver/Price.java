@@ -31,7 +31,7 @@ public class Price extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
 
-    private String departure_station, destination_station, route, price;
+    private String departure_station, destination_station, latitude, longitude, place_name, route, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,9 @@ public class Price extends AppCompatActivity {
         Intent intent = getIntent();
         departure_station = intent.getStringExtra("departure_station");
         destination_station = intent.getStringExtra("destination_station");
+        latitude = intent.getStringExtra("latitude");
+        longitude = intent.getStringExtra("longitude");
+        place_name = intent.getStringExtra("place_name");
 
         mRoute = (TextView) findViewById(R.id.route);
         mPrice = (TextView) findViewById(R.id.price);
@@ -105,6 +108,9 @@ public class Price extends AppCompatActivity {
         Intent intent = new Intent(Price.this, DateTime.class);
         intent.putExtra("departure_station", departure_station);
         intent.putExtra("destination_station", destination_station);
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
+        intent.putExtra("place_name", place_name);
         intent.putExtra("route", route);
         intent.putExtra("price", price);
         startActivity(intent);
