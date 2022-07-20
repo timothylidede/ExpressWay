@@ -49,7 +49,10 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         if (mLocationPermissionsGranted) {
             setMapLocation();
 
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 return;
             }
@@ -132,74 +135,62 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         String phone_number = mPhoneNumber.getText().toString().trim();
         String booking_id = "" + System.currentTimeMillis();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("user_id", user_id);
-        hashMap.put("number_plate", number_plate);
-        hashMap.put("booking_id", booking_id);
+        if(phone_number.isEmpty()){
+            mPhoneNumber.setError("Phone number is required");
+            mPhoneNumber.requestFocus();
+            return;
+        }else{
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("user_id", user_id);
+            hashMap.put("number_plate", number_plate);
+            hashMap.put("booking_id", booking_id);
 
-        FirebaseDatabase.getInstance().getReference("Bus")
-                .orderByChild("number_plate").equalTo(number_plate)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds: snapshot.getChildren()){
-                            int seats = Integer.parseInt("" + ds.child("seats").getValue());
+            FirebaseDatabase.getInstance().getReference("Bus")
+                    .orderByChild("number_plate").equalTo(number_plate)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot ds: snapshot.getChildren()){
+                                int seats = Integer.parseInt("" + ds.child("seats").getValue());
 
-                            String number_of_seats = String.valueOf(seats - 1);
+                                String number_of_seats = String.valueOf(seats - 1);
 
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("seats", number_of_seats);
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("seats", number_of_seats);
 
-                            FirebaseDatabase.getInstance().getReference("Bus")
-                                    .child(number_plate)
-                                    .updateChildren(hashMap);
+                                FirebaseDatabase.getInstance().getReference("Bus")
+                                        .child(number_plate)
+                                        .updateChildren(hashMap);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-
-        FirebaseDatabase.getInstance().getReference("User")
-                .orderByChild("userID").equalTo(user_id)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds: snapshot.getChildren()){
-                            String first_name = "" + ds.child("first_name").getValue();
-                            String last_name = "" + ds.child("last_name").getValue();
-
-                            HashMap<String, Object> hashMap2 = new HashMap<>();
-                            hashMap2.put("first_name", first_name);
-                            hashMap2.put("last_name", last_name);
-                            hashMap2.put("phone_number", phone_number);
-                            hashMap2.put("user_id", user_id);
-
-                            FirebaseDatabase.getInstance().getReference("Passenger")
-                                    .child(booking_id)
-                                    .setValue(hashMap2);
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            HashMap<String, Object> hashMap2 = new HashMap<>();
+            hashMap2.put("booking_id", booking_id);
+            hashMap2.put("user_id", user_id);
 
-                    }
-                });
+            FirebaseDatabase.getInstance().getReference("Passenger")
+                    .child(user_id)
+                    .setValue(hashMap2);
 
-        FirebaseDatabase.getInstance().getReference("DoneBooking")
-                .child(booking_id)
-                .setValue(hashMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(BoardingPoint.this, "Successfully booked", Toast.LENGTH_SHORT).show();
+            FirebaseDatabase.getInstance().getReference("DoneBooking")
+                    .child(booking_id)
+                    .setValue(hashMap)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(BoardingPoint.this, "Successfully booked", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     private void setTimeDetails() {

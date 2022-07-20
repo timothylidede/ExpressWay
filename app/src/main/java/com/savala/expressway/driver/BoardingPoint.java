@@ -64,7 +64,7 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 return;
-            }
+            }else{
             mMap.setMyLocationEnabled(true);
 
             init();
@@ -164,7 +164,7 @@ public class BoardingPoint extends AppCompatActivity implements OnMapReadyCallba
         getLocationPermission();
     }
 
-    private void next() {
+    private void next(){
         String latitude = mLatitude.getText().toString().trim();
         String longitude = mLongitude.getText().toString().trim();
         String place_name = mMagnify.getText().toString().trim();
